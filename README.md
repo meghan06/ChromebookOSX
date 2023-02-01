@@ -2,7 +2,10 @@
 
 Turns out, this laptop works quite well with macOS.
 
-[Screenshot 2023-02-01 at 3 45 19 PM](https://user-images.githubusercontent.com/77316348/216193582-4cdef546-b43f-413f-a6e2-5e29a3db05b8.png)
+|      |       |
+|------------|-------------|
+|<img src="Screenshot.jpg" width="900">|
+
 
 I will **NOT** be providing the EFI for this laptop, make it yourself and you might learn a thing or two along the way. All of the BS I encountered has been documented here so you don't have to suffer as much :)
 
