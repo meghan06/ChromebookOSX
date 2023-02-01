@@ -67,7 +67,8 @@ With that, l3ts get started!
 - Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 - Download and install Heliport.
 - Open ProperTree and reload (`ctrl+r`) your `config.plist`. 
-You are now ready for macOS Ventura!
+
+You are now ready for macOS Ventura! 
 
 
 
