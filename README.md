@@ -51,7 +51,7 @@ Here are the steps to go from a regular Chromebook to a macOS Install using Open
 
 4. Download corpnewt's SSDTTime, open it, select the first option `FixHEPT`, choose `C` for default, and drag the SSDT it makes into your ACPI folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
 
-5.) Install macOS and enjoy!
+5. Install macOS and enjoy!
 
 ## macOS Ventura
 #### Only for those that want to update to macOS Ventura.
