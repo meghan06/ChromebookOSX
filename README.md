@@ -64,7 +64,9 @@ You are now ready for macOS Ventura!
 
 
 
-### Credits
+
+
+## Credits
 - Goldfish64 for the eMMC driver and iGPU acceleration 
 - corpnewt for his tools
 - olm3ca for the help along the way 
