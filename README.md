@@ -31,7 +31,7 @@ The process described in this document could cause irreversible damage to your l
 
 Here are the steps to go from a regular Chromebook to a macOS Install using OpenCore. 
 
-# The following steps are **requried** for proper functioning.
+### **The following steps are **requried** for proper functioning.
 1. Flash UEFI firmware. Read and follow [MrChromebox's instructions](https://mrchromebox.tech) on how to flash the UEFI firmware using MrChromebox's scripts. To do this, you will need to disable write protect with either the SuzyQable cable or by removing the battery, with the second option being less painful.
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/).
