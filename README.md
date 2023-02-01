@@ -15,7 +15,6 @@
 | Keyboard backlight | Working              | With SSDT-KBBl.aml and VoodoolPS2-Chromebook.kext                 |                                           
 | Keyboard & Remaps  | Working              | With VoodoolPS2-Chromebook.kext                                   |
 | eMMC Storage       | Working              | With EmeraldSDHC.kext                                             |
-|---------------------------------------------------------------------------------------------------------------|
 
 ### Requirements
 
@@ -28,7 +27,7 @@ Before you start, you'll need to have the following things to complete the proce
 
 The process described in this document could cause irreversible damage to your laptop, and you should prepare yourself for that outcome before you begin. I accept absolutely no responsibility for the consequences of anyone choosing to follow or ignore any of the instructions in this document, and make no guarantees about the quality or effectiveness of the software in this repo.
 
-## Installation
+### Installation
 
 Here are the steps to go from a regular Chromebook to a macOS Install using OpenCore
 
