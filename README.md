@@ -2,9 +2,7 @@
 
 Turns out, this laptop works quite well with macOS.
 
-|      |       |
-|------------|-------------|
-|<img src="Screenshot.png" width="600">|
+|<img src="Screenshot.png" width="700">|
 
 
 I will **NOT** be providing the EFI for this laptop, make it yourself and you might learn a thing or two along the way. All of the BS I encountered has been documented here so you don't have to suffer as much :)
