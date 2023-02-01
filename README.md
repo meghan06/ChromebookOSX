@@ -47,7 +47,7 @@ Here are the steps to go from a regular Chromebook to a macOS Install using Open
 
 5.) Install macOS and enjoy!
 
-##macOS Ventura
+## macOS Ventura
 Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
 - Intel WiFi works, but is a little wonky during startup. It'll take a few seconds after login for it to connect.
@@ -55,7 +55,7 @@ Before we get started, you should know the following:
 
 With that, l3ts get started!
 
-###Preparations
+### Preparations
 - Mount your EFI using corpnewt's MountEFI.
 - Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 - Download and install Heliport.
@@ -64,7 +64,7 @@ You are now ready for macOS Ventura!
 
 
 
-###Credits
+### Credits
 - Goldfish64 for the eMMC driver and iGPU acceleration 
 - corpnewt for his tools
 - olm3ca for the help along the way 
