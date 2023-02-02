@@ -25,6 +25,10 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | Webcam             | Working              | Working OOTB                                                      |
 | Internal Mic.      | Not working          | n/a                                                               |
 
+Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. :) It'll save you time troubleshooting too!
+
+
+--
 ### Requirements
 
 Before you start, you'll need to have the following things to complete the process:
