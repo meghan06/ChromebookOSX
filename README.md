@@ -26,9 +26,9 @@ I will **NOT** be providing the download for the EFI, make it yourself and you m
 
 Before you start, you'll need to have the following things to complete the process:
 
-- A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
-- The latest OpenCore version (at least 0.8.8)   
-**- An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.**
+  - A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
+  - The latest OpenCore version (at least 0.8.8)   
+# - An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
 
 
 ### Disclaimer
@@ -65,11 +65,11 @@ Before we get started, you should know the following:
 With that, l3ts get started!
 
 ### Preparations
-- Mount your EFI using corpnewt's MountEFI.
-- Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-- Download and install Heliport. The most recent stable release will work fine.
-- Open ProperTree and reload (`ctrl+r`) your `config.plist`. 
-- Start the update. 
+1. Mount your EFI using corpnewt's MountEFI.
+2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
+3. Download and install Heliport. The most recent stable release will work fine.
+4. Open ProperTree and reload (`ctrl+r`) your `config.plist`. 
+5. Start the update. 
 
 You are now ready for macOS Ventura! 
 
