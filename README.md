@@ -50,12 +50,12 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
 
 5. Install macOS and enjoy!
 
-## Things that aren't mentioned in the Dortania guide are:**
+## Things not mentioned in the Dortania guide that you need to add:
+   - you will regret it later if you don't 
    - Use Laptop Kaby Lake for your config.plist 
    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
    - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
-#### For a painless install, you should add those changes.
 
 
 ## macOS Ventura
