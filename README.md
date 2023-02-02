@@ -26,9 +26,9 @@ I will **NOT** be providing the download for the EFI, make it yourself and you m
 
 Before you start, you'll need to have the following things to complete the process:
 
-  - A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
-  - The latest OpenCore version (at least 0.8.8)   
-**- An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
+- A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
+- The latest OpenCore version (at least 0.8.8)   
+- An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
 
 
 ### Disclaimer
@@ -37,7 +37,7 @@ The instructions outlined in this document have the potential to cause permanent
 
 ### Installation
 
-Here are the steps to go from a regular Chromebook to a macOS Install using OpenCore. 
+Here are the steps to go from using chromeOS to macOS via OpenCore. 
 
 ### **The following steps are **requried** for proper functioning.
 1. Flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
