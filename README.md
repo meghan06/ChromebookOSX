@@ -11,15 +11,19 @@ Turns out, this laptop works quite well with macOS.
 
 | **Feature**        | **Status**           | **Notes**                                                         |
 |--------------------|----------------------|-------------------------------------------------------------------|
-| WiFi               | Working              | Working                                                           |
-| Bluetooth          | Working              | Working                                                           |
+| WiFi               | Working              | With `itlwm.kext` and Heliport                                    |
+| Bluetooth          | Working              | With IntelBluetoothFirmware                                       |
 | Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`            |
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`                    |
-| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the boot-args                      |
-| Sound              | Not Working          | Only works with Bluetooth / USB sound adapter                     |
+| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`                    |
+| Internal Speakers  | Not working          | Unsupported codec                                                 |                            
 | Keyboard backlight | Working              | With `SSDT-KBBl.aml` and `VoodoolPS2-Chromebook.kext`             |                                           
 | Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`                                 |
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`                                           |
+| SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`                               |
+| USB Ports          | Working              | Make sure to map your USB ports                                   |
+| Webcam             | Working              | Working OOTB                                                      |
+| Internal Mic.      | Not working          | n/a                                                               |
 
 ### Requirements
 
@@ -50,7 +54,7 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
 
 5. Install macOS and enjoy!
 
-## Things not mentioned in the Dortania guide that you need to add:
+### Things not mentioned in the Dortania guide that you need to add:
    - you will regret it later if you don't 
    - Use Laptop Kaby Lake for your config.plist 
    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
@@ -58,11 +62,11 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
    - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
 
 
-## macOS Ventura
+### macOS Ventura
 #### Only for those who want to update to macOS Ventura.
 Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
-- Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~30s)` after login for it to connect.
+- Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s)` after login for it to connect.
 - Logging out **will** hang your device. The cause for this is unknown.
 
 With that, l3ts get started!
