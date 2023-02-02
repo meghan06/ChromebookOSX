@@ -44,7 +44,7 @@ The instructions outlined in this document have the potential to cause permanent
 
 ### Installation
 
-Here are the steps to go from using chromeOS to macOS via OpenCore. 
+Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
 
 ### **The following steps are **requried** for proper functioning.
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
@@ -65,7 +65,7 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
    - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
 
-#### Kext's.
+### Kext's.
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
 
 ### macOS Ventura
