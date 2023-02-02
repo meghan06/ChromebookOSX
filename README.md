@@ -27,18 +27,19 @@ I will **NOT** be providing the download for the EFI, make it yourself and you m
 Before you start, you'll need to have the following things to complete the process:
 
 - A external storage device (can range from a SD card to a USB Disk) for creating the installer.
+- The latest OpenCore version (at least 0.8.8)   
 - A willingness to accept that this is a potentially destructive process that may brick your whole device.
 
 ### Disclaimer
 
-The process described in this document could cause irreversible damage to your laptop, and you should prepare yourself for that outcome before you begin. I accept absolutely no responsibility for the consequences of anyone choosing to follow or ignore any of the instructions in this document, and make no guarantees about the quality or effectiveness of the software in this repo.
+The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.
 
 ### Installation
 
 Here are the steps to go from a regular Chromebook to a macOS Install using OpenCore. 
 
 ### **The following steps are **requried** for proper functioning.
-1. Flash UEFI firmware. Read and follow [MrChromebox's instructions](https://mrchromebox.tech) on how to flash the UEFI firmware using MrChromebox's scripts. To do this, you will need to disable write protect with either the SuzyQable cable or by removing the battery, with the second option being less painful.
+1. Flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/).
     - Use Laptop Kaby Lake for your config.plist 
