@@ -40,22 +40,24 @@ The instructions outlined in this document have the potential to cause permanent
 Here are the steps to go from using chromeOS to macOS via OpenCore. 
 
 ### **The following steps are **requried** for proper functioning.
-1. Flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
+1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). 
     
-#### Things that aren't mentioned in the Dortania guide are:
-    - Use Laptop Kaby Lake for your config.plist 
-    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
-    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
-    - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
-
 3. Do switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
    - Keyboard backlight SSDT can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
 
 4. Download corpnewt's SSDTTime, open it, select the first option `FixHPET`, choose `C` for default, and drag the SSDT it makes (`SSDT-HPET`) into your `ACPI` folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
 
 5. Install macOS and enjoy!
+
+**Things that aren't mentioned in the Dortania guide are:**
+   - Use Laptop Kaby Lake for your config.plist 
+   - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
+   - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
+   - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
+#### For a painless install, you should add those changes.
+
 
 ## macOS Ventura
 #### Only for those who want to update to macOS Ventura.
