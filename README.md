@@ -42,16 +42,18 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
 ### **The following steps are **requried** for proper functioning.
 1. Flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 
-2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/).
+2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). 
+    
+#### Things that aren't mentioned in the Dortania guide are:
     - Use Laptop Kaby Lake for your config.plist 
-    - In your `config.plist`, search for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
+    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
     - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
     - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
 
 3. Do switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
    - Keyboard backlight SSDT can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
 
-4. Download corpnewt's SSDTTime, open it, select the first option `FixHEPT`, choose `C` for default, and drag the SSDT it makes into your `ACPI` folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
+4. Download corpnewt's SSDTTime, open it, select the first option `FixHPET`, choose `C` for default, and drag the SSDT it makes (`SSDT-HPET`) into your `ACPI` folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
 
 5. Install macOS and enjoy!
 
@@ -67,8 +69,8 @@ With that, l3ts get started!
 ### Preparations
 1. Mount your EFI using corpnewt's MountEFI.
 2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-3. Download and install Heliport. The most recent stable release will work fine.
-4. Open ProperTree and reload (`ctrl+r`) your `config.plist`. 
+3. Download and install Heliport if you haven't already. The most recent stable release will work fine.
+4. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
 5. Start the update. 
 
 You are now ready for macOS Ventura! 
@@ -83,4 +85,4 @@ You are now ready for macOS Ventura!
 - **olm3ca** for the help along the way 
 
 
-### Last Updated: 02/01/2023
+### Last Updated: 02/02/2023
