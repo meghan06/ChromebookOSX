@@ -26,9 +26,10 @@ I will **NOT** be providing the download for the EFI, make it yourself and you m
 
 Before you start, you'll need to have the following things to complete the process:
 
-- A external storage device (can range from a SD card to a USB Disk) for creating the installer.
+- A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
 - The latest OpenCore version (at least 0.8.8)   
-- A willingness to accept that this is a potentially destructive process that may brick your whole device.
+**- An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.**
+
 
 ### Disclaimer
 
@@ -43,7 +44,7 @@ Here are the steps to go from a regular Chromebook to a macOS Install using Open
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/).
     - Use Laptop Kaby Lake for your config.plist 
-    - In your `config.plist`, search for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/install/WiFi.
+    - In your `config.plist`, search for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
     - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
     - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
 
@@ -58,16 +59,17 @@ Here are the steps to go from a regular Chromebook to a macOS Install using Open
 #### Only for those who want to update to macOS Ventura.
 Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
-- Intel WiFi works, but is a little wonky during startup. It'll take a few seconds after login for it to connect.
-- Logging out **will** hang your device 
+- Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~30s)` after login for it to connect.
+- Logging out **will** hang your device. The cause for this is unknown.
 
 With that, l3ts get started!
 
 ### Preparations
 - Mount your EFI using corpnewt's MountEFI.
 - Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-- Download and install Heliport.
+- Download and install Heliport. The most recent stable release will work fine.
 - Open ProperTree and reload (`ctrl+r`) your `config.plist`. 
+- Start the update. 
 
 You are now ready for macOS Ventura! 
 
@@ -79,3 +81,6 @@ You are now ready for macOS Ventura!
 - **Goldfish64** for the eMMC driver and iGPU acceleration 
 - **corpnewt** for his tools
 - **olm3ca** for the help along the way 
+
+
+### Last Updated: 02/01/2023
