@@ -55,7 +55,7 @@ Here are the steps to go from a regular Chromebook to a macOS Install using Open
 5. Install macOS and enjoy!
 
 ## macOS Ventura
-#### Only for those that want to update to macOS Ventura.
+#### Only for those who want to update to macOS Ventura.
 Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
 - Intel WiFi works, but is a little wonky during startup. It'll take a few seconds after login for it to connect.
