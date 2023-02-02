@@ -1,4 +1,4 @@
-# Installing macOS on a ASUS Chromebook C425
+# Installing macOS on an ASUS Chromebook C425
 
 Turns out, this laptop works quite well with macOS.
 
