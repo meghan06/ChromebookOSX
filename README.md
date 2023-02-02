@@ -87,7 +87,12 @@ With that, l3ts get started!
 You are now ready for macOS Ventura! 
 
 
-
+### Extra Info
+- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the WHOLE partition.
+- Format the drive as `APFS`
+- Map your USB ports prior to installing macOS for a painless experience. You will reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
+- `itlwm` is more stable & faster than `AirportItlwm`
+- You might have some text render and DRM issues, there's no fix for this. :(
 
 
 ## Credits
