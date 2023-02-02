@@ -14,13 +14,13 @@ I will **NOT** be providing the download for the EFI, make it yourself and you m
 |--------------------|----------------------|-------------------------------------------------------------------|
 | WiFi               | Working              | Working                                                           |
 | Bluetooth          | Working              | Working                                                           |
-| Suspend / Sleep    | Working partially    | Only on battery power, working with EmeraldSDHC.kext              |
-| Trackpad           | Working              | With VoodooI2C.kext and VoodooI2CELAN.kext                        |
-| Graphics Accel.    | Working              | With -igfxnotelemetryload in the boot-args                        |
+| Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`            |
+| Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`                    |
+| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the boot-args                      |
 | Sound              | Not Working          | Only works with Bluetooth / USB sound adapter                     |
-| Keyboard backlight | Working              | With SSDT-KBBl.aml and VoodoolPS2-Chromebook.kext                 |                                           
-| Keyboard & Remaps  | Working              | With VoodoolPS2-Chromebook.kext                                   |
-| eMMC Storage       | Working              | With EmeraldSDHC.kext                                             |
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` and `VoodoolPS2-Chromebook.kext`             |                                           
+| Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`                                 |
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`                                           |
 
 ### Requirements
 
@@ -43,14 +43,14 @@ Here are the steps to go from a regular Chromebook to a macOS Install using Open
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/).
     - Use Laptop Kaby Lake for your config.plist 
-    - In your config.plist, search for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/install/WiFi.
-    - In your boot-args, add `watchdog=0` and `-igfxnotelemetryload`
+    - In your `config.plist`, search for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/install/WiFi.
+    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
     - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
 
 3. Do switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
    - Keyboard backlight SSDT can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
 
-4. Download corpnewt's SSDTTime, open it, select the first option `FixHEPT`, choose `C` for default, and drag the SSDT it makes into your ACPI folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
+4. Download corpnewt's SSDTTime, open it, select the first option `FixHEPT`, choose `C` for default, and drag the SSDT it makes into your `ACPI` folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
 
 5. Install macOS and enjoy!
 
