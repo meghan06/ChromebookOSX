@@ -5,7 +5,6 @@ Turns out, this laptop works quite well with macOS.
 <img src="Screenshot.png" width="1920">
 
 
-I will **NOT** be providing the download for the EFI, make it yourself and you might learn a thing or two along the way. All of the BS I encountered has been documented here so you don't have to suffer as much :)
 
 ## Current Status
 
@@ -51,7 +50,7 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
 
 5. Install macOS and enjoy!
 
-**Things that aren't mentioned in the Dortania guide are:**
+## Things that aren't mentioned in the Dortania guide are:**
    - Use Laptop Kaby Lake for your config.plist 
    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
