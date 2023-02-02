@@ -65,6 +65,8 @@ Here are the steps to go from using chromeOS to macOS via OpenCore.
    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
    - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
 
+#### Kext's.
+You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
 
 ### macOS Ventura
 #### Only for those who want to update to macOS Ventura.
