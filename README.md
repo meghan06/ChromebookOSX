@@ -28,7 +28,7 @@ Before you start, you'll need to have the following things to complete the proce
 
   - A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
   - The latest OpenCore version (at least 0.8.8)   
-# - An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
+**- An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
 
 
 ### Disclaimer
