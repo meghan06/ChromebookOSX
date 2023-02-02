@@ -50,3 +50,11 @@ Device name: ASUS Chromebook C425 (Boardname LEONA)
       ├── Type: 64 GB eMMC
       ├── Connector: Secure Digital (SD)
       └── Location: Internal
+
+- **Keyboard**
+  └── Type: Ps2
+      └── Location: somewhere inside the computer
+      
+- **Trackpad**
+  └── Type: I2C ELAN 
+      └── Location: plugged in to the trackpad thingy
