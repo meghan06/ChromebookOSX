@@ -23,7 +23,7 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`                               |
 | USB Ports          | Working              | Make sure to map your USB ports                                   |
 | Webcam             | Working              | Working OOTB                                                      |
-| Internal Mic.      | Not working          | n/a                                                               |
+| Internal Mic.      | Not working          |                                                                   |
 
 Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. :) It'll save you time troubleshooting too!
 
@@ -88,9 +88,9 @@ You are now ready for macOS Ventura!
 
 
 ### Extra Info
-- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the WHOLE partition.
+- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the WHOLE drive, not just one partition.
 - Format the drive as `APFS`
-- Map your USB ports prior to installing macOS for a painless experience. You will reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
+- Map your USB ports prior to installing macOS for a painless install. You will reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
 - `itlwm` is more stable & faster than `AirportItlwm`
 - You might have some text render and DRM issues, there's no fix for this. :(
 
