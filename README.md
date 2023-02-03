@@ -93,7 +93,8 @@ You are now ready for macOS Ventura!
 - Map your USB ports prior to installing macOS for a painless install. You will reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
 - `itlwm` is more stable & faster than `AirportItlwm`
 - You might have some text render and DRM issues, there's no fix for this. :(
-
+- Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
+    - `<` to decrease, `>` to increase.
 
 ## Credits
 - **Goldfish64** for the eMMC driver and iGPU acceleration 
