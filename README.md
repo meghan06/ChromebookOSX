@@ -72,7 +72,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 #### Only for those who want to update to macOS Ventura.
 Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
-- Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s)` after login for it to connect.
+- Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.
 - Logging out **will** hang your device. The cause for this is unknown.
 
 With that, l3ts get started!
