@@ -46,7 +46,7 @@ The instructions outlined in this document have the potential to cause permanent
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
 
-### **The following steps are **requried** for proper functioning.
+## **The following steps are **requried** for proper functioning.**
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). 
@@ -87,7 +87,7 @@ With that, l3ts get started!
 You are now ready for macOS Ventura! 
 
 
-### Extra Info
+### Misc. Information
 - When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the WHOLE drive, not just one partition.
 - Format the drive as `APFS`
 - Map your USB ports prior to installing macOS for a painless install. You will reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
