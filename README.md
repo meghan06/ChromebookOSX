@@ -1,9 +1,27 @@
 # Installing macOS on an ASUS Chromebook C425
 
+### Table of Contents
+- [Current Status](#current-status)
+  * [Requirements](#requirements)
+  * [Disclaimer](#disclaimer)
+  * [Installation](#installation)
+- [**The following steps are **requried** for proper functioning.**](#the-following-steps-are-requried-for-proper-functioning)
+  * [Things not mentioned in the Dortania guide that you need to add:](#things-not-mentioned-in-the-dortania-guide-that-you-need-to-add)
+  * [Kext's.](#kexts)
+  * [macOS Ventura](#macos-ventura)
+    + [Only for those who want to update to macOS Ventura.](#only-for-those-who-want-to-update-to-macos-ventura)
+  * [Preparations](#preparations)
+  * [Misc. Information](#misc-information)
+- [Credits](#credits)
+  * [Last Updated: 02/05/2023](#last-updated--02-05-2023)
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Turns out, this laptop works quite well with macOS. For more information about the Chromebook's hardware, refer to [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
 
 <img src="Screenshot.png" width="1920">
-
 
 
 ## Current Status
