@@ -24,6 +24,8 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | USB Ports          | Working              | Make sure to map your USB ports                                   |
 | Webcam             | Working              | Working OOTB                                                      |
 | Internal Mic.      | Not working          |                                                                   |
+| Logout / Lock      | Working              | Working OOTB                                                      |
+
 
 Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. :) It'll save you time troubleshooting too!
 
@@ -63,7 +65,8 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    - Use Laptop Kaby Lake for your config.plist 
    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
-   - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`
+   - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
+   - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
 
 ### Kext's.
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
@@ -73,8 +76,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
 - Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.
-- Logging out **will** hang your device. The cause for this is unknown.
-
+- If you want to install Ventura, you need to install macOS 12 (Monterey) first, then update from System Preferences as AirportItlwm does not work with the C425's WiFi card atm. 
 With that, l3ts get started!
 
 ### Preparations
@@ -102,4 +104,4 @@ You are now ready for macOS Ventura!
 - **olm3ca** for the help along the way 
 
 
-### Last Updated: 02/02/2023
+### Last Updated: 02/05/2023
