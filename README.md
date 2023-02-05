@@ -77,6 +77,7 @@ Before we get started, you should know the following:
 - Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
 - Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.
 - If you want to install Ventura, you need to install macOS 12 (Monterey) first, then update from System Preferences as AirportItlwm does not work with the C425's WiFi card atm. 
+
 With that, l3ts get started!
 
 ### Preparations
