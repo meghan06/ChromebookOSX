@@ -5,6 +5,7 @@
   * [Requirements](#requirements)
   * [Disclaimer](#disclaimer)
   * [Installation](#installation)
+  * [Known Issues](#known-issues)
 - [**The following steps are **requried** for proper functioning.**](#the-following-steps-are-requried-for-proper-functioning)
   * [Things not mentioned in the Dortania guide that you need to add:](#things-not-mentioned-in-the-dortania-guide-that-you-need-to-add)
   * [Kext's.](#kexts)
@@ -57,6 +58,12 @@ Before you start, you'll need to have the following things to complete the proce
 - The latest OpenCore version (at least 0.8.8)   
 - An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
 
+### Known Issues
+- Random freezing in Safari
+- Random render issues on Discord and Spotify (AFAIK)
+  - To fix this, diaable GPU acceleration in settings and it'll help.
+- Weird lock ups randomly
+- Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)
 
 ### Disclaimer
 
