@@ -46,7 +46,7 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | Logout / Lock      | Working              | Working OOTB                                                      |
 
 
-Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. :) It'll save you time troubleshooting too!
+Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. I gave almost everything away too, lol. :)
 
 
 --
@@ -54,9 +54,9 @@ Please do not ask me for the EFI, make it yourself and you might learn a thing o
 
 Before you start, you'll need to have the following things to complete the process:
 
-- A external storage device (can range from a SD card to a USB Disk) for creating the installer.  
-- The latest OpenCore version (at least 0.8.8)   
-- An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
+- A external storage device (can range from a SD card to a USB Disk / Drive) for creating the installer.  
+- The latest OpenCore version (at least 0.8.8) for eMMC boot drive support.   
+- **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
 
 ### Known Issues
 - Random freezing in Safari tabs (mostly video playback tabs like YouTube)
@@ -67,7 +67,7 @@ Before you start, you'll need to have the following things to complete the proce
 
 ### Disclaimer
 
-The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.
+**The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
 
 ### Installation
 
@@ -86,7 +86,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 5. Install macOS and enjoy!
 
 ### Things not mentioned in the Dortania guide that you need to add:
-   - you will regret it later if you don't 
+   - **you will regret it later if you don't** 
    - Use Laptop Kaby Lake for your config.plist 
    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
    - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload`
@@ -99,7 +99,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 ### macOS Ventura
 #### Only for those who want to update to macOS Ventura.
 Before we get started, you should know the following:
-- Your battery will drain faster on Ventura. To avoid this, stay on Monterey or older.
+- **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
 - Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.
 - If you want to install Ventura, you need to install macOS 12 (Monterey) first, then update from System Preferences as AirportItlwm does not work with the C425's WiFi card atm. 
 
@@ -116,18 +116,20 @@ You are now ready for macOS Ventura!
 
 
 ### Misc. Information
-- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the WHOLE drive, not just one partition.
+- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
-- Map your USB ports prior to installing macOS for a painless install. You will reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
+- Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
 - `itlwm` is more stable & faster than `AirportItlwm`
 - You might have some text render and DRM issues, there's no fix for this. :(
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
 
 ## Credits
-- **Goldfish64** for the eMMC driver and iGPU acceleration 
-- **corpnewt** for his tools
-- **olm3ca** for the help along the way 
+- **Goldfish64** for the eMMC driver and iGPU acceleration. 
+- **corpnewt** for his tools.
+- **olm3ca** for the help along the way.
+- **coolstar** for the help along the way.
+- and many, many others.
 
 
-### Last Updated: 02/05/2023
+### Last Updated: 02/06/2023
