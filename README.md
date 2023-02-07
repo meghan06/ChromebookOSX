@@ -88,7 +88,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 5. Install macOS and enjoy!
 
-### Things not mentioned in the Dortania guide that you need to add:
+### Things not mentioned in the Dortania guide that you need to do:
    - **you will regret it later if you don't** 
    - Use Laptop Kaby Lake for your config.plist 
    - In your `config.plist`, search (`ctrl + f`) for `ProtectMemoryReigons`, and set it to `TRUE` if you want working shutdown/restart.
