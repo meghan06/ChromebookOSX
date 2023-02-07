@@ -28,24 +28,26 @@ Turns out, this laptop works quite well with macOS. For more information about t
 ## Current Status
 
 
-| **Feature**        | **Status**           | **Notes**                                                         |
-|--------------------|----------------------|-------------------------------------------------------------------|
-| WiFi               | Working              | With `itlwm.kext v2.2.0 alpha` and `Heliport v1.4.1 Latest`.      |
-| Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.           |
-| Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.           |
-| Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                   |
-| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                   |
-| Internal Speakers  | Not working          | Unsupported codec.                                                |                            
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` **and** `VoodoolPS2-Chromebook.kext`.        |                                           
-| Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                |
-| eMMC Storage       | Working              | With `EmeraldSDHC.kext`.                                          |
-| SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                              |
-| USB Ports          | Working              | Make sure to map your USB ports.                                  |
-| Webcam             | Working              | Working OOTB.                                                     |
-| Internal Mic.      | Not working          | n/a                                                               |
-| Logout / Lock      | Working              | Working OOTB.                                                     |
+| **Feature**        | **Status**           | **Notes**                                                                                     |
+|--------------------|----------------------|-----------------------------------------------------------------------------------------------|
+| WiFi               | Working              | With `itlwm.kext v2.2.0 alpha` and `Heliport v1.4.1` `(Latest)`.                              |
+| Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.                                       |
+| Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.                                       |
+| Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
+| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
+| Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` **and** `VoodoolPS2-Chromebook.kext`.                                    |                                           
+| Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                                            |
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`.                                                                      |
+| SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
+| USB Ports          | Working              | Make sure to map your USB ports with `USBMap.kext`(macOS) or `USBToolbox.kext` (Windows/Linux).|
+| Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
+| Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
+| Logout / Lock      | Working              | Working OOTB.                                                                                 |
+| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in ProperTree. Under `Booter` -> `Quirks` IIRC. **It will not             work without it enabled.** |    
+| Recovery key combos| Working              | Working OOTB with coreboot. (Recovery combos are `esc`+`power`+`refresh` and `power button`+`refresh` )
 
-
+  
 Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. I gave almost everything away too, lol. :)
 
 
