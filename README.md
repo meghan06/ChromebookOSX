@@ -59,7 +59,8 @@ Before you start, you'll need to have the following things to complete the proce
 - **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
 
 ### Known Issues
-- Random freezing in Safari tabs (mostly video playback tabs like YouTube)
+- ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - **need more testing**
+  - Disable `Optimized video streaming while on battery` and it'll fix it AFAIK
 - Random render issues on Discord and Spotify (AFAIK)
   - To fix this, diaable GPU acceleration in settings and it'll help.
 - Weird lock ups randomly
