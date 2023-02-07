@@ -30,20 +30,20 @@ Turns out, this laptop works quite well with macOS. For more information about t
 
 | **Feature**        | **Status**           | **Notes**                                                         |
 |--------------------|----------------------|-------------------------------------------------------------------|
-| WiFi               | Working              | With `itlwm.kext` and Heliport                                    |
-| Bluetooth          | Working              | With IntelBluetoothFirmware                                       |
-| Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`            |
-| Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`                    |
-| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`                    |
-| Internal Speakers  | Not working          | Unsupported codec                                                 |                            
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` and `VoodoolPS2-Chromebook.kext`             |                                           
-| Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`                                 |
-| eMMC Storage       | Working              | With `EmeraldSDHC.kext`                                           |
-| SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`                               |
-| USB Ports          | Working              | Make sure to map your USB ports                                   |
-| Webcam             | Working              | Working OOTB                                                      |
-| Internal Mic.      | Not working          |                                                                   |
-| Logout / Lock      | Working              | Working OOTB                                                      |
+| WiFi               | Working              | With `itlwm.kext v2.2.0 alpha` and `Heliport v1.4.1 Latest`.      |
+| Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.           |
+| Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.           |
+| Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                   |
+| Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                   |
+| Internal Speakers  | Not working          | Unsupported codec.                                                |                            
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` **and** `VoodoolPS2-Chromebook.kext`.        |                                           
+| Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                |
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`.                                          |
+| SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                              |
+| USB Ports          | Working              | Make sure to map your USB ports.                                  |
+| Webcam             | Working              | Working OOTB.                                                     |
+| Internal Mic.      | Not working          | n/a                                                               |
+| Logout / Lock      | Working              | Working OOTB.                                                     |
 
 
 Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. I gave almost everything away too, lol. :)
