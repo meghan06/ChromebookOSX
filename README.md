@@ -59,11 +59,11 @@ Before you start, you'll need to have the following things to complete the proce
 - An understanding that this process has the potential to damage / brick your device, potentially causing it to become inoperable.
 
 ### Known Issues
-- Random freezing in Safari
+- Random freezing in Safari tabs (mostly video playback tabs like YouTube)
 - Random render issues on Discord and Spotify (AFAIK)
   - To fix this, diaable GPU acceleration in settings and it'll help.
 - Weird lock ups randomly
-- Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)
+- **Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)**
 
 ### Disclaimer
 
