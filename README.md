@@ -44,7 +44,7 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
-| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in ProperTree. Under `Booter` -> `Quirks` IIRC. **It will not             work without it enabled.** |    
+| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in ProperTree. Under `Booter` -> `Quirks` IIRC. **WILL not             work without it enabled.** |    
 | Recovery key combos| Working              | Working OOTB with coreboot. (Recovery combos are `esc`+`power`+`refresh` and `power button`+`refresh` )
 
   
