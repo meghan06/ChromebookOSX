@@ -68,7 +68,7 @@ Before you start, you'll need to have the following things to complete the proce
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Known Issues
-- ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - **need more testing**
+- ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - **need more testing**, see **possible** fix below.
   - Disable `Optimized video streaming while on battery` and it'll fix it AFAIK
 - Random render issues on Discord and Spotify (AFAIK)
   - To fix this, diaable GPU acceleration in settings and it'll help.
@@ -149,6 +149,11 @@ You are now ready for macOS Ventura!
 - You might have some text render and DRM issues, there's no fix for this. :(
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
+- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps.
+- eMMC will come up as an external drive in the boot picker since eMMC is just a embedded SD card. Nothing you can do about it.
+- To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
+  
+   Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
