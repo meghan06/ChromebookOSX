@@ -1,5 +1,7 @@
 # Installing macOS on an ASUS Chromebook C425
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Table of Contents
 - [Current Status](#current-status)
   * [Requirements](#requirements)
@@ -18,12 +20,13 @@
 
 
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Turns out, this laptop works quite well with macOS. For more information about the Chromebook's hardware, refer to [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
 
 <img src="Screenshot.png" width="1920">
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Current Status
 
@@ -44,12 +47,13 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
-| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in ProperTree. Under `Booter` -> `Quirks` IIRC. **WILL not             work without it enabled.** |    
+| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in ProperTree. Under `Booter` -> `Quirks`. **WILL not             work if disabled.** |    
 | Recovery key combos| Working              | Working OOTB with coreboot. (Recovery combos are `esc`+`power`+`refresh` and `power button`+`refresh` )
 
   
 Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. I gave almost everything away too, lol. :)
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --
 ### Requirements
@@ -60,6 +64,9 @@ Before you start, you'll need to have the following things to complete the proce
 - The latest OpenCore version (at least 0.8.8) for eMMC boot drive support.   
 - **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Known Issues
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - **need more testing**
   - Disable `Optimized video streaming while on battery` and it'll fix it AFAIK
@@ -68,9 +75,13 @@ Before you start, you'll need to have the following things to complete the proce
 - Weird lock ups randomly
 - **Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)**
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Disclaimer
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Installation
 
@@ -88,6 +99,10 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 5. Install macOS and enjoy!
 
+Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Things not mentioned in the Dortania guide that you need to do:
    - **you will regret it later if you don't** 
    - Use Laptop Kaby Lake for your config.plist 
@@ -96,8 +111,13 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
    - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Kext's.
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### macOS Ventura
 #### Only for those who want to update to macOS Ventura.
@@ -119,6 +139,7 @@ Note: these steps can be done after updating, you just won't have WiFi. It is re
 
 You are now ready for macOS Ventura! 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Misc. Information
 - When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
@@ -128,6 +149,27 @@ You are now ready for macOS Ventura!
 - You might have some text render and DRM issues, there's no fix for this. :(
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+### More information on `ProtectMemoryReigons`:
+
+**Copied directly from the [OpenCore manual](https://dortania.github.io/docs/latest/Configuration.html).**
+
+Type: `plist boolean`
+
+Failsafe: `false`
+
+Description: Protect memory regions from incorrect access.
+
+
+Some types of firmware incorrectly map certain memory regions:
+- The CSM region can be marked as boot services code, or data, which leaves it as free memory for the XNU kernel.
+- MMIO regions can be marked as reserved memory and stay unmapped. They may however be required to be accessible at runtime for NVRAM support.
+
+This quirk attempts to fix the types of these regions, e.g. ACPI NVS for CSM or MMIO for MMIO.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Credits
 - **Goldfish64** for the eMMC driver and iGPU acceleration. 
@@ -136,5 +178,8 @@ You are now ready for macOS Ventura!
 - **coolstar** for the help along the way.
 - and many, many others.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Last Updated: 02/06/2023
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
