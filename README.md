@@ -109,11 +109,13 @@ Before we get started, you should know the following:
 With that, l3ts get started!
 
 ### Preparations
+Note: these steps can be done after updating, you just won't have WiFi. It is reccomended to follow the steps below **before** updating for the least amount of pain and suffering.
+
 1. Mount your EFI using corpnewt's MountEFI.
 2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 3. Download and install Heliport if you haven't already. The most recent stable release will work fine.
 4. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
-5. Start the update. 
+5. Start the update. (If you haven't already)
 
 You are now ready for macOS Ventura! 
 
