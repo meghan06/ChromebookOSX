@@ -1,4 +1,16 @@
-# Installing macOS on an ASUS Chromebook C425
+# Installing macOS on an Chromebook
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+### READ THIS!!!
+This guide was made for an ASUS C425 (LEONA). YMMV for any other devices, but as long as it's **not a Pentium or Celeron, it is possible.** If you have a Celeron or a Pentium Chromebook, it will NOT work. Please do your own research before proceeding if you do not own an C425 as this guide may provide conflicting information. If you have any questions, please ask away in the Issues tab.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Got macOS installed on another device?
+
+First off, congrats! Second, if you want to be featured in this guide, you may create a PR / Issue so I can add it in. At the minimum, your documentation should include what works and what doesn't, the steps you took that weren't mentioned in the Dortania guide, and the SMBIOS you found that worked the best for you. You can use my documentation as an reference.
+
+#### With that said, we can move on.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
