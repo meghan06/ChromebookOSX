@@ -96,6 +96,9 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    - Keyboard backlight SSDT can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
 
 4. Download corpnewt's SSDTTime, open it, select the first option `FixHPET`, choose `C` for default, and drag the SSDT it makes (`SSDT-HPET`) into your `ACPI` folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (this is a bug with EmeraldSDHC)
+   
+   Notice for Step 4: This **might** have been fixed in an new update, just haven't tested it yet. Try booting without the `IRQ` patches above first, and if your eMMC drive doesn't show up in Disk Utility, you'll have to add these patches. If it still doesn't show up, you either messed up one of the steps above or your eMMC drive is not supported (yet).
+
 
 5. Install macOS and enjoy!
 
