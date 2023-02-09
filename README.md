@@ -116,6 +116,9 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
 ### Kext's.
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+### ACPI Folder
+You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/ACPI%20Folder.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
