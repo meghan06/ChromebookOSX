@@ -8,7 +8,7 @@ This guide was made for an ASUS C425 (LEONA). YMMV for any other devices, but as
 
 ### Got macOS installed on another device?
 
-First off, congrats! Second, if you want to be featured in this guide, you may create a PR / Issue so I can add it in. At the minimum, your documentation should include what works and what doesn't, the steps you took that weren't mentioned in the Dortania guide, and the SMBIOS you found that worked the best for you. You can use my documentation as an reference.
+First off, congrats! Second, if you want to be featured in this guide, you may create a PR / Issue so I can add it in. At the minimum, your documentation should include what works and what doesn't, your specs, the steps you took that weren't mentioned in the Dortania guide, and the SMBIOS you found that worked the best for you. You can use my documentation as an reference.
 
 #### With that said, we can move on.
 
