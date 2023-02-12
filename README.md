@@ -42,6 +42,7 @@ Turns out, this laptop works quite well with macOS. For more information about t
 
 ## Current Status
 
+**🔸 This section is C425 specific. Do your research before proceeding if you are using a different device.**
 
 | **Feature**        | **Status**           | **Notes**                                                                                     |
 |--------------------|----------------------|-----------------------------------------------------------------------------------------------|
@@ -70,6 +71,8 @@ Please do not ask me for the EFI, make it yourself and you might learn a thing o
 --
 ### Requirements
 
+**🔸 For all supported Chromebooks except Step 2.**
+
 Before you start, you'll need to have the following items to complete the process:
 
 - A external storage device (can range from a SD card to a USB Disk / Drive) for creating the installer USB.  
@@ -81,6 +84,9 @@ Before you start, you'll need to have the following items to complete the proces
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Known Issues
+
+**🔸 C425 Specific**
+
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
   - Disable `Optimized video streaming while on battery` and it'll fix it.
 - Random render issues on Discord and Spotify.
@@ -103,12 +109,14 @@ Before you start, you'll need to have the following items to complete the proces
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
 
+**🔸 For all supported Chromebooks.** 
+
 ## **The following steps are **requried** for proper functioning.**
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
     
-3. ❗ Do switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
+3. *Do switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
    - Keyboard backlight SSDT can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
       - This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.
 
@@ -124,28 +132,38 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Things not mentioned in the Dortania guide that you **need** to do:
+
+**🔸 This section is mixed. Step 2 and 4 are C425 only.**
+
    - **you will regret it later if you don't** 
-   - Use Laptop Kaby Lake for your config.plist 
-   - ❗❗ **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST change this. It is `FALSE` by DEFAULT.**
+   1. Use Laptop Kaby Lake for your config.plist 
+   2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST change this. It is `FALSE` by DEFAULT.**
    
-   
-   - In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload` for iGPU acceleration. 
-   - Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
+   3. In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload` for iGPU acceleration. 
+   4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
    - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Kext's.
+
+**🔸 This section is C425 specific. Do your research before proceeding if you are using a different device.**
+
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### ACPI Folder
+
+**🔸 This section is C425 specific. Do your research before proceeding if you are using a different device.**
+
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/ACPI%20Folder.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### macOS Ventura
-#### Only for those who want to update to macOS Ventura.
+#### Only for those who want to update to macOS Ventura. 
+**🔸This section is C425 specific. Do your research before proceeding if you are using a different device.**
+
 Before we get started, you should know the following:
 - **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
 - Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.
@@ -167,7 +185,10 @@ You are now ready for macOS Ventura!
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Misc. Information
-- ❗ When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
+
+🔸 For: **All supported Chromebooks**
+
+- *When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
 - Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
 - `itlwm` is more stable & faster than `AirportItlwm`
@@ -177,28 +198,9 @@ You are now ready for macOS Ventura!
 - To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps.
 - eMMC will come up as an external drive in the boot picker since eMMC is just a embedded SD card. Nothing you can do about it.
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
+- `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
   
- #### ❗ Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-### More information on `ProtectMemoryReigons`:
-
-**Copied directly from the [OpenCore manual](https://dortania.github.io/docs/latest/Configuration.html).**
-
-Type: `plist boolean`
-
-Failsafe: `false`
-
-Description: Protect memory regions from incorrect access.
-
-
-Some types of firmware incorrectly map certain memory regions:
-- The CSM region can be marked as boot services code, or data, which leaves it as free memory for the XNU kernel.
-- MMIO regions can be marked as reserved memory and stay unmapped. They may however be required to be accessible at runtime for NVRAM support.
-
-This quirk attempts to fix the types of these regions, e.g. ACPI NVS for CSM or MMIO for MMIO.
-
+ #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Credits
