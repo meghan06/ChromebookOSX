@@ -8,9 +8,8 @@ This guide is mainly for an ASUS C425. There are some pieces of the guide that c
 
 **The TLDR of it is:**
 
--**C425 Only** = Section Only applies to the ASUS C425 (LEONA), not any other device.
-
--**All supported Chromebooks** = Applies to all supported Chromebooks capable of running macOS.
+- **C425 Only** = Section Only applies to the ASUS C425 (LEONA), not any other device.
+- **All supported Chromebooks** = Applies to all supported Chromebooks capable of running macOS.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
