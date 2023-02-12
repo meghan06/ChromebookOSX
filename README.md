@@ -2,7 +2,15 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### ⚠️ READ THIS!!!
-**This guide was made for an ASUS C425 (LEONA).** Your mileage **will** vary for any other devices, but as long as it's **not a Pentium or Celeron, it is possible.** If you have a Celeron or a Pentium Chromebook, it will **NOT** work. **Please do your own research before proceeding if you do not own an C425 as this guide may provide conflicting information.** If you have any questions, please ask away in the Issues tab.
+**This guide was made for an ASUS C425 (LEONA).** Your mileage **will** vary for any other devices, but as long as it's **not a Pentium or Celeron CPU, it is possible.** If you have a Celeron or a Pentium Chromebook, it will **NOT** work. **Please do your own research before proceeding if you do not own an C425 as this guide may provide conflicting information.** If you have any questions, please ask away in the Issues tab.
+
+This guide is mainly for an ASUS C425. There are some pieces of the guide that can be applied to all Chromebooks which have been marked accordingly. Please do your own research before proceeding. 
+
+**The TLDR of it is:**
+
+-**C425 Only** = Section Only applies to the ASUS C425 (LEONA), not any other device.
+
+-**All supported Chromebooks** = Applies to all supported Chromebooks capable of running macOS.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
