@@ -178,7 +178,7 @@ You are now ready for macOS Ventura!
 - eMMC will come up as an external drive in the boot picker since eMMC is just a embedded SD card. Nothing you can do about it.
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
   
- ❗ Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
+ #### ❗ Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
