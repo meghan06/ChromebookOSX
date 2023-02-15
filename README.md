@@ -19,20 +19,8 @@ First off, congrats! Second, if you want to be featured in this guide, you may c
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Table of Contents
-- [Current Status](#current-status)
-  * [Requirements](#requirements)
-  * [Disclaimer](#disclaimer)
-  * [Installation](#installation)
-  * [Known Issues](#known-issues)
-- [**The following steps are **requried** for proper functioning.**](#the-following-steps-are-requried-for-proper-functioning)
-  * [Things not mentioned in the Dortania guide that you need to add:](#things-not-mentioned-in-the-dortania-guide-that-you-need-to-add)
-  * [Kext's.](#kexts)
-  * [macOS Ventura](#macos-ventura)
-    + [Only for those who want to update to macOS Ventura.](#only-for-those-who-want-to-update-to-macos-ventura)
-  * [Preparations](#preparations)
-  * [Misc. Information](#misc-information)
-- [Credits](#credits)
-  * [Last Updated: 02/05/2023](#last-updated--02-05-2023)
+[todo]
+
 
 
 
@@ -88,12 +76,16 @@ Before you start, you'll need to have the following items to complete the proces
 
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
   - Disable `Optimized video streaming while on battery` and it'll fix it.
-- Random render issues on Discord and Spotify.
+- ~~Random render issues on Discord and Spotify.~~
   - To fix this, diable GPU acceleration in settings and it'll fix it.
-- Render issues after sleep on Spotify and Discord, potentially other apps too. (Need help)  
+- Render issues after sleep on Spotify and Discord, potentially other apps too. (Need help)
   - Temporary fix is to restart after sleep.
 - ~~Weird lock ups randomly.~~
   - Fixed.
+- ~~Signout not working~~
+  - Fixed by reinstalling; more of an config issue.
+- ~~Kernel panic when shutting down / restarting~~
+  - Fixed by setting `ProtectMemoryReigons` to `TRUE`.
 - **Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -130,7 +122,7 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
 
 ### Things not mentioned in the Dortania guide that you **need** to do:
 
-🔸** Note: ONLY step 2 and 3 are universal.**
+🔸 **Note: ONLY step 2 and 3 are universal.**
 
    - **you will regret it later if you don't** 
    1. Use Laptop Kaby Lake for your config.plist 
