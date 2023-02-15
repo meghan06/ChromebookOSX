@@ -6,10 +6,7 @@
 
 This guide is mainly for an ASUS C425. There are some pieces of the guide that can be applied to all Chromebooks which have been marked accordingly. Please do your own research before proceeding. 
 
-**The TLDR of it is:**
-
-- **C425 Only** = Section Only applies to the ASUS C425 (LEONA), not any other device.
-- **All supported Chromebooks** = Applies to all supported Chromebooks capable of running macOS.
+**Sections marked with "🔸" are applicable to all Chromebooks. Otherwise, it is C425 specific.**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -49,7 +46,6 @@ Turns out, this laptop works quite well with macOS. For more information about t
 
 ## Current Status
 
-**🔸 This section is C425 specific. Do your research before proceeding if you are using a different device.**
 
 | **Feature**        | **Status**           | **Notes**                                                                                     |
 |--------------------|----------------------|-----------------------------------------------------------------------------------------------|
@@ -76,9 +72,7 @@ Please do not ask me for the EFI, make it yourself and you might learn a thing o
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --
-### Requirements
-
-**🔸 For all supported Chromebooks except Step 2.**
+### 🔸 Requirements
 
 Before you start, you'll need to have the following items to complete the process:
 
@@ -91,8 +85,6 @@ Before you start, you'll need to have the following items to complete the proces
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Known Issues
-
-**🔸 C425 Specific**
 
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
   - Disable `Optimized video streaming while on battery` and it'll fix it.
@@ -112,11 +104,9 @@ Before you start, you'll need to have the following items to complete the proces
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Installation
+### 🔸 Installation
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
-
-**🔸 For all supported Chromebooks.** 
 
 ## **The following steps are **requried** for proper functioning.**
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
@@ -140,7 +130,7 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
 
 ### Things not mentioned in the Dortania guide that you **need** to do:
 
-**🔸 This section is mixed. Step 2 and 4 are C425 only.**
+🔸** Note: ONLY step 2 and 3 are universal.**
 
    - **you will regret it later if you don't** 
    1. Use Laptop Kaby Lake for your config.plist 
@@ -154,14 +144,12 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
 
 ### Kext's.
 
-**🔸 This section is C425 specific. Do your research before proceeding if you are using a different device.**
 
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### ACPI Folder
 
-**🔸 This section is C425 specific. Do your research before proceeding if you are using a different device.**
 
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/ACPI%20Folder.png)
 
@@ -169,7 +157,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 
 ### macOS Ventura
 #### Only for those who want to update to macOS Ventura. 
-**🔸This section is C425 specific. Do your research before proceeding if you are using a different device.**
+
 
 Before we get started, you should know the following:
 - **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
@@ -191,9 +179,7 @@ You are now ready for macOS Ventura!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Misc. Information
-
-🔸 For: **All supported Chromebooks**
+### 🔸 Misc. Information
 
 - *When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
@@ -219,6 +205,6 @@ You are now ready for macOS Ventura!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Last Updated: 02/06/2023
+### Last Updated: 02/14/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
