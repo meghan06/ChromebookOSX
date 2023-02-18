@@ -43,7 +43,7 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` **and** `VoodoolPS2-Chromebook.kext`.                                    |                                           
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                    |                                           
 | Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                                            |
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`.                                                                      |
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
@@ -113,8 +113,9 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    
    Notice for Step 4: This **might** have been fixed in an new update, just haven't tested it yet. Try booting without the `IRQ` patches above first, and if your eMMC drive doesn't show up in Disk Utility, you'll have to add these patches. If it still doesn't show up, you either messed up one of the steps above or your eMMC drive is not supported (yet).
 
+5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~    
 
-5. Install macOS and enjoy!
+6. Install macOS and enjoy!
 
 Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
 
@@ -185,7 +186,9 @@ You are now ready for macOS Ventura!
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
   
- #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
+#### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
+
+- Note: It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your own risk if you decide to skip USB mapping.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Credits
