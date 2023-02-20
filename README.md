@@ -115,7 +115,9 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~    
 
-6. Install macOS and enjoy!
+6. Add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`. Both are for iGPU support, **you will regret it if you don't add these.**
+
+7. Install macOS and enjoy!
 
 Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
 
@@ -124,15 +126,13 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
 ### Things not mentioned in the Dortania guide that you **need** to do:
 
 🔸 **Note: ONLY step 2 and 3 are universal.**
-
    - **you will regret it later if you don't** 
    1. Use Laptop Kaby Lake for your config.plist 
    2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST change this. It is `FALSE` by DEFAULT.**
    
    3. In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload` for iGPU acceleration. 
    4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
-   - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
-
+      - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Kext's.
@@ -145,30 +145,6 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 
 
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/ACPI%20Folder.png)
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### macOS Ventura
-#### Only for those who want to update to macOS Ventura. 
-
-
-Before we get started, you should know the following:
-- **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
-- Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.
-- If you want to install Ventura, you need to install macOS 12 (Monterey) first, then update from System Preferences as AirportItlwm does not work with the C425's WiFi card at the moment.
-
-With that, l3ts get started!
-
-### Preparations
-Note: these steps can be done after updating, you just won't have WiFi. It is reccomended to follow the steps below **before** updating for the least amount of pain and suffering.
-
-1. Mount your EFI using corpnewt's MountEFI.
-2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-3. Download and install Heliport if you haven't already. The most recent stable release will work fine.
-4. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
-5. Start the update. (If you haven't already)
-
-You are now ready for macOS Ventura! 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -185,13 +161,72 @@ You are now ready for macOS Ventura!
 - eMMC will come up as an external drive in the boot picker since eMMC is just a embedded SD card. Nothing you can do about it.
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
+- It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
   
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
-
-- Note: It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your own risk if you decide to skip USB mapping.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Credits
+## macOS Ventura
+#### Only for those who want macOS Ventura. 
+
+Before we get started, you should know the following:
+- **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
+- ~~Intel WiFi works, but is a little iffy during startup. It'll take a few seconds (`~20s`) after login for it to connect.~~
+  - See below for fix.
+- ~~If you want to install Ventura, you need to install macOS 12 (Monterey) first, then update from System Preferences as AirportItlwm does not work with the C425's WiFi card at the moment.~~
+  - See below, you need to edit the `Info.plist` file if you want working WiFi in recovery.
+
+With that, lets get started!
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### For those that are updating:
+Note: these steps can be done after updating, you just won't have WiFi. It is reccomended to follow the steps below **before** updating for the least amount of pain and suffering.
+
+1. Mount your EFI using corpnewt's MountEFI.
+2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
+3. Download and install Heliport if you haven't already. The most recent stable release will work fine.
+4. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
+5. Start the update. (If you haven't already)
+6. You are now ready for macOS Ventura! 
+7. [See below](#fixing-wifi-on-ventura) for fixing WiFi.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### For those that are installing directly:
+Note: For Windows only, not sure how it's like on Linux.
+1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
+2. Open up your kext folder, and locate `itlwm.kext`. 
+3. Open it, and find `Info.plist`.
+4. Open ProperTree, navigate to where your `Info.plist` is, and open it.
+5. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI details. Save and close when done.
+7. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
+8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi. If you are able to install macOS, then you have not fucked up.
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Fixing WiFI on Ventura 
+**Only for those that have macOS installed but haven't edited their `Info.plist`.**
+
+Before we get started, I'll explain how this patch works. There is a section in itlwm's `Info.plist` where you can manually enter network SSID's and passwords. This way, you don't need to rely on HeliPort for connecting and can even use it in recovery. What we are doing is inputting your network information in the `Info.plist` mentioned above so we can skip the ~30s it takes for HeliPort to initialize, scan, connect and take over. Keep in mind you still need HeliPort if you want a WiFI logo, ability to pair to other networks, and a whole bunch of other things I can't recall. 
+
+TLDR: Add your primary network's credentials to `itlwm.kext`'s `Info.plist` so you can skip the initialization period required by HeliPort.
+With that said, we can get started.
+
+1. Mount your EFI
+2. Open up your kext folder, and locate `itlwm.kext`. 
+3. Click it, and select `Show Package Contents` and open the Contents folder. Once inside, find the `Info.plist` and copy it via  `ctrl + c`.
+4. Exit `itlwm.kext` and go back to your Kext folder. Paste your `Info.plist`.
+5. Open ProperTree, select the `Info.plist` in your Kext folder and open it.
+6. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI details. Save and close when done.
+7. Replace the old `Info.plist` with the one you just edited. 
+
+
+Do note that Heliport will report no WiFi upon logging in but keep in mind you actually do thanks to the edits we just made. :) 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Credits
 - **Goldfish64** for the eMMC driver and iGPU acceleration. 
 - **corpnewt** for his tools.
 - **olm3ca** for the help along the way.
@@ -200,6 +235,6 @@ You are now ready for macOS Ventura!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Last Updated: 02/14/2023
+#### Last Updated: 02/19/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
