@@ -18,7 +18,7 @@ Congratulations on your achievement! If you would like to be included in this gu
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Table of Contents
+## Table of Contents
 - [Current Status](#current-status)
 - [Requirements](#-requirements)
 - [Issues](#issues)
