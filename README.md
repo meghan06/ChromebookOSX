@@ -122,38 +122,33 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 ## **These steps are **required** for proper functioning.**
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
-
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
-    
-3. *Do switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
-   - Keyboard backlight SSDT can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
-      - This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.
-
-4. Download corpnewt's SSDTTime, open it, select the first option `FixHPET`, choose `C` for default, and drag the SSDT it makes (`SSDT-HPET`) into your `ACPI` folder. Then, in the same folder, copy the patches from `oc_patches.plist` into your config.plist under `ACPI -> Patch`. Without it, eMMC won't be recognized by macOS. (This is an bug with EmeraldSDHC.)
-   
-   Notice for Step 4: This may have been resolved in a recent update, but I have not yet confirmed. Try booting without the IRQ patches mentioned earlier, and if your eMMC drive is not visible in Disk Utility, you will need to add those patches. If the drive still fails to appear, there may be a mistake in one of the preceding steps, or your eMMC drive may not be supported at this time.
-
+3. Switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
+   - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
+      - **This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.**
+4. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file `(SSDT-HPET)` into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
 5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~    
-
 6. Add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`. Both are for iGPU support, **you will regret it if you don't add these.**
-
 7. Install macOS and enjoy!
 
 Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
+Note for **Step 4**: This may have been resolved in a recent update, but I have not yet confirmed. Try booting without the IRQ patches mentioned earlier, and if your eMMC drive is not recognized in Disk Utility, you will need to add those patches. If the drive still fails to appear, there may be a mistake in one of the preceding steps, or your eMMC drive may not be supported at this time.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Items not mentioned in the Dortania guide that you **need** to do:
 
 🔸 **Note: ONLY step 2 and 3 are universal.**
-   - **you will regret it later if you don't** 
-   1. Use Laptop Kaby Lake for your config.plist 
-   2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST change this. It is `FALSE` by DEFAULT.**
-   
+
+you will regret it later if you don't
+  
+  1. Use Laptop Kaby Lake for your config.plist 
+   2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST  change this. It is `FALSE` by DEFAULT.**
    3. In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload` for iGPU acceleration. 
    4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
    5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
+  
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Kext's.
@@ -185,6 +180,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
   
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## macOS Ventura
@@ -225,7 +221,7 @@ Note: For Windows only, not sure how it's like on Linux.
 ### 🔸 Fixing WiFi on Ventura 
 **Only for those that have macOS installed but haven't edited their `Info.plist`.**
 
-Before we get started, I'll explain how this patch works. There is a section in itlwm's `Info.plist` where you can manually enter network SSID's and passwords. This way, you don't need to rely on HeliPort for connecting and can even use it in recovery. What we are doing is inputting your network information in the `Info.plist` mentioned above so we can skip the ~30s it takes for HeliPort to initialize, scan, connect and take over. Keep in mind you still need HeliPort if you want a WiFI logo, ability to pair to other networks, and a whole bunch of other things I can't recall. 
+Before we begin, let me explain how this patch functions. The `Info.plist` file in itlwm has a section where you can manually enter the SSID and password of your network. By doing this, you can connect to your network without relying on HeliPort. This approach is also works for recovery. To accomplish this, we will enter your network details in the aforementioned `Info.plist` file, thus avoiding the roughly 30 second wait required for HeliPort to initialize, scan, and connect. It's essential to remember that while this approach allows you to connect to your network, you still need HeliPort to access features such as a WiFi logo, the ability to pair with other networks, and several others that I am unable to remember.
 
 TLDR: Add your primary network's credentials to `itlwm.kext`'s `Info.plist` so you can skip the initialization period required by HeliPort.
 With that said, we can get started.
