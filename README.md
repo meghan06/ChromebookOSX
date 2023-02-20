@@ -133,6 +133,7 @@ Note: More information about `ProtectMemoryReigons` can be found [here](https://
    3. In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload` for iGPU acceleration. 
    4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
+   5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Kext's.
@@ -180,7 +181,7 @@ With that, lets get started!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### For those that are updating:
+### 🔸 For those that are updating:
 Note: these steps can be done after updating, you just won't have WiFi. It is reccomended to follow the steps below **before** updating for the least amount of pain and suffering.
 
 1. Mount your EFI using corpnewt's MountEFI.
@@ -193,7 +194,7 @@ Note: these steps can be done after updating, you just won't have WiFi. It is re
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### For those that are installing directly:
+### 🔸 Preparations for installing macOS Ventura directly:
 Note: For Windows only, not sure how it's like on Linux.
 1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 2. Open up your kext folder, and locate `itlwm.kext`. 
@@ -204,7 +205,7 @@ Note: For Windows only, not sure how it's like on Linux.
 8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi. If you are able to install macOS, then you have not fucked up.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Fixing WiFI on Ventura 
+### 🔸 Fixing WiFI on Ventura 
 **Only for those that have macOS installed but haven't edited their `Info.plist`.**
 
 Before we get started, I'll explain how this patch works. There is a section in itlwm's `Info.plist` where you can manually enter network SSID's and passwords. This way, you don't need to rely on HeliPort for connecting and can even use it in recovery. What we are doing is inputting your network information in the `Info.plist` mentioned above so we can skip the ~30s it takes for HeliPort to initialize, scan, connect and take over. Keep in mind you still need HeliPort if you want a WiFI logo, ability to pair to other networks, and a whole bunch of other things I can't recall. 
