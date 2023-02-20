@@ -80,7 +80,7 @@ I will not provide the EFI, as creating it yourself can be a valuable learning e
 
 Before you start, you'll need to have the following items to complete the process:
 
-- A external storage device (can range from a SD card to a USB Disk / Drive) for creating the installer USB.  
+- An external storage device (can range from a SD card to a USB Disk / Drive) for creating the installer USB.  
 - The latest OpenCore version (**at least 0.8.8**) for eMMC boot drive support.   
 - An internet connection.
 - ⚠️ **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
@@ -99,7 +99,7 @@ Before you start, you'll need to have the following items to complete the proces
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
   - Disable `Optimized video streaming while on battery` and it'll fix it.
 - ~~Random render issues on Discord and Spotify.~~
-  - To fix this, diable GPU acceleration in settings and it'll fix it.
+  - To fix this, disable GPU acceleration in settings and it'll fix it.
 - ~~Weird lock ups randomly.~~
   - Fixed.
 - ~~Signout not working~~
@@ -178,7 +178,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
 - To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps.
-- eMMC will come up as an external drive in the boot picker since eMMC is just a embedded SD card. Nothing you can do about it.
+- eMMC will come up as an external drive in the boot picker since eMMC is just an embedded SD card. Nothing you can do about it.
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
@@ -199,7 +199,7 @@ With that, lets get started!
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### 🔸 For those updating:
-Note: these steps can be done after updating, you just won't have WiFi. It is reccomended to follow the steps below **before** updating for the least amount of pain and suffering.
+Note: these steps can be done after updating, you just won't have WiFi. It is recommended to follow the steps below **before** updating for the least amount of pain and suffering.
 
 1. Mount your EFI using corpnewt's MountEFI.
 2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
