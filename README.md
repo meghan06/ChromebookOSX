@@ -2,9 +2,9 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### ⚠️ READ THIS!!!
-**This guide was made for an ASUS C425 (LEONA).** Your mileage **will** vary for any other devices, but as long as it's **not a Pentium or Celeron CPU, it is possible.** If you have a Celeron or a Pentium Chromebook, it will **NOT** work. **Please do your own research before proceeding if you do not own an C425 as this guide may provide conflicting information.** If you have any questions, please ask away in the Issues tab.
+**This guide was made for an ASUS C425 (LEONA).** Your mileage **will** vary for any other devices, but as long as it's **not a Pentium or Celeron CPU, it is possible.** If you have a Celeron or a Pentium Chromebook, it will **NOT** work. **Please do your own research before proceeding if you do not own an C425 as this guide may provide conflicting information.** If you have any questions, please ask in the Issues tab.
 
-This guide is mainly for an ASUS C425. There are some pieces of the guide that can be applied to all Chromebooks which have been marked accordingly. Please do your own research before proceeding. 
+This guide is for an ASUS C425. There are pieces of the guide that can be applied to all Chromebooks which have been marked. Please do your own research before proceeding. 
 
 **Sections marked with "🔸" are applicable to all Chromebooks. Otherwise, it is C425 specific.**
 
@@ -26,7 +26,7 @@ First off, congrats! Second, if you want to be featured in this guide, you may c
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Turns out, this laptop works quite well with macOS. For more information about the Chromebook's hardware, refer to [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
+Turns out, this laptop works quite well with macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
 
 <img src="Screenshot.png" width="1920">
 
@@ -54,8 +54,8 @@ Turns out, this laptop works quite well with macOS. For more information about t
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in ProperTree. Under `Booter` -> `Quirks`. **WILL not             work if disabled.** |    
 | Recovery key combos| Working              | Working OOTB with coreboot. (Recovery combos are `esc`+`power`+`refresh` and `power button`+`refresh` )
 
-  
-Please do not ask me for the EFI, make it yourself and you might learn a thing or two along the way. I gave almost everything away too, lol. :)
+ 
+ I will not post the EFI, make it yourself and you might learn a thing or two along the way. I gave almost everything away too lol. :)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
