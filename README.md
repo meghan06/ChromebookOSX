@@ -116,22 +116,26 @@ Before you start, you'll need to have the following items to complete the proces
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 🔸 Installation
+## 🔸 Installation
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
 
-## **These steps are **required** for proper functioning.**
+### **These steps are **required** for proper functioning.**
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
 3. Switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
       - **This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.**
-4. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file `(SSDT-HPET)` into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
+4. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
 5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~    
 6. Add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`. Both are for iGPU support, **you will regret it if you don't add these.**
 7. Install macOS and enjoy!
 
 Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
+
 Note for **Step 4**: This may have been resolved in a recent update, but I have not yet confirmed. Try booting without the IRQ patches mentioned earlier, and if your eMMC drive is not recognized in Disk Utility, you will need to add those patches. If the drive still fails to appear, there may be a mistake in one of the preceding steps, or your eMMC drive may not be supported at this time.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
