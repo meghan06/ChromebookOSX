@@ -1,20 +1,5 @@
-# Installing macOS on an Chromebook
+# Installing macOS on an Asus C425
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
-### ⚠️ READ THIS!!!
-The following guide is specifically designed for the ASUS C425 (LEONA). However, if your device does not have a Pentium or Celeron CPU, it may still be possible to apply the steps provided. It is important to note that if you own a Celeron or Pentium Chromebook, this guide will not be compatible with your device. It is recommended that you conduct thorough research before proceeding, particularly if you own a different Chromebook model, as this guide may present conflicting information. For any questions or concerns, please direct them to the Issues tab.
-
-The intended audience for this guide is those who own an ASUS C425. However, certain parts of the guide have been marked for their applicability to all Chromebook models. It is suggested to conduct your own research before proceeding with the guide.
- 
-If a section of the guide is marked with "🔸", it can be applied to all Chromebooks. Otherwise, the section is ASUS C425 specific.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Got macOS installed on another device?
-
-Congratulations on your achievement! If you would like to be included in this guide, you can create a PR/Issue, and I will add your information. At a minimum, your documentation should cover what works and what doesn't, your device specifications, any additional steps you took beyond those mentioned in the Dortania guide, and the SMBIOS that yielded the best results for your device. You may use my documentation as a reference for your own.
-
-#### With that said, we can move on.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -42,7 +27,8 @@ Congratulations on your achievement! If you would like to be included in this gu
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Turns out, this laptop works quite well with macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
+Turns out, this laptop works really well with the latest version(s) of macOS. Has been tested on macOS 10.14 to the latest version of 13.
+For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
 
 <img src="Screenshot.png" width="1920">
 
@@ -76,7 +62,7 @@ I will not provide the EFI, as creating it yourself can be a valuable learning e
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 --
-### 🔸 Requirements
+### Requirements
 
 Before you start, you'll need to have the following items to complete the process:
 
@@ -116,7 +102,7 @@ Before you start, you'll need to have the following items to complete the proces
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 🔸 Installation
+## Installation
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
 
@@ -142,8 +128,6 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 
 ### Items not mentioned in the Dortania guide that you **need** to do:
 
-🔸 **Note: ONLY step 2 and 3 are universal.**
-
 you will regret it later if you don't
   
   1. Use Laptop Kaby Lake for your config.plist 
@@ -168,7 +152,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 🔸 Misc. Information
+### Misc. Information
 
 - *When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
@@ -198,7 +182,7 @@ With that, lets get started!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 🔸 For those updating:
+### For those updating:
 Note: these steps can be done after updating, you just won't have WiFi. It is recommended to follow the steps below **before** updating for the least amount of pain and suffering.
 
 1. Mount your EFI using corpnewt's MountEFI.
@@ -211,7 +195,7 @@ Note: these steps can be done after updating, you just won't have WiFi. It is re
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 🔸 Preparations for installing Ventura directly:
+### Preparations for installing Ventura directly:
 Note: For Windows only, not sure how it's like on Linux.
 1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 2. Open up your kext folder, and locate `itlwm.kext`. 
@@ -222,7 +206,7 @@ Note: For Windows only, not sure how it's like on Linux.
 8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi. If you are able to install macOS, then you have not fucked up.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### 🔸 Fixing WiFi on Ventura 
+### Fixing WiFi on Ventura 
 **Only for those that have macOS installed but haven't edited their `Info.plist`.**
 
 Before we begin, let me explain how this patch functions. The `Info.plist` file in itlwm has a section where you can manually enter the SSID and password of your network. By doing this, you can connect to your network without relying on HeliPort. This approach is also works for recovery. To accomplish this, we will enter your network details in the aforementioned `Info.plist` file, thus avoiding the roughly 30 second wait required for HeliPort to initialize, scan, and connect. It's essential to remember that while this approach allows you to connect to your network, you still need HeliPort to access features such as a WiFi logo, the ability to pair with other networks, and several others that I am unable to remember.
