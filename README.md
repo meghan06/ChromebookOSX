@@ -5,21 +5,22 @@
 
 ## Table of Contents
 - [Current Status](#current-status)
-- [Requirements](#-requirements)
+- [Versions Tested](#versions-tested)
+- [Requirements](#requirements)
 - [Issues](#issues)
   - [Current Issues](#current-issues)
   - [Fixed Issues](#fixed-issues)
 - [Disclaimer](#%EF%B8%8F-disclaimer)
-- [Installation](#-installation)
+- [Installation](#installation)
 - [Steps **required** for proper functioning.](#these-steps-are-required-for-proper-functioning)
 - [Items not mentioned in the Dortania guide that you **need** to do:](#items-not-mentioned-in-the-dortania-guide-that-you-need-to-do) 
 - [Kext Folder](#kexts)
 - [ACPI Folder](#acpi-folder)
-- [Misc. Information](#-misc-information)
+- [Misc. Information](#misc-information)
 - [macOS Ventura](#macos-ventura)
-  - [For those updating](#-for-those-updating)
-  - [For those installing directly](#-preparations-for-installing-ventura-directly)
-  - [Fixing WiFI](#-fixing-wifi-on-ventura)
+  - [For those updating](#for-those-updating)
+  - [For those installing directly](#preparations-for-installing-ventura-directly)
+  - [Fixing WiFI](#fixing-wifi-on-ventura)
 - [Credits](#credits)
 
 
@@ -27,7 +28,7 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Turns out, this laptop works really well with the latest version(s) of macOS. Has been tested on macOS 10.14 to the latest version of 13.
+Turns out, this laptop works really well with the latest version(s) of macOS. 
 For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
 
 <img src="Screenshot.png" width="1920">
@@ -60,8 +61,18 @@ For more information about the Chromebook's hardware, see [here](https://github.
 I will not provide the EFI, as creating it yourself can be a valuable learning experience. By providing comprehensive guidance, I have already given away almost all the necessary information. So, take this opportunity to learn and have fun! :)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+### Versions Tested
+- macOS 10.14 
+- macOS 10.15
+- macOS 11
+- macOS 12
+- macOS 13
 
---
+Pictures may be coming soon. **Do note that eMMC driver only works on macOS 11 and up.** 
+
+macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Requirements
 
 Before you start, you'll need to have the following items to complete the process:
@@ -130,12 +141,13 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 
 you will regret it later if you don't
   
-  1. Use Laptop Kaby Lake for your config.plist 
+   1. Use Laptop Kaby Lake for your config.plist 
    2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST  change this. It is `FALSE` by DEFAULT.**
-   3. In your `boot-args`, add `watchdog=0` and `-igfxnotelemetryload` for iGPU acceleration. 
+   3. In your `boot-args`, add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
    4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
    5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
+      -  **Note: eMMC driver only works on macOS 11 and up.**
   
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
