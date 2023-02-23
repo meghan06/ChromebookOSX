@@ -62,13 +62,13 @@ I will not provide the EFI, as creating it yourself can be a valuable learning e
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
-- macOS 10.14 
-- macOS 10.15
-- macOS 11
-- macOS 12
-- macOS 13
+- [macOS 10.14](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
+- [macOS 10.15](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
+- [macOS 11](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
+- [macOS 12](https://media.discordapp.net/attachments/1051619981642706947/1078426568319320085/image.png?width=1119&height=629)
+- [macOS 13](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
 
-Pictures may be coming soon. **Do note that eMMC driver only works on macOS 11 and up.** 
+**Do note that eMMC driver only works on macOS 11 and up.** 
 
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
@@ -178,7 +178,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
-- If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here (https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
+- If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here] (https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
   
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
