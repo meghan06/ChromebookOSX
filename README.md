@@ -178,6 +178,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
+- If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here (https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
   
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
