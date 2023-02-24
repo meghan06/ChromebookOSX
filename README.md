@@ -87,12 +87,11 @@ Before you start, you'll need to have the following items to complete the proces
 
 ### Issues
 
---
-### Current Issues
+#### Current Issues
 - Render and video playback issues after sleep. **(Need help)**
   - Temporary fix is to restart after sleep.
  
-### Fixed Issues
+#### Fixed Issues
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
   - Disable `Optimized video streaming while on battery` and it'll fix it.
 - ~~Random render issues on Discord and Spotify.~~
