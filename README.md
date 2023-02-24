@@ -30,7 +30,7 @@
 
 Turns out, this laptop works really well with the latest version(s) of macOS. 
 For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
-
+#### macOS Ventura Screenshot
 <img src="Screenshot.png" width="1920">
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -88,8 +88,8 @@ Before you start, you'll need to have the following items to complete the proces
 ### Issues
 
 #### Current Issues
-- Render and video playback issues after sleep. **(Need help)**
-  - Temporary fix is to restart after sleep.
+- Render and video playback issues after sleep. ~~(Need help)~~ 
+  - Temporary fix is to add `igfxrpsc=1` to `boot-args`. (testing, seems OK)
  
 #### Fixed Issues
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
@@ -122,11 +122,11 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
-3. Switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
+3. Switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
       - **This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.**
 4. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
-5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~    
+5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc.-information) for a warning.   
 6. Add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
 7. Install macOS and enjoy!
 
@@ -144,7 +144,7 @@ you will regret it later if you don't
    2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST  change this. It is `FALSE` by DEFAULT.**
    3. In your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
    4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
-      - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
+      - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode, hence why it is not reccomended.
    5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
       -  **Note: eMMC driver only works on macOS 11 and up.**
   
