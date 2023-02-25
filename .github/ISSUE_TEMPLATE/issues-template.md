@@ -1,9 +1,9 @@
 ---
 name: Issues Template
-about: Template for issues
-title: READ BEFORE POSTING - Issues Template
-labels: documentation
-assignees: meghan06
+about: Use this for reporting issues.
+title: Issues Template
+labels: new
+assignees: ''
 
 ---
 
