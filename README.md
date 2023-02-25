@@ -239,6 +239,13 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### Security 
+- Please read [Security.md](SECURITY.md) as it provides in-depth information on sanitizing your serials, disk encryption, and more.
+- **If you discover a vulnerability, please refer to [Security.md](SECURITY.md). ** 
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Credits
 - **Goldfish64** for the eMMC driver and iGPU acceleration. 
 - **corpnewt** for his tools.
