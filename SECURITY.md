@@ -4,17 +4,17 @@
 
 ChromebookOSX does not provide EFI folders due to the risk it creates where multiple people would share the same serial numbers defined in `config.plist`. It is highly recommended to generate your own serial numbers to protect your device from potential privacy leaks.
 
-- Download [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) and select option 1 to download MacSerial and next option 3. Then, defaultly, type `MacBookAir8,1` (Reccomended) or `MacBook10,1` (Only if you run into issues.) to generate new serials.
+- Download [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS) and select option 1 to download MacSerial and next option 3. Then, type `MacBookAir8,1` (reccomended) or `MacBook10,1` (Only if you run into issues.) to generate new serials.
 
 ### For Clover Users
 - Note: ZERO (0) support for Clover users.
 - Go to `/EFI/CLOVER/` and open `config.plist`
-- In `SMBIOS`, add `BoardSerialNumber` with value `Board Serial` you got from [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), add `SerialNumber` with value `Serial` you got from [GenSMBIOS], and add `SmUUID` with value `SmUUID` you got from [GenSMBIOS]
+- In `SMBIOS`, add `BoardSerialNumber` with value `Board Serial` you got from [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), add `SerialNumber` with value `Serial` you got from [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), and add `SmUUID` with value `SmUUID` you got from [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 - Restart
 
 ### For OC Users
 - Go to `/EFI/OC/` and open `config.plist`
-- In `PlatformInfo - Generic`, change `MLB` value to `Board Serial` you got from [GenSMBIOS], change `SystemSerialNumber` value to `Serial` you got from [GenSMBIOS], and change `SystemUUID` value to `SmUUID` you got from [GenSMBIOS]
+- In `PlatformInfo - Generic`, change `MLB` value to `Board Serial` you got from [GenSMBIOS], change `SystemSerialNumber` value to `Serial` you got from [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS), and change `SystemUUID` value to `SmUUID` you got from [GenSMBIOS](https://github.com/corpnewt/GenSMBIOS)
 - Restart
 
 
