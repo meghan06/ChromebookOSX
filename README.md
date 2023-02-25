@@ -28,10 +28,9 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Turns out, this laptop works really well with the latest version(s) of macOS. 
-For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
+Turns out, this laptop works really well with the latest version(s) of macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
 
-<img src="Screenshot.png" width="1920">
+<img align= "center" src="Screenshot.png" width="1920">
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
