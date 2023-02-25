@@ -6,14 +6,14 @@
 ## Table of Contents
 - [Current Status](#current-status)
 - [Versions Tested](#versions-tested)
+- [**Disclaimer**](#%EF%B8%8F-disclaimer-%EF%B8%8F)
 - [Requirements](#requirements)
 - [Issues](#issues)
   - [Current Issues](#current-issues)
   - [Fixed Issues](#fixed-issues)
-- [Disclaimer](#%EF%B8%8F-disclaimer)
-- [Installation](#installation)
-- [Steps **required** for proper functioning.](#these-steps-are-required-for-proper-functioning)
-- [Items not mentioned in the Dortania guide that you **need** to do:](#items-not-mentioned-in-the-dortania-guide-that-you-need-to-do) 
+- [**Installation**](#installation)
+- [Steps required for proper functioning.](#these-steps-are-required-for-proper-functioning)
+- [Items not mentioned in the Dortania guide that you need to do:](#items-not-mentioned-in-the-dortania-guide-that-you-need-to-do) 
 - [Kext Folder](#kexts)
 - [ACPI Folder](#acpi-folder)
 - [Misc. Information](#misc-information)
@@ -22,7 +22,6 @@
   - [For those installing directly](#preparations-for-installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
 - [Credits](#credits)
-
 
 
 
@@ -68,20 +67,26 @@ I will not provide the EFI, as creating it yourself can be a valuable learning e
 - [macOS 12](https://media.discordapp.net/attachments/1051619981642706947/1078426568319320085/image.png?width=1119&height=629)
 - [macOS 13](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
 
-**Do note that eMMC driver only works on macOS 11 and up.** 
-
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### ⚠️ Disclaimer ⚠️
+
+**By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [above disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
+
+**The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository. Please refer to [LICENSE.md](LICENSE.md) for more detailed information.** 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Requirements
 
 Before you start, you'll need to have the following items to complete the process:
 
+- **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
 - An external storage device (can range from a SD card to a USB Disk / Drive) for creating the installer USB.  
 - The latest OpenCore version (**at least 0.8.8**) for eMMC boot drive support.   
 - An internet connection.
-- ⚠️ **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
-
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -106,22 +111,12 @@ Before you start, you'll need to have the following items to complete the proces
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### ⚠️ Disclaimer
-
-**The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
-
-**By continuing with the aforementioned instructions, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [above disclaimer](#%EF%B8%8F-disclaimer), and consent to their terms.**
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ## Installation
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
 
+
 ### **These steps are **required** for proper functioning.**
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
 3. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
@@ -141,7 +136,6 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 ### Items not mentioned in the Dortania guide that you **need** to do:
 
    you will regret it later if you don't
-  
    1. Use Laptop Kaby Lake for your config.plist 
    2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST  change this. It is `FALSE` by DEFAULT.**
    3. In your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
