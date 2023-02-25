@@ -27,11 +27,11 @@
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Turns out, this laptop works really well with the latest version(s) of macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Hardware.txt).
+Turns out, this laptop works really well with the latest version(s) of macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/Hardware%20Info.txt).
 
 | macOS Ventura | eMMC Storage |
 |------------|-------------|
-|<img src="Screenshot.png" width="960">|<img src="DeviceInfo.png" width="960">|
+|<img src="Resources/Screenshot.png" width="960">|<img src="Resources/Device Info.png" width="960">|
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Current Status
@@ -151,13 +151,13 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 ### Kext's.
 
 
-You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/list%20of%20installed%20kext's.png)
+You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/Kext%20Folder.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### ACPI Folder
 
 
-You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/ACPI%20Folder.png)
+You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/ACPI%20Folder.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
