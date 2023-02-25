@@ -88,8 +88,8 @@ Before you start, you'll need to have the following items to complete the proces
 ### Issues
 
 #### Current Issues
-- Render and video playback issues after sleep. **(Need help)**
-  - Temporary fix is to restart after sleep.
+- Render and video playback issues after sleep. ~~(Need help)~~ - Potential fix below
+  - Have not tested much yet but adding `igfxrpsc=1` to boot-args seems to fix this. 
  
 #### Fixed Issues
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
@@ -122,11 +122,11 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
-3. Switch VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom       remaps 
+3. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
       - **This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.**
 4. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
-5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~    
+5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#Misc.-information) for a note to USBToolBox users.    
 6. Add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
 7. Install macOS and enjoy!
 
@@ -138,7 +138,7 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 
 ### Items not mentioned in the Dortania guide that you **need** to do:
 
-you will regret it later if you don't
+   you will regret it later if you don't
   
    1. Use Laptop Kaby Lake for your config.plist 
    2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST  change this. It is `FALSE` by DEFAULT.**
@@ -147,7 +147,7 @@ you will regret it later if you don't
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
    5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
       -  **Note: eMMC driver only works on macOS 11 and up.**
-  
+    
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Kext's.
@@ -169,16 +169,17 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - Format the drive as `APFS`
 - Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
 - `itlwm` is more stable & faster than `AirportItlwm`
-- You might have some text render and DRM issues, there's no fix for this. :(
+- You might have DRM issues, there's no fix for this. :(
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
-- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps.
+- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps. You can also use CPUFriend to tweak power settings but it might break sleep.
 - eMMC will come up as an external drive in the boot picker since eMMC is just an embedded SD card. Nothing you can do about it.
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
-  
+- Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
+
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -249,6 +250,6 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Last Updated: 02/19/2023
+#### Last Updated: 02/24/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
