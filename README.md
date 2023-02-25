@@ -77,6 +77,8 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository. Please refer to [LICENSE.md](LICENSE.md) for more detailed information.** 
 
+TLDR: If you fuck up and break something, **it's not my fault.**
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Requirements
