@@ -145,7 +145,6 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
    4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
    5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
-      -  **Note: eMMC driver only works on macOS 11 and up.**
     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
