@@ -56,7 +56,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`. Under `Booter -> Quirks`. **WILL not             work if disabled.** |    
 | Recovery key combos| Working              | Working OOTB with coreboot. (Recovery combos are `esc`+`power`+`refresh` and `power button`+`refresh` )
-
+| Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`. Just buy ` BCM94360NG` and swap it out.          |                                                                             
  
 I will not provide the EFI, as creating it yourself can be a valuable learning experience. By providing comprehensive guidance, I have already given away almost all the necessary information. So, take this opportunity to learn and have fun! :)
 
