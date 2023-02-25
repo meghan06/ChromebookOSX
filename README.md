@@ -21,6 +21,7 @@
   - [For those updating](#for-those-updating)
   - [For those installing directly](#preparations-for-installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
+- [**Security**](#security)
 - [Credits](#credits)
 
 
@@ -177,7 +178,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
-
+- Please report any broken links in issues. Half this guide was written while I high. /s
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -241,7 +242,7 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 ### Security 
 - Please read [Security.md](SECURITY.md) as it provides in-depth information on sanitizing your serials, disk encryption, and more.
-- **If you discover a vulnerability, please refer to [Security.md](SECURITY.md). ** 
+- **If you discover a vulnerability, please refer to [Security.md](SECURITY.md).** 
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
