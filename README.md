@@ -110,6 +110,8 @@ Before you start, you'll need to have the following items to complete the proces
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
 
+**By continuing with the aforementioned instructions, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [above disclaimer](#%EF%B8%8F-disclaimer), and consent to their terms.**
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Installation
