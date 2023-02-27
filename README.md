@@ -101,13 +101,13 @@ Before you start, you'll need to have the following items to complete the proces
  
 #### Fixed Issues
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
-  - Disable `Optimized video streaming while on battery` and it'll fix it.
+  - Disable `Optimized video streaming while on battery`
 - ~~Random render issues on Discord and Spotify.~~
-  - To fix this, disable GPU acceleration in settings and it'll fix it.
+  - To fix this, disable GPU acceleration in app settings.
 - ~~Weird lock ups randomly.~~
   - Fixed.
 - ~~Signout not working~~
-  - Fixed by reinstalling; more of an config issue.
+  - Fixed by reinstalling.
 - ~~Kernel panic when shutting down / restarting~~
   - Fixed by setting `ProtectMemoryReigons` to `TRUE`.
 - **Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)**
