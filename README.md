@@ -6,6 +6,8 @@
 ## Table of Contents
 - [Current Status](#current-status)
 - [Versions Tested](#versions-tested)
+  - [macOS](#macos-versions)
+  - [OpenCore](#opencore-versions)
 - [**Disclaimer**](#%EF%B8%8F-disclaimer-%EF%B8%8F)
 - [Requirements](#requirements)
 - [Issues](#issues)
@@ -48,22 +50,25 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                    |                                           
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                  |                                           
 | Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                                            |
-| eMMC Storage       | Working              | With `EmeraldSDHC.kext`.                                                                      |
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and patching IRQ                                                       |
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
 | USB Ports          | Working              | Make sure to map your USB ports with `USBMap.kext`(macOS) or `USBToolbox.kext` (Windows/Linux).|
 | Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`. Under `Booter -> Quirks`. **WILL not             work if disabled.** |    
-| Recovery key combos| Working              | Working OOTB with coreboot. (Recovery combos are `esc`+`power`+`refresh` and `power button`+`refresh` )
+| Recovery key combos| Working              | Working OOTB with coreboot.                                                                    |
 | Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`. Just buy an `BCM94360NG` and swap it out.          |                                                                             
- 
+                                                                                   
+
 I will not provide the EFI, as creating it yourself can be a valuable learning experience. By providing comprehensive guidance, I have already given away almost all the necessary information. So, take this opportunity to learn and have fun! :)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
+
+#### macOS Versions:
 - [macOS 10.14](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
 - [macOS 10.15](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
 - [macOS 11](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
@@ -72,15 +77,24 @@ I will not provide the EFI, as creating it yourself can be a valuable learning e
 
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
+#### OpenCore Versions:
+  - 0.8.6
+  - 0.8.7
+  - 0.8.8
+  
+ OpenCore 0.8.9 has not been tested by me, although it should work just fine.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### ⚠️ Disclaimer ⚠️
 
 **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [above disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
-**The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository. Please refer to [LICENSE.md](LICENSE.md) for more detailed information.** 
+**The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
 
-TLDR: If you fuck up and break something, **it's not my fault.**
+**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). This license, which is the GNU General Public License v3.0, requires that you abide by certain guidelines, such as disclosing any changes you make, revealing the source, and using the same license with no warranties whatsoever.**
+
+TL:DR: If you fuck up and break something, **it's not my fault.** 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
