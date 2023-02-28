@@ -246,6 +246,64 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### neofetch
+for those that want to install neofetch but don't want to download Xcode / homebrew.
+
+
+1. Download the latest release of [neofetch](https://github.com/dylanaraps/neofetch/releases/tag/7.1.0) and extract it's contents.
+2. Delete everything except for `neofetch`.
+3. Copy that file to `Users/yourname/`, with `yourname` being your account name.
+4. Open terminal
+5. Type `nano ~/.zshrc`
+6. Then, paste/type `alias neofetch='./neofetch' in nano. 
+7. Close `nano`, via `CTRL+X`. Make sure to select `Y` and save it.
+8. Restart terminal.
+9. Test the changes you just made by typing `neofetch` in your terminal and pressing enter.
+
+
+#### A few things to keep in mind:
+- This only works when you're cd'd into your home directory (`User/name`). 
+- If you want to fix this, it's simple; replace `alias neofetch='./neofetch' with `alias neofetch='cd Users/yourname; ./neofetch', replacing `yourname` with the name of your user.
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Fixing Continuity Features
+
+- Purchase an BCM94360NG.
+- Open your C425
+- Carefully remove the WiFi antennas from your current Intel chip 
+- Remove your Intel WiFi chip
+- Insert your new shiny BCM94360NG
+- Carefully re-attatch the antennas 
+- Delete Airportitlwm/itlwm
+- Profit
+
+
+You can buy an BCM94360NG [from here](https://www.amazon.com/BCM94360NG-802-11AC-BCM94360CS-Continuity-BCM94352Z/dp/B0861T79QY)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Audio
+
+**For anybody looking to get audio working, here are a some bits of info you can use:**
+
+- Intel DSP discussion:
+  - https://github.com/acidanthera/bugtracker/issues/2084
+- make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
+- C425 is not HD audio, it uses an Intel DSP (branded as Smart Sound) and is i2s from that coprocessor
+- google src code for max98927 (for chromeOS)
+  - https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/drivers/sound/max98927.c
+- Soundflower, a simple template that can be used for the driver
+  - https://github.com/RogueAmoeba/Soundflower-Original
+  - More info here: https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png
+- Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
+  - https://github.com/coolstar/sklhdaudbus
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Credits
 - **Goldfish64** for the eMMC driver and iGPU acceleration. 
 - **corpnewt** for his tools.
