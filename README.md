@@ -307,7 +307,7 @@ You can buy an BCM94360NG [from here](https://www.amazon.com/BCM94360NG-802-11AC
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Credits
-- **Goldfish64** for the eMMC driver and iGPU acceleration. 
+- **Goldfish64** for fixing the iGPU init hang on 10.15+ along with the eMMC driver  
 - **CorpNewt** 
 - **olm3ca** 
 - **CoolStar** 
