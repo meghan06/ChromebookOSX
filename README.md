@@ -21,7 +21,9 @@
   - [For those updating](#for-those-updating)
   - [For those installing directly](#preparations-for-installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
-- [**Security**](#security)
+- [neofetch](#neofetch)
+- [Fixing Continuity](#fixing-continuity-features)
+- [**Audio**](#audio)
 - [Credits](#credits)
 
 
@@ -291,28 +293,27 @@ You can buy an BCM94360NG [from here](https://www.amazon.com/BCM94360NG-802-11AC
 
 - Intel DSP discussion:
   - https://github.com/acidanthera/bugtracker/issues/2084
-- make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
+- If you are willing to contribute, all you need to do is make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
 - C425 is not HD audio, it uses an Intel DSP (branded as Smart Sound) and is i2s from that coprocessor
 - google src code for max98927 (for chromeOS)
-  - https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/drivers/sound/max98927.c
+  - [google src code for max98927](https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/drivers/sound/max98927.c)
 - Soundflower, a simple template that can be used for the driver
-  - https://github.com/RogueAmoeba/Soundflower-Original
-  - More info here: https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png
+  - [github.com/RogueAmoeba/Soundflower-Original](https://github.com/RogueAmoeba/Soundflower-Original)
+  - More info here: [cdn.discordapp.com](https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png)
 - Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
-  - https://github.com/coolstar/sklhdaudbus
+  - [github.com/coolstar/sklhdaudbus](https://github.com/coolstar/sklhdaudbus)
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Credits
 - **Goldfish64** for the eMMC driver and iGPU acceleration. 
-- **corpnewt** for his tools.
-- **olm3ca** for the help along the way.
-- **coolstar** for the help along the way.
-- and many, many others.
-
+- **CorpNewt** 
+- **olm3ca** 
+- **CoolStar** 
+- **acidanthera** 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Last Updated: 02/24/2023
+#### Last Updated: 02/27/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
