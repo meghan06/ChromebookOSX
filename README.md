@@ -60,7 +60,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
 | Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                  |                                           
 | Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                                            |
-| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and patching IRQ                                                       |
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                                    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
 | USB Ports          | Working              | Make sure to map your USB ports with `USBMap.kext`(macOS) or `USBToolbox.kext` (Windows/Linux).|
 | Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
@@ -144,15 +144,21 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 
 ### **These steps are **required** for proper functioning.**
+
+
+_**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `ACPI -> Booter` and the extra iGPU `boot-args`.
+
+
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
-3. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
+3. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` if you want working a working hack. You MUST change this. It is FALSE by DEFAULT.**
+4. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
-      - **This SSDT **ONLY** works with the custom VoodoolPS2 version linked in Step 3.**
-4. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
-5. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
-6. Add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-7. Install macOS and enjoy!
+      - This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked in Step 3.
+5. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
+6. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
+7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
+8. Install macOS and enjoy!
 
 Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
 
@@ -164,11 +170,10 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 
    you will regret it later if you don't
    1. Use Laptop Kaby Lake for your config.plist 
-   2. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryReigons` to `TRUE` if you want working shutdown/restart/WiFi. You MUST  change this. It is `FALSE` by DEFAULT.**
-   3. In your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
-   4. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
+   2. If you haven't already, in your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
+   3. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
-   5. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
+   4. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -189,7 +194,7 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 
 - *When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
-- Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that.
+- Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - `itlwm` is more stable & faster than `AirportItlwm`
 - You might have DRM issues, there's no fix for this. :(
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
@@ -199,7 +204,6 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
-- If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
 - Please report any broken links in issues. Half this guide was written while I high. /s
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
@@ -336,6 +340,6 @@ You can buy an BCM94360NG [from here](https://www.amazon.com/BCM94360NG-802-11AC
 - **acidanthera** 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Last Updated: 02/27/2023
+#### Last Updated: 03/02/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
