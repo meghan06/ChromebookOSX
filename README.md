@@ -151,7 +151,7 @@ _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Do
 
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
-3. ***In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` if you want working a working hack. You MUST change this. It is FALSE by DEFAULT.**
+3. **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` if you want working a working hack. You MUST change this. It is FALSE by DEFAULT.**
 4. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
       - This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked in Step 3.
