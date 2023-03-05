@@ -299,17 +299,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 
 ### Fixing Continuity Features
 
-- Purchase an BCM94360NG.
-- Open your C425
-- Carefully remove the WiFi antennas from your current Intel chip 
-- Remove your Intel WiFi chip
-- Insert your new shiny BCM94360NG
-- Carefully re-attatch the antennas 
-- Delete Airportitlwm/itlwm
-- Profit
-
-
-You can buy an BCM94360NG [from here](https://www.amazon.com/BCM94360NG-802-11AC-BCM94360CS-Continuity-BCM94352Z/dp/B0861T79QY)
+- you cant lol, its soldered on
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
