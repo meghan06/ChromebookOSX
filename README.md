@@ -291,7 +291,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 
 #### A few things to keep in mind:
 - This only works when you're cd'd into your home directory (`User/name`). 
-- If you want to fix this, it's simple; replace `alias neofetch='./neofetch' with `alias neofetch='cd Users/yourname; ./neofetch', replacing `yourname` with the name of your user.
+- If you want to fix this, it's simple; replace `alias neofetch='./neofetch` with `alias neofetch=cd Users/yourname; ./neofetch`, replacing `yourname` with the name of your user.
 
 
 
@@ -299,7 +299,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 
 ### Fixing Continuity Features
 
-- you cant lol, its soldered on
+- you cant lol, the wireless chip is soldered on
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
