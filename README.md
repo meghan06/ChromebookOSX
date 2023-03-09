@@ -69,10 +69,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`. Under `Booter -> Quirks`. **WILL not             work if disabled.** |    
 | Recovery key combos| Working              | Working OOTB with coreboot.                                                                    |
 | Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`. Just buy an `BCM94360NG` and swap it out.          |                                                                             
-                                                                                   
-
-I will not provide the EFI, as creating it yourself can be a valuable learning experience. By providing comprehensive guidance, I have already given away almost all the necessary information. So, take this opportunity to learn and have fun! :)
-
+                                                                                    
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
 
@@ -90,7 +87,7 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
   - 0.8.7
   - 0.8.8
   
- OpenCore 0.8.9 has not been tested by me, although it should work just fine.
+ OpenCore 0.8.9 and above has not been tested by me, although it should work just fine.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -120,11 +117,11 @@ Before you start, you'll need to have the following items to complete the proces
 ### Issues
 
 #### Current Issues
-- Render and video playback issues after sleep. ~~(Need help)~~ - Potential fix below
+- Render and video playback issues after sleep. (Need help)
   - Have not tested much yet but adding `igfxrpsc=1` to boot-args seems to fix this. 
  
 #### Fixed Issues
-- ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ - See **possible** fix below.
+- ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ 
   - Disable `Optimized video streaming while on battery`
 - ~~Random render issues on Discord and Spotify.~~
   - To fix this, disable GPU acceleration in app settings.
