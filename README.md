@@ -1,4 +1,4 @@
-## Install the latest version(s) of macOS on an Asus C425/C434/C433
+## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
 ```
    ____ _                              _                 _     ___  ______  __
@@ -116,10 +116,12 @@ Before you start, you'll need to have the following items to complete the proces
 
 ### Issues
 
+
+
 #### Current Issues
-- Render and video playback issues after sleep. (Need help)
-  - Have not tested much yet but adding `igfxrpsc=1` to boot-args seems to fix this. 
- 
+- https://github.com/meghan06/ChromebookOSX/issues/10 Render and video playback issues after sleep. [help pls] 
+
+
 #### Fixed Issues
 - ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ 
   - Disable `Optimized video streaming while on battery`
@@ -330,3 +332,9 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 #### Last Updated: 03/02/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#### Extra notes
+
+¹ C434 and C433's need an additional kext for trackpad to function.
+
+² The contents of this guide have only been tested on an C425, portions of the guide may not work on your C433 or C434 
