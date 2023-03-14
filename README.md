@@ -119,7 +119,7 @@ Before you start, you'll need to have the following items to complete the proces
 
 
 #### Current Issues
-- https://github.com/meghan06/ChromebookOSX/issues/10 Render and video playback issues after sleep. [help pls] 
+- https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help pls] 
 
 
 #### Fixed Issues
