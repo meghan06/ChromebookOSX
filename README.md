@@ -58,27 +58,28 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                  |                                           
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                  |           
 | Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                                            |
-| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                                    
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
-| USB Ports          | Working              | Make sure to map your USB ports with `USBMap.kext`(macOS) or `USBToolbox.kext` (Windows/Linux).|
+| USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
-| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`. Under `Booter -> Quirks`. **WILL not             work if disabled.** |    
-| Recovery key combos| Working              | Working OOTB with coreboot.                                                                    |
-| Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`. Just buy an `BCM94360NG` and swap it out.          |                                                                             
+| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`.                                |    
+| Recovery key combos| Working              | Working OOTB with coreboot.                                                                   |
+| Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`. Just buy an `BCM94360NG` and swap it out.         |                                                                             
                                                                                     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
 
 #### macOS Versions:
-- [macOS 10.14](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
-- [macOS 10.15](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
-- [macOS 11](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
-- [macOS 12](https://media.discordapp.net/attachments/1051619981642706947/1078426568319320085/image.png?width=1119&height=629)
-- [macOS 13](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
+- [macOS Mojave (10.14)](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
+- [macOS Catalina (10.15)](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
+- [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
+- [macOS Monterey (12)](https://media.discordapp.net/attachments/1051619981642706947/1078426568319320085/image.png?width=1119&height=629)
+- [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
+
 
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
@@ -115,8 +116,6 @@ Before you start, you'll need to have the following items to complete the proces
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Issues
-
-
 
 #### Current Issues
 - https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help pls] 
@@ -157,7 +156,8 @@ _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Do
 5. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
 6. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-8. Install macOS and enjoy!
+8. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports. 
+9. Install macOS and enjoy!
 
 Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
 
@@ -172,7 +172,7 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
    2. If you haven't already, in your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
    3. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
-   4. Want to use internal eMMC storage? You'll need `EmeraldSDHC.kext`. [Download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
+   4. `EmeraldSDHC.kext` and `SSDT-HPET.aml` are required for functional eMMC. [EmeraldSDHC download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -183,9 +183,9 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### ACPI Folder
+**Note: OUTDATED, DO NOT USE THIS**
 
-
-You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/ACPI%20Folder.png)
+~~You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/ACPI%20Folder.png)~~
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -247,10 +247,6 @@ Note: For Windows only, not sure how it's like on Linux.
 ### Fixing WiFi on Ventura 
 **Only for those that have macOS installed but haven't edited their `Info.plist`.**
 
-Before we begin, let me explain how this patch functions. The `Info.plist` file in itlwm has a section where you can manually enter the SSID and password of your network. By doing this, you can connect to your network without relying on HeliPort. This approach is also works for recovery. To accomplish this, we will enter your network details in the aforementioned `Info.plist` file, thus avoiding the roughly 30 second wait required for HeliPort to initialize, scan, and connect. It's essential to remember that while this approach allows you to connect to your network, you still need HeliPort to access features such as a WiFi logo, the ability to pair with other networks, and several others that I am unable to remember.
-
-TLDR: Add your primary network's credentials to `itlwm.kext`'s `Info.plist` so you can skip the initialization period required by HeliPort.
-With that said, we can get started.
 
 1. Mount your EFI
 2. Open up your kext folder, and locate `itlwm.kext`. 
@@ -282,7 +278,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 3. Copy that file to `Users/yourname/`, with `yourname` being your account name.
 4. Open terminal
 5. Type `nano ~/.zshrc`
-6. Then, paste/type `alias neofetch='./neofetch' in nano. 
+6. Then, paste/type `alias neofetch=./neofetch` in nano. 
 7. Close `nano`, via `CTRL+X`. Make sure to select `Y` and save it.
 8. Restart terminal.
 9. Test the changes you just made by typing `neofetch` in your terminal and pressing enter.
@@ -292,13 +288,28 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 - This only works when you're cd'd into your home directory (`User/name`). 
 - If you want to fix this, it's simple; replace `alias neofetch=./neofetch` with `alias neofetch=cd Users/yourname; ./neofetch`, replacing `yourname` with the name of your user.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### SD Card Support
+
+[todo] need testing 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Fixing graphical issues with GPU acceleration
+
+[todo]
+
+- Can be fixed by setting DVMT to 64 mb, but 
+####  IT WILL CAUSE YOUR SYSTEM TO KERNEL PANIC WHEN OPENING APPS THAT UTILIZE GPU ACCELERATION LIKE DISCORD!!!
+ 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Fixing Continuity Features
 
 - you cant lol, the wireless chip is soldered on
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -329,12 +340,9 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 - **acidanthera** 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Last Updated: 03/02/2023
+#### Last Updated: 03/14/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Extra notes
-
 ¹ C434 and C433's need an additional kext for trackpad to function.
-
 ² The contents of this guide have only been tested on an C425, portions of the guide may not work on your C433 or C434 
