@@ -321,7 +321,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 
 - Intel DSP discussion:
   - https://github.com/acidanthera/bugtracker/issues/2084
-- If you are willing to contribute, all you need to do is make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
+- If you are willing to contribute, make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
 - C425 is not HD audio, it uses an Intel DSP (branded as Smart Sound) and is i2s from that coprocessor
 - google src code for max98927 (for chromeOS)
   - [google src code for max98927](https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/drivers/sound/max98927.c)
