@@ -32,6 +32,8 @@
   - [For those installing directly](#preparations-for-installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
 - [neofetch](#neofetch)
+- [Fixing SD Card](#sd-card-support) [incomplete]
+- [Fixing Graphical Glitches](#fixing-graphical-issues-with-gpu-acceleration) [incomplete]
 - [Fixing Continuity](#fixing-continuity-features)
 - [**Audio**](#audio)
 - [Credits](#credits)
@@ -345,4 +347,5 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ¹ C434 and C433's need an additional kext for trackpad to function.
+
 ² The contents of this guide have only been tested on an C425, portions of the guide may not work on your C433 or C434 
