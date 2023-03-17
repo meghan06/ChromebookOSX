@@ -21,21 +21,22 @@
 - [Issues](#issues)
   - [Current Issues](#current-issues)
   - [Fixed Issues](#fixed-issues)
-- [**Installation**](#installation)
-- [Steps required for proper functioning.](#these-steps-are-required-for-proper-functioning)
-- [Items not mentioned in the Dortania guide that you need to do:](#items-not-mentioned-in-the-dortania-guide-that-you-need-to-do) 
-- [Kext Folder](#kexts)
-- [ACPI Folder](#acpi-folder)
-- [Misc. Information](#misc-information)
-- [macOS Ventura](#macos-ventura)
+- [**1. Installation**](#1-installation)
+   - [Steps required for proper functioning](#these-steps-are-required-for-proper-functioning)
+   - [Items not mentioned in the Dortania guide that you need to do:](#items-not-mentioned-in-the-dortania-guide-that-you-need-to-do) 
+   - [Kext Folder](#kexts)
+   - [ACPI Folder](#acpi-folder)
+- [2. Post Install](#2-post-install)
+   - [neofetch](#neofetch)
+   - [Fixing SD Card](#sd-card-support) [incomplete]
+   - [Fixing Graphical Glitches](#fixing-graphical-glitches-with-gpu-acceleration) [incomplete]
+   - [Continuity](#continuity-features)
+   - [**Audio**](#audio)
+   - [Misc. Information](#misc-information)
+- [3. macOS Ventura](#3-macos-ventura)
   - [For those updating](#for-those-updating)
   - [For those installing directly](#preparations-for-installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
-- [neofetch](#neofetch)
-- [Fixing SD Card](#sd-card-support) [incomplete]
-- [Fixing Graphical Glitches](#fixing-graphical-issues-with-gpu-acceleration) [incomplete]
-- [Fixing Continuity](#fixing-continuity-features)
-- [**Audio**](#audio)
 - [Credits](#credits)
 
 
@@ -65,12 +66,12 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
-| Webcam             | Working              | Working OOTB with / without USB Mapping.                                                      |
+| Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`.                                |    
 | Recovery key combos| Working              | Working OOTB with coreboot.                                                                   |
-| Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`. Just buy an `BCM94360NG` and swap it out.         |                                                                             
+| Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
                                                                                     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
@@ -99,7 +100,6 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [above disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
-
 **If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). This license, which is the GNU General Public License v3.0, requires that you abide by certain guidelines, such as disclosing any changes you make, revealing the source, and using the same license with no warranties whatsoever.**
 
 TL:DR: If you fuck up and break something, **it's not my fault.** 
@@ -138,9 +138,11 @@ Before you start, you'll need to have the following items to complete the proces
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## Installation
+## 1. Installation
 
 Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ### **These steps are **required** for proper functioning.**
@@ -150,11 +152,11 @@ _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Do
 
 
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
-2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use Kaby Lake Laptop for your `config.plist`.
+2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`.
 3. **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` if you want working a working hack. You MUST change this. It is FALSE by DEFAULT.**
 4. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
-      - This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked in Step 3.
+      * This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked in Step 3.
 5. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
 6. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
@@ -170,8 +172,8 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 ### Items not mentioned in the Dortania guide that you **need** to do:
 
    you will regret it later if you don't
-   1. Use Laptop Kaby Lake for your config.plist 
-   2. If you haven't already, in your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU acceleration. 
+   1. Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist` setup. 
+   2. If you haven't already, in your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU support. No acceleration if this isn't in your boot-args.  
    3. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
       - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
    4. `EmeraldSDHC.kext` and `SSDT-HPET.aml` are required for functional eMMC. [EmeraldSDHC download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
@@ -180,14 +182,97 @@ Note for **Step 4**: This may have been resolved in a recent update, but I have 
 
 ### Kext's.
 
-
 You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/Kext%20Folder.png)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### ACPI Folder
 **Note: OUTDATED, DO NOT USE THIS**
 
 ~~You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/ACPI%20Folder.png)~~
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+## 2. Post Install 
+
+- This section contains information to better maintain your Chromebook hack, general advice, and other cool things. Should be a good idea to read this. 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Security 
+- Please read [Security.md](SECURITY.md) as it provides in-depth information on sanitizing your serials, disk encryption, and more.
+- **If you discover a vulnerability, please refer to [Security.md](SECURITY.md).** 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### neofetch
+for those that want to install neofetch but don't want to download Xcode / homebrew.
+
+
+1. Download the latest release of [neofetch](https://github.com/dylanaraps/neofetch/releases/tag/7.1.0) and extract it's contents.
+2. Delete everything except for `neofetch`.
+3. Copy that file to `Users/yourname/`, with `yourname` being your account name.
+4. Open Terminal.
+5. Type `nano ~/.zshrc`
+6. Then, paste/type `alias neofetch=./neofetch` in nano. 
+7. Close `nano`, via `CTRL+X`. Make sure to select `Y` and save it.
+8. Restart terminal.
+9. Test the changes you just made by typing `neofetch` in your terminal and pressing enter.
+
+
+#### A few things to keep in mind:
+- This only works when you're cd'd into your home directory (`User/name`). 
+- If you want to fix this, it's simple; replace `alias neofetch=./neofetch` with `alias neofetch=cd Users/yourname; ./neofetch`, replacing `yourname` with the name of your user.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<details>
+<summary>Fixing SD Cards [todo]</summary>
+
+### SD Card Support
+
+**todo, need testing**
+some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
+
+</details>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+<details>
+<summary>Fixing graphical glitches with iGPU acceleration [need testing] [todo]</summary>
+
+### Fixing graphical glitches with GPU acceleration
+
+[todo]
+
+- Can be fixed by setting DVMT to 64 mb, but 
+##  IT WILL CAUSE YOUR SYSTEM TO KERNEL PANIC WHEN OPENING APPS THAT UTILIZE GPU ACCELERATION LIKE DISCORD!!!
+ 
+</details>
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Continuity Features
+
+- you cant lol, the wireless chip is soldered on
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Audio
+
+**For anybody looking to get audio working, here are a some bits of info you can use:**
+
+- Intel DSP discussion:
+  - https://github.com/acidanthera/bugtracker/issues/2084
+- If you are willing to contribute, make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
+- C425 is not HD audio, it uses an Intel DSP (branded as Smart Sound) and is i2s from that coprocessor
+- google src code for max98927 (for chromeOS)
+  - [google src code for max98927](https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/drivers/sound/max98927.c)
+- Soundflower, a simple template that can be used for the driver
+  - [github.com/RogueAmoeba/Soundflower-Original](https://github.com/RogueAmoeba/Soundflower-Original)
+  - More info here: [cdn.discordapp.com](https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png)
+- Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
+  - [github.com/coolstar/sklhdaudbus](https://github.com/coolstar/sklhdaudbus)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -206,12 +291,13 @@ You can find a list of what I used [here.](https://github.com/meghan06/Chromeboo
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
-- Please report any broken links in issues. Half this guide was written while I high. /s
+- Please report any broken links in issues. Half this guide was written while I was high. /s
+- **USB ports will ONLY work with SSDT-USB-Reset** 
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## macOS Ventura
+## 3. macOS Ventura
 #### Only for those who want macOS Ventura. 
 
 Before we get started, you should know the following:
@@ -261,77 +347,6 @@ Note: For Windows only, not sure how it's like on Linux.
 
 Do note that Heliport will report no WiFi upon logging in but keep in mind you actually do thanks to the edits we just made. :) 
 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Security 
-- Please read [Security.md](SECURITY.md) as it provides in-depth information on sanitizing your serials, disk encryption, and more.
-- **If you discover a vulnerability, please refer to [Security.md](SECURITY.md).** 
-
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### neofetch
-for those that want to install neofetch but don't want to download Xcode / homebrew.
-
-
-1. Download the latest release of [neofetch](https://github.com/dylanaraps/neofetch/releases/tag/7.1.0) and extract it's contents.
-2. Delete everything except for `neofetch`.
-3. Copy that file to `Users/yourname/`, with `yourname` being your account name.
-4. Open terminal
-5. Type `nano ~/.zshrc`
-6. Then, paste/type `alias neofetch=./neofetch` in nano. 
-7. Close `nano`, via `CTRL+X`. Make sure to select `Y` and save it.
-8. Restart terminal.
-9. Test the changes you just made by typing `neofetch` in your terminal and pressing enter.
-
-
-#### A few things to keep in mind:
-- This only works when you're cd'd into your home directory (`User/name`). 
-- If you want to fix this, it's simple; replace `alias neofetch=./neofetch` with `alias neofetch=cd Users/yourname; ./neofetch`, replacing `yourname` with the name of your user.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### SD Card Support
-
-[todo] need testing 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Fixing graphical issues with GPU acceleration
-
-[todo]
-
-- Can be fixed by setting DVMT to 64 mb, but 
-####  IT WILL CAUSE YOUR SYSTEM TO KERNEL PANIC WHEN OPENING APPS THAT UTILIZE GPU ACCELERATION LIKE DISCORD!!!
- 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Fixing Continuity Features
-
-- you cant lol, the wireless chip is soldered on
-
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Audio
-
-**For anybody looking to get audio working, here are a some bits of info you can use:**
-
-- Intel DSP discussion:
-  - https://github.com/acidanthera/bugtracker/issues/2084
-- If you are willing to contribute, make a template driver that has 2 inputs + output endpoints that gets a DMA buffer + position callback from macOS
-- C425 is not HD audio, it uses an Intel DSP (branded as Smart Sound) and is i2s from that coprocessor
-- google src code for max98927 (for chromeOS)
-  - [google src code for max98927](https://chromium.googlesource.com/chromiumos/platform/depthcharge/+/refs/heads/master/src/drivers/sound/max98927.c)
-- Soundflower, a simple template that can be used for the driver
-  - [github.com/RogueAmoeba/Soundflower-Original](https://github.com/RogueAmoeba/Soundflower-Original)
-  - More info here: [cdn.discordapp.com](https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png)
-- Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
-  - [github.com/coolstar/sklhdaudbus](https://github.com/coolstar/sklhdaudbus)
-
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Credits
@@ -340,6 +355,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 - **olm3ca** 
 - **CoolStar** 
 - **acidanthera** 
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Last Updated: 03/14/2023
