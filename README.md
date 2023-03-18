@@ -147,7 +147,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `ACPI -> Booter` and the extra iGPU `boot-args`.
 
-_**[CRUCIAL]**_ Pay _very_ close attention to the following 11 steps, if you miss one your Chromebook will lose functionally and might not even boot.
+_**[CRUCIAL]**_ Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
