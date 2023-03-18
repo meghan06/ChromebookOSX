@@ -23,7 +23,6 @@
   - [Fixed Issues](#fixed-issues)
 - [**1. Installation**](#1-installation)
    - [Steps required for proper functioning](#these-steps-are-required-for-proper-functioning)
-   - [Items not mentioned in the Dortania guide that you need to do:](#items-not-mentioned-in-the-dortania-guide-that-you-need-to-do) 
    - [Kext Folder](#kexts)
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
@@ -48,6 +47,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | macOS Ventura | eMMC Storage |
 |------------|-------------|
 |<img src="Resources/Screenshot.png" width="960">|<img src="Resources/Device Info.png" width="960">|
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## Current Status
@@ -70,8 +70,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`.                                |    
-| Recovery key combos| Working              | Working OOTB with coreboot.                                                                   |
-| Continuity Features | Not Working         | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
+| Recovery Combos    | Working              | Working OOTB with coreboot.                                                                   |
+| Continuity         | Not Working         | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
                                                                                     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
@@ -145,39 +145,39 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-### **These steps are **required** for proper functioning.**
-
-
 _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `ACPI -> Booter` and the extra iGPU `boot-args`.
 
-
-1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
-2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`.
-3. **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` if you want working a working hack. You MUST change this. It is FALSE by DEFAULT.**
-4. Switch the regular VoodoolPS2 with this [custom build](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps 
-   - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
-      * This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked in Step 3.
-5. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the resulting SSDT file (`SSDT-HPET`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`, which will resolve the issue of eMMC not being detected by macOS (which is caused by a bug with EmeraldSDHC).
-6. Map your USB ports via USBToolBox in Windows before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
-7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-8. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports. 
-9. Install macOS and enjoy!
-
-Note: More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
-
-Note for **Step 4**: This may have been resolved in a recent update, but I have not yet confirmed. Try booting without the IRQ patches mentioned earlier, and if your eMMC drive is not recognized in Disk Utility, you will need to add those patches. If the drive still fails to appear, there may be a mistake in one of the preceding steps, or your eMMC drive may not be supported at this time.
+_**[CRUCIAL]**_ Pay _very_ close attention to the following 11 steps, if you miss one your Chromebook will lose functionally and might not even boot.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Items not mentioned in the Dortania guide that you **need** to do:
+### **These steps are **required** for proper functioning.**
 
-   you will regret it later if you don't
-   1. Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist` setup. 
-   2. If you haven't already, in your `boot-args`, (`NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`) add `igfxrpsc=1` and `-igfxnotelemetryload` for iGPU support. No acceleration if this isn't in your boot-args.  
-   3. Despite what the guide says, your SMBIOS should be `MacBookAir8,1`. 
-      - If you choose to use `MacBook10,1`, you will NOT have Low Battery Mode.
-   4. `EmeraldSDHC.kext` and `SSDT-HPET.aml` are required for functional eMMC. [EmeraldSDHC download is here](https://github.com/acidanthera/EmeraldSDHC/releases) 
-    
+1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
+2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`.
+3. **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` You MUST change this. It is FALSE by DEFAULT.** It should look something like this in your `config.plist` when done correctly:
+   | ProtectMemoryRegions | Boolean | True |
+   | -------------------- | ------- | ------ |
+4. Under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`, make the following modifications:
+   | AAPL,ig-platform-id  | data | 0000C087 |
+   | -------------------- | ---- | -------- |
+   | device-id            | data | C0870000 |
+     
+   **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
+5. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
+6. **Set your SMBIOS as MacBookAir8,1**. Ignore what the guide tells you to use, MacBookAir8,1 works better with our laptop.
+   - If you choose to use `MacBook10,1` which also works, you will NOT have Low Battery Mode.
+7. Switch the VoodoolPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
+   - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). 
+      * This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked above.
+8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
+9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized my macOS.
+10. Map your USB ports via USBToolBox before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
+12. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports. 
+13. Install macOS and enjoy!
+
+More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Kext's.
@@ -225,6 +225,17 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 - If you want to fix this, it's simple; replace `alias neofetch=./neofetch` with `alias neofetch=cd Users/yourname; ./neofetch`, replacing `yourname` with the name of your user.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Maintenance through updates:
+
+-
+-
+-
+-
+-
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 <details>
 <summary>Fixing SD Cards [todo]</summary>
