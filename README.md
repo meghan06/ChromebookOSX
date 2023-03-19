@@ -71,7 +71,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`.                                |    
 | Recovery Combos    | Working              | Working OOTB with coreboot.                                                                   |
-| Continuity         | Not Working         | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
+| Continuity         | Not Working          | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
                                                                                     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
@@ -184,14 +184,35 @@ More information about `ProtectMemoryReigons` can be found [here](https://dortan
 
 ### Kext's.
 
-You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/Kext%20Folder.png)
+```
+BlueToolFixup.kext
+BrightnessKeys.kext
+EmeraldSDHC.kext
+IntelBluetoothFirmware.kext
+IntelBTPatcher.kext
+itlwm.kext
+Lilu.kext
+SMCBatteryManager.kext
+SMCProcessor.kext
+USBMap.kext
+VirtualSMC.kext
+VoodooI2C.kext
+VoodooI2CELAN.kext
+VoodooPS2Controller.kext
+WhateverGreen.kext
+```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### ACPI Folder
-**Note: OUTDATED, DO NOT USE THIS**
 
-~~You can find a list of what I used [here.](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/ACPI%20Folder.png)~~
+```
+SSDT-EC-USBX-LAPTOP.aml
+SSDT-HPET.aml
+SSDT-KBBL.aml
+SSDT-PNLF.aml
+SSDT-USB-Reset.aml
+```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
