@@ -97,7 +97,7 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 
 ### ⚠️ Disclaimer ⚠️
 
-**By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [above disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
+**By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
 **If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). This license, which is the GNU General Public License v3.0, requires that you abide by certain guidelines, such as disclosing any changes you make, revealing the source, and using the same license with no warranties whatsoever.**
