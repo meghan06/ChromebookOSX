@@ -1,13 +1,13 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
-```
+
   ____ _                              _                 _     ___  ______  __
  / ___| |__  _ __ ___  _ __ ___   ___| |__   ___   ___ | | __/ _ \/ ___\ \/ /
 | |   | '_ \| '__/ _ \| '_ ` _ \ / _ \ '_ \ / _ \ / _ \| |/ / | | \___ \\  / 
 | |___| | | | | | (_) | | | | | |  __/ |_) | (_) | (_) |   <| |_| |___) /  \ 
  \____|_| |_|_|  \___/|_| |_| |_|\___|_.__/ \___/ \___/|_|\_\\___/|____/_/\_\
 
-```
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -61,8 +61,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ `VoodoolPS2-Chromebook.kext`.                                  |           
-| Keyboard & Remaps  | Working              | With `VoodoolPS2-Chromebook.kext`.                                                            |
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ the custom `VoodoolPS2.kext`.                                  |           
+| Keyboard & Remaps  | Working              | With the custom `VoodoolPS2.kext`.                                                            |
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
