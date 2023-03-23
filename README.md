@@ -23,7 +23,7 @@
   - [Current Issues](#current-issues)
   - [Fixed Issues](#fixed-issues)
 - [**1. Installation**](#1-installation)
-   - [Steps required for proper functioning](#these-steps-are-required-for-proper-functioning)
+   - [Required Steps](#these-steps-are-required-for-proper-functioning)
    - [Kext Folder](#kexts)
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
@@ -171,7 +171,7 @@ _**[CRUCIAL]**_ Pay _very_ close attention to the following steps, if you miss *
    - If you choose to use `MacBook10,1` which also works, you will NOT have Low Battery Mode.
 7. Switch the VoodoolPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
-      * This SSDT _**ONLY**_ works with the custom VoodoolPS2 version linked above.
+      * This SSDT _**ONLY**_ works with the custom VoodoolPS2 linked above.
 8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
 9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized my macOS.
 10. Map your USB ports via USBToolBox before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
@@ -212,7 +212,7 @@ SSDT-EC-USBX-LAPTOP.aml
 SSDT-HPET.aml
 SSDT-KBBL.aml
 SSDT-PNLF.aml
-SSDT-USB-Reset.aml
+SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
 ```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -289,7 +289,7 @@ some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
 
 ### Continuity Features
 
-- you cant lol, the wireless chip is soldered on
+- you cant, the wireless chip is soldered on. i should 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -313,7 +313,7 @@ some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
 
 ### Misc. Information
 
-- *When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
+- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
 - Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - `itlwm` is more stable & faster than `AirportItlwm`
