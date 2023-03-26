@@ -150,7 +150,7 @@ _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Do
 
 _**[CRUCIAL]**_ Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
-_**Note**_ Those who are installing to an external disk like a USB drive can skip steps 8 and 9.
+_**[NOTE]**_ Those who are installing to an external disk like a USB drive can skip steps 8 and 9.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
