@@ -91,9 +91,9 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
   - 0.8.6
   - 0.8.7
   - 0.8.8
+  - 0.8.9
+  - 0.9.0
   
- OpenCore 0.8.9 and above has not been tested by me, although it should work just fine.
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### ⚠️ Disclaimer ⚠️
@@ -101,7 +101,7 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
-**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). This license, which is the GNU General Public License v3.0, requires that you abide by certain guidelines, such as disclosing any changes you make, revealing the source, and using the same license with no warranties whatsoever.**
+**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). This license requires that you abide by certain guidelines, with no warranties whatsoever.**
 
 TL:DR: If you fuck up and break something, **it's not my fault.** 
 
@@ -213,6 +213,7 @@ SSDT-HPET.aml
 SSDT-KBBL.aml
 SSDT-PNLF.aml
 SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
+  - Note: This is not needed if using USBToolBox
 ```
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -327,7 +328,8 @@ some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
 - Please report any broken links in issues. Half this guide was written while I was high. /s
-- **USB ports will ONLY work with SSDT-USB-Reset** 
+- **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
+  - Note: This is not needed if using USBToolBox
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
