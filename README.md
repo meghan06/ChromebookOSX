@@ -150,6 +150,8 @@ _**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Do
 
 _**[CRUCIAL]**_ Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
+_**Note**_ Those who are installing to an external disk like a USB drive can skip steps 8 and 9.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### **These steps are **required** for proper functioning.**
@@ -195,10 +197,8 @@ itlwm.kext
 Lilu.kext
 SMCBatteryManager.kext
 SMCProcessor.kext
-USBMap.kext
-VirtualSMC.kext
-VoodooI2C.kext
-VoodooI2CELAN.kext
+UTBMap.kext
+USBToolBox.kext
 VoodooPS2Controller.kext
 WhateverGreen.kext
 ```
@@ -251,46 +251,9 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Maintenance through updates:
-
--
--
--
--
--
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-<details>
-<summary>Fixing SD Cards [todo]</summary>
-
-### SD Card Support
-
-**todo, need testing**
-some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
-
-</details>
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-<details>
-<summary>Fixing graphical glitches with iGPU acceleration [need testing] [todo]</summary>
-
-### Fixing graphical glitches with GPU acceleration
-
-[todo]
-
-- Can be fixed by setting DVMT to 64 mb, but 
-##  IT WILL CAUSE YOUR SYSTEM TO KERNEL PANIC WHEN OPENING APPS THAT UTILIZE GPU ACCELERATION LIKE DISCORD!!!
- 
-</details>
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ### Continuity Features
 
-- you cant, the wireless chip is soldered on. i should 
+- the wireless chip is soldered on, you can't replace it. :(
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -404,4 +367,4 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 ² The contents of this guide have only been tested on an C425 (LEONA), portions of the guide may not work on your C433 or C434. Feel free to submit a PR to clarify. 
 
-³ USBToolBox is the reccomended USB mapping tool
+³ USBToolBox is the reccomended USB mapping tool.
