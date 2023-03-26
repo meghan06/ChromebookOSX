@@ -174,7 +174,7 @@ _**[CRUCIAL]**_ Pay _very_ close attention to the following steps, if you miss *
       * This SSDT _**ONLY**_ works with the custom VoodoolPS2 linked above.
 8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
 9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized my macOS.
-10. Map your USB ports via USBToolBox before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
+10. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 12. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
 13. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
 14. Install macOS and enjoy!
@@ -316,12 +316,12 @@ some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
 
 - When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
 - Format the drive as `APFS`
-- Map your USB ports prior to installing macOS for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
+- Map your USB ports prior to installing macOS³ for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - `itlwm` is more stable & faster than `AirportItlwm`
 - You might have DRM issues, there's no fix for this. :(
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
-- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps. You can also use CPUFriend to tweak power settings but it might break sleep.
+- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps. You can also use CPUFriend to tweak power settings but you may or may not cause your hack to die on boot.
 - eMMC will come up as an external drive in the boot picker since eMMC is just an embedded SD card. Nothing you can do about it.
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
@@ -330,6 +330,7 @@ some users report success with BigSurSDXC.kext and SD Card.app, **untested**.
 - Please report any broken links in issues. Half this guide was written while I was high. /s
 - **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
   - Note: This is not needed if using USBToolBox
+
 #### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -402,3 +403,5 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 ¹ C434 and C433's need additional kext(s) for touchscreen to function.
 
 ² The contents of this guide have only been tested on an C425 (LEONA), portions of the guide may not work on your C433 or C434. Feel free to submit a PR to clarify. 
+
+³ USBToolBox is the reccomended USB mapping tool
