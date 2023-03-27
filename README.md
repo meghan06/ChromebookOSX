@@ -272,6 +272,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
   - More info here: [cdn.discordapp.com](https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png)
 - Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
   - [github.com/coolstar/sklhdaudbus](https://github.com/coolstar/sklhdaudbus)
+- DMIC uses DA7219 as the mic array, max98927 as the audio codec.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -323,6 +324,7 @@ Note: these steps can be done after updating, you just won't have WiFi. It is re
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Preparations for installing Ventura directly:
+
 Note: For Windows only, not sure how it's like on Linux.
 1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 2. Open up your kext folder, and locate `itlwm.kext`. 
@@ -335,7 +337,6 @@ Note: For Windows only, not sure how it's like on Linux.
 
 ### Fixing WiFi on Ventura 
 **Only for those that have macOS installed but haven't edited their `Info.plist`.**
-
 
 1. Mount your EFI
 2. Open up your kext folder, and locate `itlwm.kext`. 
