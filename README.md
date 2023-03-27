@@ -15,8 +15,8 @@
 ## Table of Contents
 - [Current Status](#current-status)
 - [Versions Tested](#versions-tested)
-  - [macOS](#macos-versions)
-  - [OpenCore](#opencore-versions)
+  - [macOS](#macos)
+  - [OpenCore](#opencore)
 - [**Disclaimer**](#%EF%B8%8F-disclaimer-%EF%B8%8F)
 - [Requirements](#requirements)
 - [Issues](#issues)
@@ -28,8 +28,6 @@
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
    - [neofetch](#neofetch)
-   - [Fixing SD Card](#sd-card-support) [incomplete]
-   - [Fixing Graphical Glitches](#fixing-graphical-glitches-with-gpu-acceleration) [incomplete]
    - [Continuity](#continuity-features)
    - [**Audio**](#audio)
    - [Misc. Information](#misc-information)
@@ -78,17 +76,18 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
 
-#### macOS Versions:
+#### macOS:
+- macOS Lion (10.7) 
 - [macOS Mojave (10.14)](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
 - [macOS Catalina (10.15)](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
-- [macOS Monterey (12)](https://media.discordapp.net/attachments/1051619981642706947/1078426568319320085/image.png?width=1119&height=629)
+- [macOS Monterey (12)](https://cdn.discordapp.com/attachments/1084252068711247965/1089784117572423690/Screen_Shot_2023-03-26_at_10.31.51_PM.png)
 - [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
 
 
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
-#### OpenCore Versions:
+#### OpenCore:
   - 0.8.6
   - 0.8.7
   - 0.8.8
@@ -99,10 +98,11 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 
 ### ⚠️ Disclaimer ⚠️
 
-**By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
+ **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
 **The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
-**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). This license requires that you abide by certain guidelines, with no warranties whatsoever.**
+
+**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). The license requires that you abide by certain guidelines with no warranties whatsoever.**
 
 TL:DR: If you fuck up and break something, **it's not my fault.** 
 
@@ -120,6 +120,8 @@ Before you start, you'll need to have the following items to complete the proces
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Issues
+> **Note**: Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)
+
 
 #### Current Issues
 - https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help pls] 
@@ -136,7 +138,6 @@ Before you start, you'll need to have the following items to complete the proces
   - Fixed by reinstalling.
 - ~~Kernel panic when shutting down / restarting~~
   - Fixed by setting `ProtectMemoryReigons` to `TRUE`.
-- **Report other issues in [Issues](https://github.com/meghan06/ChromebookOSX/issues)**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -146,12 +147,11 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+> **Warning** Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `ACPI -> Booter` and the extra iGPU `boot-args`.
 
-_**[CRUCIAL]**_ Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `ACPI -> Booter` and the extra iGPU `boot-args`.
+> **Warning** Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
-_**[CRUCIAL]**_ Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
-
-_**[NOTE]**_ Those who are installing to an external disk like a USB drive can skip steps 8 and 9.
+> **Note**: Those who are installing to an external disk like a USB drive can skip steps 8 and 9.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -301,7 +301,7 @@ for those that want to install neofetch but don't want to download Xcode / homeb
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 3. macOS Ventura
-#### Only for those who want macOS Ventura. 
+> **Note** Only for those who want macOS Ventura. 
 
 Before we get started, you should know the following:
 - **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
@@ -312,7 +312,7 @@ With that, lets get started!
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### For those updating:
-Note: these steps can be done after updating, you just won't have WiFi. It is recommended to follow the steps below **before** updating for the least amount of pain and suffering.
+> **Note**: these steps can be done after updating, you just won't have WiFi. It is recommended to follow the steps below **before** updating for the least amount of pain and suffering.
 
 1. Mount your EFI using corpnewt's MountEFI.
 2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
@@ -326,7 +326,8 @@ Note: these steps can be done after updating, you just won't have WiFi. It is re
 
 ### Preparations for installing Ventura directly:
 
-Note: For Windows only, not sure how it's like on Linux.
+> **Note**: For Windows and Linux users only.
+
 1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 2. Open up your kext folder, and locate `itlwm.kext`. 
 3. Open it, and find `Info.plist`.
@@ -337,7 +338,8 @@ Note: For Windows only, not sure how it's like on Linux.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Fixing WiFi on Ventura 
-**Only for those that have macOS installed but haven't edited their `Info.plist`.**
+
+> **Note** **Only for those that have macOS installed but haven't edited their `Info.plist`.**
 
 1. Mount your EFI
 2. Open up your kext folder, and locate `itlwm.kext`. 
