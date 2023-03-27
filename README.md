@@ -124,18 +124,13 @@ Before you start, you'll need to have the following items to complete the proces
 
 
 #### Current Issues
-- https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help pls] 
-
+- https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help needed] 
+- Render issues / blank screen / green boxes as images / text not appearing on Electron and Chromium based apps. [help needed] 
+  - Disable GPU acceleration / hardware acceleration in the app settings.
 
 #### Fixed Issues
-- ~~Random freezing in Safari tabs (mostly video playback tabs like YouTube)~~ 
-  - Disable `Optimized video streaming while on battery`
-- ~~Random render issues on Discord and Spotify.~~
-  - To fix this, disable GPU acceleration in app settings.
 - ~~Weird lock ups randomly.~~
-  - Fixed.
 - ~~Signout not working~~
-  - Fixed by reinstalling.
 - ~~Kernel panic when shutting down / restarting~~
   - Fixed by setting `ProtectMemoryReigons` to `TRUE`.
 
@@ -368,7 +363,7 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#### Last Updated: 03/14/2023
+#### Last Updated: 03/26/2023
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
