@@ -161,20 +161,25 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`. 
 3. Re-visit this guide when you're done setting up your EFI. There are a few things we need to tweak to ensure our Chromebook works with macOS. Skipping these steps will result in a **very** broken hack.
 4. **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` You MUST change this. It is FALSE by DEFAULT.** It should look something like this in your `config.plist` when done correctly:
-   | ProtectMemoryRegions | Boolean | True |
-   | -------------------- | ------- | ------ |
-4. Under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`, make the following modifications:
-   | AAPL,ig-platform-id  | data | 0000C087 |
+
+   | Quirk                | Type | Value    |
    | -------------------- | ---- | -------- |
+   | ProtectMemoryRegions | Boolean | True  |
+
+4. Under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`, make the following modifications:
+  
+   | Key                  | Type | Value    |
+   | -------------------- | ---- | -------- |
+   | AAPL,ig-platform-id  | data | 0000C087 |
    | device-id            | data | C0870000 |
      
-   **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
+   > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
 5. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
 6. **Set your SMBIOS as MacBookAir8,1**. Ignore what the guide tells you to use, MacBookAir8,1 works better with our laptop.
-   - If you choose to use `MacBook10,1` which also works, you will NOT have Low Battery Mode.
+     > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
 7. Switch the VoodoolPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
-      * This SSDT _**ONLY**_ works with the custom VoodoolPS2 linked above.
+     > **Note**: This SSDT only works with the custom VoodoolPS2 linked above.
 8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
 9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized my macOS.
 10. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
@@ -182,7 +187,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 13. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
 14. Install macOS and enjoy!
 
-More information about `ProtectMemoryReigons` can be found [here](https://dortania.github.io/docs/latest/Configuration.html).
+> **Note**: More information about specific quirks can be found [here.](https://dortania.github.io/docs/latest/Configuration.html)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
