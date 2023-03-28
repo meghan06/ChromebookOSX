@@ -1,4 +1,4 @@
-#This file is a vauge guide for flashing custom coreboot on linux. dont follow this, you might end up with a paperweight
+# This file is a vauge guide for flashing custom coreboot on linux. dont follow this, you might end up with a paperweight
 
 
 
