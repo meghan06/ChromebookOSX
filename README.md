@@ -98,11 +98,11 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 
 ### ⚠️ Disclaimer ⚠️
 
- **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
+ > **Warning**:  **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
-**The instructions outlined in this document have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage resulting from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the software contained in this repository.**
+ **The instructions outlined in this [GitHub repo](https://github.com/meghan06/ChromebookOSX) have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage caused from following or disregarding these instructions and make no promises regarding the reliability or efficiency of the material contained nad/or in this repository.**
 
-**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). The license requires that you abide by certain guidelines with no warranties whatsoever.**
+**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). The license requires that you abide by    certain guidelines with no warranties whatsoever.**
 
 TL:DR: If you fuck up and break something, **it's not my fault.** 
 
