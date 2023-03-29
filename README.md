@@ -60,11 +60,11 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ the custom `VoodoolPS2.kext`.                                  |           
-| Keyboard & Remaps  | Working              | With the custom `VoodoolPS2.kext`.                                                            |
+| Keyboard backlight | Working              | With custom SSDT patching.                                                                    |           
+| Keyboard & Remaps  | Working              | With custom SSDT patching.                                                                    |
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
-| Headphone Jack     | Not working          | Unsupported codec
+| Headphone Jack     | Not working          | Unsupported codec                                                                             |
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
@@ -72,8 +72,26 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`.                                |    
 | Recovery Combos    | Working              | Working OOTB with coreboot.                                                                   |
 | Continuity         | Not Working          | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
-                                                                                    
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Specs
+
+- CPU: Intel m3-8100Y /i5-8200Y 
+- IGPU: Intel UHD 615
+- RAM: 4GB / 8GB 1867MHz LPDDR3
+- STORAGE: 128GB / 64GB / 32GB eMMC
+- WLAN: Intel Wireless 7265
+- KEYBOARD: PS2
+- TRACKPAD: ELAN I2C
+- MICROPHONE: DMIC DA7219
+- SPEAKERS: INTEL DSP MAX98927
+
+
+> **Note**: Mic, headphone jack, and internal speakers all do not work with macOS. 
+Unless you want to write drivers for us ;)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Versions Tested
 
 #### macOS:
@@ -280,7 +298,6 @@ for those that want to install neofetch but don't want to download Xcode / homeb
   - More info here: [cdn.discordapp.com](https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png)
 - Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
   - [github.com/coolstar/sklhdaudbus](https://github.com/coolstar/sklhdaudbus)
-- DMIC uses DA7219 as the mic array, max98927 as the audio codec.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
