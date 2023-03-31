@@ -155,11 +155,13 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`. 
 3. Re-visit this guide when you're done setting up your EFI. There are a few things we need to tweak to ensure our Chromebook works with macOS. Skipping these steps will result in a **very** broken hack.
-4. **In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE` You MUST change this. It is FALSE by DEFAULT.** It should look something like this in your `config.plist` when done correctly:
+4. In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE`. It should look something like this in your `config.plist` when done correctly:
 
    | Quirk                | Type | Value    |
    | -------------------- | ---- | -------- |
    | ProtectMemoryRegions | Boolean | True  |
+   
+   > **Warning** **This must be enabled.**
 
 4. Under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`, make the following modifications:
   
