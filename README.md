@@ -77,7 +77,6 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 ### Versions Tested
 
 #### macOS:
-- macOS Lion (10.7) 
 - [macOS Mojave (10.14)](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
 - [macOS Catalina (10.15)](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
