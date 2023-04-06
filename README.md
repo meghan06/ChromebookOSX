@@ -60,8 +60,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ the custom `VoodoolPS2.kext`.                                  |           
-| Keyboard & Remaps  | Working              | With the custom `VoodoolPS2.kext`.                                                            |
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ the custom `VoodooPS2.kext`.                                  |           
+| Keyboard & Remaps  | Working              | With the custom `VoodooPS2.kext`.                                                            |
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
 | Headphone Jack     | Not working          | Unsupported codec
@@ -173,11 +173,11 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 5. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
 6. **Set your SMBIOS as MacBookAir8,1**. Ignore what the guide tells you to use, MacBookAir8,1 works better with our laptop.
      > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
-7. Switch the VoodoolPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
+7. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
-     > **Note**: This SSDT only works with the custom VoodoolPS2 linked above.
+     > **Note**: This SSDT only works with the custom VoodooPS2 linked above.
 8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
-9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized my macOS.
+9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized by macOS.
 10. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 12. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
 13. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
