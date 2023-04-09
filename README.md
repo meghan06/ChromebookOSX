@@ -1,5 +1,6 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
+[![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Status](https://user-images.githubusercontent.com/77316348/230705808-40c7ba6b-9b4f-41fb-8c40-8e7db3b97ad0.png)](https://github.com/meghan06/ChromebookOSX)
 ```
   ____ _                              _                 _     ___  ______  __
  / ___| |__  _ __ ___  _ __ ___   ___| |__   ___   ___ | | __/ _ \/ ___\ \/ /
