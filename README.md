@@ -28,7 +28,6 @@
    - [Kext Folder](#kexts)
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
-   - [neofetch](#neofetch)
    - [Continuity](#continuity-features)
    - [**Audio**](#audio)
    - [Misc. Information](#misc-information)
@@ -78,6 +77,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 ### Versions Tested
 
 #### macOS:
+Note: Image opens in new tab, either Reddit or Discord.
+
 - [macOS Mojave (10.14)](https://preview.redd.it/du0a3cftqw7a1.png?width=1920&format=png&auto=webp&v=enabled&s=ac6d75fcfe423f12fe27aae947f89a55c00f7590)
 - [macOS Catalina (10.15)](https://media.discordapp.net/attachments/302485086060937219/1064325342787026955/image.png?width=1119&height=629)
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
@@ -233,27 +234,6 @@ SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### neofetch
-for those that want to install neofetch but don't want to download Xcode / homebrew.
-
-
-1. Download the latest release of [neofetch](https://github.com/dylanaraps/neofetch/releases/tag/7.1.0) and extract it's contents.
-2. Delete everything except for `neofetch`.
-3. Copy that file to `Users/yourname/`, with `yourname` being your account name.
-4. Open Terminal.
-5. Type `nano ~/.zshrc`
-6. Then, paste/type `alias neofetch=./neofetch` in nano. 
-7. Close `nano`, via `CTRL+X`. Make sure to select `Y` and save it.
-8. Restart terminal.
-9. Test the changes you just made by typing `neofetch` in your terminal and pressing enter.
-
-
-#### A few things to keep in mind:
-- This only works when you're cd'd into your home directory (`User/name`). 
-- If you want to fix this, it's simple; replace `alias neofetch=./neofetch` with `alias neofetch=cd Users/yourname; ./neofetch`, replacing `yourname` with the name of your user.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ### Continuity Features
 
 - the wireless chip is soldered on, you can't replace it. :(
@@ -336,7 +316,8 @@ With that, lets get started!
 4. Open ProperTree, navigate to where your `Info.plist` is, and open it.
 5. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI details. Save and close when done.
 7. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
-8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi. If you are able to install macOS, then you have not fucked up.
+8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi. If you are able to install macOS, then you have not messed up.
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Fixing WiFi on Ventura 
@@ -356,18 +337,7 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Credits
-- **Goldfish64** for fixing the iGPU init hang on 10.15+ along with the eMMC driver  
-- **CorpNewt** 
-- **olm3ca** 
-- **CoolStar** 
-- **acidanthera** 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#### Last Updated: 03/26/2023
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
+other things:
 
 ¹ C434 and C433's need additional kext(s) for touchscreen to function.
 
