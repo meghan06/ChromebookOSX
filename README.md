@@ -147,7 +147,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 > **Warning** Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
-> **Note**: Those who are installing to an external disk like a USB drive can skip steps 8 and 9.
+> **Note**: Those who are installing to an external disk like a USB drive can skip steps 9 and 10.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
