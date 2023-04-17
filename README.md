@@ -101,11 +101,9 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 
  > **Warning**:  **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
- **The instructions outlined in this [GitHub repo](https://github.com/meghan06/ChromebookOSX) have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage caused from following or disregarding these instructions. Additionally, I make no assurances concerning the dependability or efficacy of the materials referenced in this repository.**
+The instructions outlined in this [GitHub repo](https://github.com/meghan06/ChromebookOSX) have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage caused from following or disregarding these instructions. I make no assurances concerning the dependability or efficacy of the materials referenced in this repository.
 
-**If you intend to use my repository as part of your own project, please refer to [LICENSE.md](LICENSE.md). The license requires that you abide by    certain guidelines with no warranties whatsoever.**
-
-TL:DR: If you fuck up and break something, **it's not my fault.** 
+TL:DR: If you fuck up and break something, it's not my fault.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -147,7 +145,11 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 > **Warning** Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
+> **Note**: ASUS C434 users will need [VoodooI2CHID](https://github.com/VoodooI2C/VoodooI2C/releases/).kext for touchscreen to function. It is bundled with VoodooI2C and VoodooI2CELAN
+
 > **Note**: Those who are installing to an external disk like a USB drive can skip steps 9 and 10.
+
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -339,8 +341,8 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 other things:
 
-¹ C434 and C433's need additional kext(s) for touchscreen to function.
+¹ ASUS C434 users will need VoodooI2CHID.kext for touchscreen to function.
 
-² The contents of this guide have only been tested on an C425 (LEONA), portions of the guide may not work on your C433 or C434. Feel free to submit a PR to clarify. 
+² ASUS C425 and C434 are both tested, C433 not yet.
 
 ³ USBToolBox is the reccomended USB mapping tool.
