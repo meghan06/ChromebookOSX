@@ -18,7 +18,7 @@
 - [Versions Tested](#versions-tested)
   - [macOS](#macos)
   - [OpenCore](#opencore)
-- [**Disclaimer**](#%EF%B8%8F-disclaimer-%EF%B8%8F)
+- [**Disclaimer**](#%EF%B8%8F-disclaimer)
 - [Requirements](#requirements)
 - [Issues](#issues)
   - [Current Issues](#current-issues)
@@ -35,9 +35,6 @@
   - [For those updating](#for-those-updating)
   - [For those installing directly](#preparations-for-installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
-- [Credits](#credits)
-
-
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -97,7 +94,7 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
   
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### ⚠️ Disclaimer ⚠️
+### ⚠️ Disclaimer 
 
  > **Warning**:  **By continuing, you acknowledge that you have read and understood the contents of [LICENSE.md](LICENSE.md) and the [disclaimer](#%EF%B8%8F-disclaimer-%EF%B8%8F), and consent to their terms.**
 
@@ -111,7 +108,7 @@ TL:DR: If you fuck up and break something, it's not my fault.
 
 Before you start, you'll need to have the following items to complete the process:
 
-- **An understanding that this process has the potential to damage / brick your device, potentially causing it to become forever inoperable.**
+- **An understanding that this process has the potential to damage and/or brick your device, potentially causing it to become inoperable.**
 - An external storage device (can range from a SD card to a USB Disk / Drive) for creating the installer USB.  
 - The latest OpenCore version (**at least 0.8.8**) for eMMC boot drive support.   
 - An internet connection.
@@ -145,7 +142,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 > **Warning** Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
-> **Note**: ASUS C434 users will need [VoodooI2CHID](https://github.com/VoodooI2C/VoodooI2C/releases/).kext for touchscreen to function. It is bundled with VoodooI2C and VoodooI2CELAN
+> **Note**: C434 and C433 users (SHYVANA) will need [VoodooI2CHID](https://github.com/VoodooI2C/VoodooI2C/releases/).kext for touchscreen to function. It is bundled with the VoodooI2C package.
 
 > **Note**: Those who are installing to an external disk like a USB drive can skip steps 9 and 10.
 
@@ -181,13 +178,19 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
      > **Note**: This SSDT only works with the custom VoodooPS2 linked above.
 8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
-9. Download corpnewt's SSDTTime, then launch it and select `FixHPET` as the first option. Next, select `'C'` for the default setting, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. This is to ensure eMMC storage is recognized by macOS.
+9. Download corpnewt's SSDTTime, then launch it and select `FixHPET`. Next, select `'C'` for default, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. 
+
+    > **Warning** Steps 9 and 10 are **required** for macOS to recognize the internal eMMC disk. 
+
 10. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 12. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
+
+    > **Note** You must do this or your USB ports won't work. USBToolBox users can skip this step.
+
 13. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
 14. Install macOS and enjoy!
 
-> **Note**: More information about specific quirks can be found [here.](https://dortania.github.io/docs/latest/Configuration.html)
+> **Note**: In depth information about OpenCore can be found [here.](https://dortania.github.io/docs/latest/Configuration.html)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -257,7 +260,7 @@ SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
   - More info here: [cdn.discordapp.com](https://cdn.discordapp.com/attachments/1051619981642706947/1077064200490324019/image.png)
 - Base HD Audio driver for Skylake and up. Used for HDMI Audio support on Windows.
   - [github.com/coolstar/sklhdaudbus](https://github.com/coolstar/sklhdaudbus)
-- DMIC uses DA7219 as the mic array, max98927 as the audio codec.
+- max98927 for speakers, DMIC for mic, and DA7219 for headphone jack.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -276,11 +279,10 @@ SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
 - `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
-- Please report any broken links in issues. Half this guide was written while I was high. /s
 - **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
   - Note: This is not needed if using USBToolBox
 
-#### *Note: The hotkey to show drives **DOES NOT WORK**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
+>**Warning**: The hotkey to show bootdrives **does not work**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -310,7 +312,7 @@ With that, lets get started!
 
 ### Preparations for installing Ventura directly:
 
-> **Note**: For Windows and Linux users only.
+> **Note**: Windows and Linux users only.
 
 1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
 2. Open up your kext folder, and locate `itlwm.kext`. 
@@ -335,14 +337,14 @@ With that, lets get started!
 7. Replace the old `Info.plist` with the one you just edited. 
 
 
-Do note that Heliport will report no WiFi upon logging in but keep in mind you actually do thanks to the edits we just made. :) 
+Do note that Heliport will report no WiFi upon logging in but keep in mind you actually do thanks to the edits we just made. 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 other things:
 
-¹ ASUS C434 users will need VoodooI2CHID.kext for touchscreen to function.
+¹ SHYVANA users (C434 and C433) will need `VoodooI2CHID.kext` for touchscreen to function.
 
-² ASUS C425 and C434 are both tested, C433 not yet.
+² All variants (C425, C433, C434) will work.
 
 ³ USBToolBox is the reccomended USB mapping tool.
