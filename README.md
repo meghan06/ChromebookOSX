@@ -296,7 +296,7 @@ The WLAN chipset is soldered on, you **cannot** replace it.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
 - **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
->**Note**: This is not needed if using USBToolBox
+>**Note**: SSDT-USB-Reset / SSDT-RHUB is not needed if using USBToolBox.
 
 >**Warning**: The hotkey to show bootdrives does not work. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive in OpenCore.
 
