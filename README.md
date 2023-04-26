@@ -28,6 +28,7 @@
    - [Kext Folder](#kexts)
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
+   - [Fixing Battery Life](#battery-life)
    - [Continuity](#continuity-features)
    - [**Audio**](#audio)
    - [Misc. Information](#misc-information)
@@ -147,7 +148,6 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 > **Note**: Those who are installing to an external disk like a USB drive can skip steps 9 and 10.
 
 
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### **These steps are **required** for proper functioning.**
@@ -172,7 +172,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
      
    > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
 5. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-6. **Set your SMBIOS as MacBookAir8,1**. Ignore what the guide tells you to use, MacBookAir8,1 works better with our laptop.
+6. **Set your SMBIOS as MacBookAir8,1**. Ignore what Dortania tells you to use, MacBookAir8,1 works better with our laptop.
      > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
 7. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
@@ -222,8 +222,12 @@ SSDT-HPET.aml
 SSDT-KBBL.aml
 SSDT-PNLF.aml
 SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
-  - Note: This is not needed if using USBToolBox
 ```
+>**Note**: **These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime).**
+
+>**Note**: USBToolBox users don't need `SSDT-USB-RESET` or `SSDT-RHUB`
+
+>**Note**: `SSDT-HPET` and it's `config.plist` patch is only required for eMMC support.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -239,9 +243,21 @@ SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+### Battery Life
+
+Grab the following SSDTs and drag the compiled (`.aml`) into your ACPI folder:
+
+1. [cros**sdxc**disable](https://github.com/meghan06/crossdxcdisable)
+2. [croshdasdisable](https://github.com/meghan06/croshdasdisable)
+
+What these SSDTs do is disable the device from the ACPI level, which in theory saves power and fixes bugs.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### Continuity Features
 
-- the wireless chip is soldered on, you can't replace it. :(
+The WLAN chipset is soldered on, you **cannot** replace it.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -266,39 +282,40 @@ SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
 
 ### Misc. Information
 
-- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and **erase the WHOLE drive**, not just the current partition.
+- When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the entire drive.
 - Format the drive as `APFS`
-- Map your USB ports prior to installing macOS³ for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. If you are using USBToolBox (Mainly Windows users), you need a second kext that goes along with it. [Github repo here](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
-- `itlwm` is more stable & faster than `AirportItlwm`
-- You might have DRM issues, there's no fix for this. :(
+- Map your USB ports prior to installing macOS³ for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. You *will* need a second kext that goes along with it for it to work. [Repo here.](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
+- `itlwm` is more stable & faster than `AirportItlwm` on macOS Ventura. 
+- AppleTV and other DRM protected services may not work.
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
-- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. It's not perfect, but it helps. You can also use CPUFriend to tweak power settings but you may or may not cause your hack to die on boot.
-- eMMC will come up as an external drive in the boot picker since eMMC is just an embedded SD card. Nothing you can do about it.
+- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. You can also use CPUFriend to tweak power settings but it might break stability.
+- eMMC will come up as an external drive in the boot picker since eMMC is just an embedded SD card. 
 - To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
-- `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. Makes no difference.
+- `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled, they make no difference.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
 - **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
-  - Note: This is not needed if using USBToolBox
+>**Note**: This is not needed if using USBToolBox
 
->**Warning**: The hotkey to show bootdrives **does not work**. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive.
+>**Warning**: The hotkey to show bootdrives does not work. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive in OpenCore.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 3. macOS Ventura
-> **Note** Only for those who want macOS Ventura. 
+> **Note** Only for people installing macOS Ventura. 
 
 Before we get started, you should know the following:
-- **Your battery will drain faster on Ventura.** To avoid this, stay on Monterey or older.
+- Ventura will run a little hotter
+- AirportItlwm is very broken on Ventura.
 
+Stay on macOS 12 (Monterey) to avoid these issues.
 
-With that, lets get started!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### For those updating:
-> **Note**: these steps can be done after updating, you just won't have WiFi. It is recommended to follow the steps below **before** updating for the least amount of pain and suffering.
+> **Note**: The steps mentioned can be completed after updating, but you won't have WiFi. Recommended to do before updating.
 
 1. Mount your EFI using corpnewt's MountEFI.
 2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
@@ -320,7 +337,7 @@ With that, lets get started!
 4. Open ProperTree, navigate to where your `Info.plist` is, and open it.
 5. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI details. Save and close when done.
 7. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
-8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi. If you are able to install macOS, then you have not messed up.
+8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -341,7 +358,7 @@ Do note that Heliport will report no WiFi upon logging in but keep in mind you a
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-other things:
+#### Other
 
 ¹ SHYVANA users (C434 and C433) will need `VoodooI2CHID.kext` for touchscreen to function.
 
