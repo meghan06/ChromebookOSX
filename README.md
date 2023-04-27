@@ -34,8 +34,10 @@
    - [Misc. Information](#misc-information)
 - [3. macOS Ventura](#3-macos-ventura)
   - [For those updating](#for-those-updating)
-  - [For those installing directly](#preparations-for-installing-ventura-directly)
+  - [For those installing directly](#installing-ventura-directly)
   - [Fixing WiFI](#fixing-wifi-on-ventura)
+- [4. Misc](#other)
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -185,16 +187,19 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 10. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 12. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
 
-    > **Note** You must do this or your USB ports won't work. USBToolBox users can skip this step.
+    > **Note**: You must do this or your USB ports won't work. USBToolBox users can skip this step.
 
 13. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
+
+    > **Warning**: NEVER do clean snapshots (`ctrl/cmd+shift+r`) after adding your HPET patches, they will be **wiped**. Only do regular snapshots. (`ctrl/cmd+r`)
+
 14. Install macOS and enjoy!
 
 > **Note**: In depth information about OpenCore can be found [here.](https://dortania.github.io/docs/latest/Configuration.html)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Kext's.
+### Kexts
 
 ```
 BlueToolFixup.kext
@@ -210,7 +215,10 @@ UTBMap.kext
 USBToolBox.kext
 VoodooPS2Controller.kext
 WhateverGreen.kext
+
 ```
+
+>**Note**: If you plan to install macOS Big Sur or older (11≥), your Bluetooth kexts will be different. Read the Dortania guide to find out what you need.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -327,7 +335,7 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Preparations for installing Ventura directly:
+### Installing Ventura directly:
 
 > **Note**: Windows and Linux users only.
 
