@@ -65,6 +65,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
 | SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
 | Headphone Jack     | Not working          | Unsupported codec
+| HDMI Audio         | **Untested**         |                                                                                              |                                                                             
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
