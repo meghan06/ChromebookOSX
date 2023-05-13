@@ -60,19 +60,23 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
-| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ the custom `VoodooPS2.kext`.                                  |           
-| Keyboard & Remaps  | Working              | With the custom `VoodooPS2.kext`.                                                            |
-| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and IRQ patching (with SSDTTime)                                       |    
-| SD Card Reader     | Not working          | Coming soon with `EmeraldSDHC.kext`.                                                          |
-| Headphone Jack     | Not working          | Unsupported codec
-| HDMI Audio         | **Untested**         |                                                                                              |                                                                             
+| Keyboard backlight | Working              | With `SSDT-KBBl.aml` _**and**_ the custom `VoodooPS2.kext`.                                   |           
+| Keyboard & Remaps  | Working              | With the custom `VoodooPS2.kext`.                                                             |
+| eMMC Storage       | Working              | With `EmeraldSDHC.kext`and patched HPET                                                       |    
+| SD Card Reader     | Not working          | WIP with `EmeraldSDHC.kext`.                                                                  |
+| Headphone Jack     | Not working          | Unsupported codec                                                                             |
+| HDMI Audio         | **Untested**         |                                                                                               |                                                                             
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
 | Logout / Lock      | Working              | Working OOTB.                                                                                 |
-| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` enabled in `config.plist`.                                |    
-| Recovery Combos    | Working              | Working OOTB with coreboot.                                                                   |
-| Continuity         | Not Working          | Limitation with Intel WiFI cards / `itlwm`.                                                   |                                                                             
+| Shutdown / Restart | Working              | Working with `ProtectMemoryReigons` set to true in `config.plist`.                            |    
+| Continuity         | Not Working          | Limitation with Intel WiFI cards / `itlwm`.                                                   |    
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Is it stable?
+Yes.
                                                                                     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 ### Versions Tested
@@ -104,7 +108,6 @@ macOS 10.1x were tested on external USB drives, so eMMC support may vary. For be
 
 The instructions outlined in this [GitHub repo](https://github.com/meghan06/ChromebookOSX) have the potential to cause permanent harm to your laptop, and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage caused from following or disregarding these instructions. I make no assurances concerning the dependability or efficacy of the materials referenced in this repository.
 
-TL:DR: If you fuck up and break something, it's not my fault.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -142,7 +145,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-> **Warning** Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `ACPI -> Booter` and the extra iGPU `boot-args`.
+> **Warning** Pay _close_ attention to the Chromebook specific parts in the Dortania guide, specifically in `Booter -> Quirks` and the iGPU `boot-args`.
 
 > **Warning** Pay _very_ close attention to the following steps, if you miss **even one**, your Chromebook will lose some functionally and might not even boot.
 
@@ -155,7 +158,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 ### **These steps are **required** for proper functioning.**
 
-1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable cable or temporarily removing the battery (latter is less cumbersome).
+1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable  or temporarily removing the battery, with latter being less cumbersome.
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`. 
 3. Re-visit this guide when you're done setting up your EFI. There are a few things we need to tweak to ensure our Chromebook works with macOS. Skipping these steps will result in a **very** broken hack.
 4. In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE`. It should look something like this in your `config.plist` when done correctly:
@@ -175,7 +178,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
      
    > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
 5. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-6. **Set your SMBIOS as MacBookAir8,1**. Ignore what Dortania tells you to use, MacBookAir8,1 works better with our laptop.
+6. **Set your SMBIOS as MacBookAir8,1**. Ignore what Dortania tells you to use, MacBookAir8,1 works better with our Chromebook.
      > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
 7. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
@@ -208,7 +211,7 @@ BrightnessKeys.kext
 EmeraldSDHC.kext
 IntelBluetoothFirmware.kext
 IntelBTPatcher.kext
-itlwm.kext
+AirportItlwm.kext
 Lilu.kext
 SMCBatteryManager.kext
 SMCProcessor.kext
@@ -226,13 +229,15 @@ WhateverGreen.kext
 ### ACPI Folder
 
 ```
-SSDT-EC-USBX-LAPTOP.aml
+SSDT-EC.aml
+SSDT-HDAS-OFF.aml
 SSDT-HPET.aml
 SSDT-KBBL.aml
 SSDT-PNLF.aml
-SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
+SSDT-SDXC.aml
+SSDT-USBX.aml
 ```
->**Note**: **These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime).**
+>**Note**: These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime), with the exception of SSDT-HDAS-OFF and SSDT-SDXC.
 
 >**Note**: USBToolBox users don't need `SSDT-USB-RESET` or `SSDT-RHUB`
 
@@ -241,8 +246,6 @@ SSDT-USB-Reset.aml aka. SSDT-RHUB.aml
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 2. Post Install 
-
-- This section contains information to better maintain your Chromebook hack, general advice, and other cool things. Should be a good idea to read this. 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -259,18 +262,19 @@ Grab the following SSDTs and drag the compiled (`.aml`) into your ACPI folder:
 1. [cros**sdxc**disable](https://github.com/meghan06/crossdxcdisable)
 2. [croshdasdisable](https://github.com/meghan06/croshdasdisable)
 
-What these SSDTs do is disable the device from the ACPI level, which in theory saves power and fixes bugs.
-
+These SSDTs disable unsupported devices, saving battery life and improving stability
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Continuity Features
 
-The WLAN chipset is soldered on, you **cannot** replace it.
+The WLAN chipset is soldered on, you **cannot** replace it. It will never work.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Audio
+
+Unless a dedicated Intel SST driver is written, speakers, mic, and 3.5mm will **never** work.
 
 **For anybody looking to get audio working, here are a some bits of info you can use:**
 
@@ -305,6 +309,7 @@ The WLAN chipset is soldered on, you **cannot** replace it.
 - It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
 - Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
 - **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
+- macOS will not sleep if you have USB devices plugged in 
 >**Note**: SSDT-USB-Reset / SSDT-RHUB is not needed if using USBToolBox.
 
 >**Warning**: The hotkey to show bootdrives does not work. Make a copy of your EFI with `ShowPicker` enabled if you need to boot from another drive in OpenCore.
@@ -316,7 +321,7 @@ The WLAN chipset is soldered on, you **cannot** replace it.
 
 Before we get started, you should know the following:
 - Ventura will run a little hotter
-- AirportItlwm is very broken on Ventura.
+- `AirportItlwm` is very broken on Ventura.
 
 Stay on macOS 12 (Monterey) to avoid these issues.
 
