@@ -19,6 +19,7 @@
   - [macOS](#macos)
   - [OpenCore](#opencore)
 - [**Disclaimer**](#%EF%B8%8F-disclaimer)
+- [**Is it stable?**](#is-it-stable)
 - [Requirements](#requirements)
 - [Issues](#issues)
   - [Current Issues](#current-issues)
@@ -65,8 +66,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and patched HPET                                                       |    
 | SD Card Reader     | Not working          | WIP with `EmeraldSDHC.kext`.                                                                  |
 | Headphone Jack     | Not working          | Unsupported codec                                                                             |
-| HDMI Audio         | Working              | Working with AppleALC                                                                         |                                                                           
-| HDMI Video         | Working              | Working OOTB                                                                                  |                                                                             
+| HDMI Audio         | Working              | Working with AppleALC, thx [@bernsgtx](https://reddit.com/u/ogridberns)                       |
+| HDMI Video         | Working              | Working OOTB, thx [@bernsgtx](https://reddit.com/u/ogridberns)                                |                                                                             
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
@@ -76,7 +77,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Is it stable?
+## Is it stable?
 Yes.
                                                                                     
 --------------------------------------------------------------------------------------------------------------------------------------------------------
