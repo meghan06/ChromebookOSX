@@ -1,9 +1,8 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
 [![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Status](https://user-images.githubusercontent.com/77316348/230705808-40c7ba6b-9b4f-41fb-8c40-8e7db3b97ad0.png)](https://github.com/meghan06/ChromebookOSX)
-# WARNING!!
 
-### coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. DO NOT UPDATE THE FIRMWARE IF YOU ARE ON 4.19.1. If you are already on 4.20, you will need to download 4.19 and manually compile and flash the firmware. Instructions will be coming soon.
+### coreboot 4.20 (5/15/2023 release) is known to hang while booting. A fix has been published below.
 
 ```
   ____ _                              _                 _     ___  ______  __
@@ -30,6 +29,7 @@
   - [Fixed Issues](#fixed-issues)
 - [**1. Installation**](#1-installation)
    - [Required Steps](#these-steps-are-required-for-proper-functioning)
+   - [Fixing coreboot 4.2.0](#fixing-coreboot-420)
    - [Kext Folder](#kexts)
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
@@ -133,6 +133,8 @@ Before you start, you'll need to have the following items to complete the proces
 
 
 #### Current Issues
+>**Note**: coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. A fix can be found [below](#fixing-coreboot-420).
+
 - https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help needed] 
 - Render issues / blank screen / green boxes as images / text not appearing on Electron and Chromium based apps. [help needed] 
   - Disable GPU acceleration / hardware acceleration in the app settings.
@@ -167,7 +169,8 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 1. If you haven't already, flash your Chromebook with [MrChromebox's UEFI firmware](https://mrchromebox.tech) via his scripts. To complete this process, you must turn off write protection either by using a SuzyQable  or temporarily removing the battery, with latter being less cumbersome.
 2. Setup your EFI folder using the [OpenCore Guide](https://dortania.github.io/OpenCore-Install-Guide/). Use [Laptop Kaby Lake & Amber Lake Y](https://dortania.github.io/OpenCore-Install-Guide/config-laptop.plist/kaby-lake.html#starting-point) for your `config.plist`. 
 3. Re-visit this guide when you're done setting up your EFI. There are a few things we need to tweak to ensure our Chromebook works with macOS. Skipping these steps will result in a **very** broken hack.
-4. In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE`. It should look something like this in your `config.plist` when done correctly:
+4. Add the compiled version of [SSDT-PLUG-ALT](https://github.com/meghan06/croscorebootpatch) to your ACPI folder.
+5. In your `config.plist`, under `Booter -> Quirks` set `ProtectMemoryRegions` to `TRUE`. It should look something like this in your `config.plist` when done correctly:
 
    | Quirk                | Type | Value    |
    | -------------------- | ---- | -------- |
@@ -175,7 +178,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    
    > **Warning** **This must be enabled.**
 
-4. Under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`, make the following modifications:
+6. Under `DeviceProperties -> Add -> PciRoot(0x0)/Pci(0x2,0x0)`, make the following modifications:
   
    | Key                  | Type | Value    |
    | -------------------- | ---- | -------- |
@@ -183,56 +186,36 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    | device-id            | data | C0870000 |
      
    > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
-5. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-6. **Set your SMBIOS as MacBookAir8,1**. Ignore what Dortania tells you to use, MacBookAir8,1 works better with our Chromebook.
-     > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
-7. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
+7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
+8. **Set your SMBIOS as MacBookAir8,1**. Ignore what Dortania tells you to use, MacBookAir8,1 works better with our Chromebook.
+    > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
+9. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
      > **Note**: This SSDT only works with the custom VoodooPS2 linked above.
-8. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
-9. Download corpnewt's SSDTTime, then launch it and select `FixHPET`. Next, select `'C'` for default, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. 
+10. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
+11. Download corpnewt's SSDTTime, then launch it and select `FixHPET`. Next, select `'C'` for default, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. 
 
     > **Warning** Steps 9 and 10 are **required** for macOS to recognize the internal eMMC disk. 
 
-10. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
-12. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
+12. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
+13. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
 
     > **Note**: You must do this or your USB ports won't work. USBToolBox users can skip this step.
 
-13. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
+14. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
 
     > **Warning**: NEVER do clean snapshots (`ctrl/cmd+shift+r`) after adding your HPET patches, they will be **wiped**. Only do regular snapshots. (`ctrl/cmd+r`)
 
-14. Install macOS and enjoy!
+15. Install macOS and enjoy!
 
 > **Note**: In depth information about OpenCore can be found [here.](https://dortania.github.io/docs/latest/Configuration.html)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Downgrading Coreboot
->**Warning**: coreboot 4.20 (5/15/2023 release) has a known issue where macOS will hang on boot. 
+### Fixing coreboot 4.2.0
+coreboot 4.2.0 (5/15/2023 release) has a known issue where macOS will hang on boot. This is due to coreboot not defining CPU cores by default. To fix this, we'll use a SSDT to manually define them. Credits to [ExtremeXT](https://github.com/ExtremeXT) for the fix.
 
->**Warning**: The procedure shown below have the potential to brick your deivce and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage caused from following or disregarding these instructions.
-
-The following steps show how you can downgrade to the latst stable version (4.19.1), as of writing.
-
-1.
-2. e
-3. e
-4. e
-5. e
-6. e
-7. e
-8. e
-9. 
-
-
-
-
-
-
-
-
+- If you haven't already, add the compiled version of [SSDT-PLUG-ALT](https://github.com/meghan06/croscorebootpatch) to your ACPI folder.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
