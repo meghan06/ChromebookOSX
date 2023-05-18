@@ -1,8 +1,9 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
 [![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Status](https://user-images.githubusercontent.com/77316348/230705808-40c7ba6b-9b4f-41fb-8c40-8e7db3b97ad0.png)](https://github.com/meghan06/ChromebookOSX)
-## WARNING!!
-#### coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. DO NOT UPDATE THE FIRMWARE IF YOU ARE ON 4.19.1. If you are already on 4.20, you will need to download 4.19 and manually compile and flash the firmware. Instructions will be coming soon.
+# WARNING!!
+
+### coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. DO NOT UPDATE THE FIRMWARE IF YOU ARE ON 4.19.1. If you are already on 4.20, you will need to download 4.19 and manually compile and flash the firmware. Instructions will be coming soon.
 
 ```
   ____ _                              _                 _     ___  ______  __
@@ -205,6 +206,34 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 14. Install macOS and enjoy!
 
 > **Note**: In depth information about OpenCore can be found [here.](https://dortania.github.io/docs/latest/Configuration.html)
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Downgrading Coreboot
+>**Warning**: coreboot 4.20 (5/15/2023 release) has a known issue where macOS will hang on boot. 
+
+>**Warning**: The procedure shown below have the potential to brick your deivce and you should be aware of this potential outcome before proceeding. I cannot be held accountable for any damage caused from following or disregarding these instructions.
+
+The following steps show how you can downgrade to the latst stable version (4.19.1), as of writing.
+
+1.
+2. e
+3. e
+4. e
+5. e
+6. e
+7. e
+8. e
+9. 
+
+
+
+
+
+
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
