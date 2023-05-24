@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Status](https://user-images.githubusercontent.com/77316348/230705808-40c7ba6b-9b4f-41fb-8c40-8e7db3b97ad0.png)](https://github.com/meghan06/ChromebookOSX)
 
-### coreboot 4.20 (5/15/2023 release) is known to hang while booting. A fix has been published below.
+### coreboot 4.20 (5/15/2023 release) is known to hang while booting. A fix has been published [below](#fixing-coreboot-420).
 
 ```
   ____ _                              _                 _     ___  ______  __
@@ -34,8 +34,10 @@
    - [ACPI Folder](#acpi-folder)
 - [2. Post Install](#2-post-install)
    - [Fixing Battery Life](#battery-life)
+   - [Fixing Trackpad](#fixing-trackpad)
    - [Continuity](#continuity-features)
    - [**Audio**](#audio)
+   - [Security](SECURITY.md)
    - [Misc. Information](#misc-information)
 - [3. macOS Ventura](#3-macos-ventura)
   - [For those updating](#for-those-updating)
@@ -266,12 +268,6 @@ SSDT-USBX.aml
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Security 
-- Please read [Security.md](SECURITY.md) as it provides in-depth information on sanitizing your serials, disk encryption, and more.
-- **If you discover a vulnerability, please refer to [Security.md](SECURITY.md).** 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
 ### Battery Life
 
 Grab the following SSDTs and drag the compiled (`.aml`) into your ACPI folder:
@@ -280,6 +276,17 @@ Grab the following SSDTs and drag the compiled (`.aml`) into your ACPI folder:
 2. [croshdasdisable](https://github.com/meghan06/croshdasdisable)
 
 These SSDTs disable unsupported devices, saving battery life and improving stability
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Fixing Trackpad
+The trackpad in the Asus C425/C433/C434 should work OOTB, but they operate in polling mode which drains battery significantly. To fix this, we'll be using a config.plist patch, a modified version of VoodooGPIO.kext, and a SSDT.
+
+- To start off, download the contents from [crosgpiopatch](https://github.com/meghan06/crosgpiopatch).
+- Drag the compiled version of `SSDT-I2C.kext` (thx 1Revenger1) into your ACPI folder
+- Then, in your `config.plist`, copy `patches_GPIO.plist` to `ACPI -> Patch`
+- Finally, replace VoodooGPIO.kext from Kexts\VoodooI2C.kext\Contents\PlugIns with the one from crosgpiopatch.
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
