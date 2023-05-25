@@ -136,16 +136,16 @@ Before you start, you'll need to have the following items to complete the proces
 
 #### Current Issues
 >**Note**: coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. A fix can be found [below](#fixing-coreboot-420).
-
 - https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help needed] 
-- Render issues / blank screen / green boxes as images / text not appearing on Electron and Chromium based apps. [help needed] 
-  - Disable GPU acceleration / hardware acceleration in the app settings.
+  - A temp. workaround is to not let the device sleep, and if it does sleep, reboot the system.
 
 #### Fixed Issues
-- ~~Weird lock ups randomly.~~
-- ~~Signout not working~~
-- ~~Kernel panic when shutting down / restarting~~
+- Render issues / blank screen / green boxes as images / text not appearing on Electron and Chromium based apps. [help needed] 
+  - Fixed by `SSDT-SBUS-MCHC.aml`, you can create the SSDT [here.](https://dortania.github.io/Getting-Started-With-ACPI/Universal/smbus.html)
+- Kernel panic when shutting down / restarting
   - Fixed by setting `ProtectMemoryReigons` to `TRUE`.
+- Weird lock ups randomly.
+- Signout not working
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -255,6 +255,8 @@ SSDT-KBBL.aml
 SSDT-PNLF.aml
 SSDT-SDXC.aml
 SSDT-USBX.aml
+SSDT-I2C.aml
+`SSDT-SBUS-MCHC.aml
 ```
 >**Note**: These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime), with the exception of SSDT-HDAS-OFF and SSDT-SDXC.
 
