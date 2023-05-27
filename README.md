@@ -215,7 +215,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### Fixing coreboot 4.2.0
-coreboot 4.2.0 (5/15/2023 release) has a known issue where macOS will hang on boot. This is due to coreboot not defining CPU cores by default. To fix this, we'll use a SSDT to manually define them. Credits to [ExtremeXT](https://github.com/ExtremeXT) for the fix.
+coreboot 4.2.0 (5/15/2023 release) has a known issue where macOS will hang on boot due to coreboot not defining CPU cores by default. To fix this, we'll use a SSDT to manually define them. Credits to [ExtremeXT](https://github.com/ExtremeXT) for the fix.
 
 - If you haven't already, add the compiled version of [SSDT-PLUG-ALT](https://github.com/meghan06/croscorebootpatch) to your ACPI folder.
 
