@@ -40,15 +40,15 @@
    - [Security](SECURITY.md)
    - [Misc. Information](#misc-information)
 - [3. macOS Ventura](#3-macos-ventura)
-  - [For those updating](#for-those-updating)
-  - [For those installing directly](#installing-ventura-directly)
-  - [Fixing WiFI](#fixing-wifi-on-ventura)
+  - [Updating](#updating-to-ventura)
+  - [Installing Directly](#installing-ventura-directly)
 - [4. Misc](#other)
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Turns out, this laptop works really well with the latest version(s) of macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/Hardware%20Info.txt).
+
 
 | macOS Ventura | eMMC Storage |
 |------------|-------------|
@@ -61,7 +61,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 
 | **Feature**        | **Status**           | **Notes**                                                                                     |
 |--------------------|----------------------|-----------------------------------------------------------------------------------------------|
-| WiFi               | Working              | With `itlwm.kext v2.2.0 alpha` and `Heliport v1.4.1` `(Latest)`.                              |
+| WiFi               | Working              | With `itlwm`                                                                                  |
 | Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.                                       |
 | Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.                                       |
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
@@ -72,8 +72,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and patched HPET                                                       |    
 | SD Card Reader     | Not working          | WIP with `EmeraldSDHC.kext`.                                                                  |
 | Headphone Jack     | Not working          | Unsupported codec                                                                             |
-| HDMI Audio         | Working              | Working with AppleALC, thx [@bernsgtx](https://reddit.com/u/ogridberns)                       |
-| HDMI Video         | Working              | Working OOTB, thx [@bernsgtx](https://reddit.com/u/ogridberns)                                |                                                                             
+| HDMI Audio         | Working              | Working with AppleALC, thx [bernsgtx](https://reddit.com/u/ogridberns)                       |
+| HDMI Video         | Working              | Working OOTB, thx [bernsgtx](https://reddit.com/u/ogridberns)                                |                                                                             
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
@@ -189,10 +189,10 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
      
    > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
 7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
-8. **Set your SMBIOS as MacBookAir8,1**. Ignore what Dortania tells you to use, MacBookAir8,1 works better with our Chromebook.
-    > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode.
-9. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/one8three/VoodooPS2-Chromebook/releases) for keyboard backlight control + custom remaps. 
-   - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/one8three/VoodooPS2-Chromebook/blob/master/SSDT-KBBL.aml). Drag it to your ACPI folder.
+8. **Set your SMBIOS as `MacBookAir8,1`**. Ignore what Dortania tells you to use, `MacBookAir8,1` works better with our Chromebook.
+    > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode. Switch to this if you experience compatibility issues.
+9. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/meghan06/ChromebookPS2) for keyboard backlight control + custom remaps. 
+   - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/meghan06/ChromebookPS2/blob/master/Docs/SSDT-KBBL.aml). Drag it to your ACPI folder.
      > **Note**: This SSDT only works with the custom VoodooPS2 linked above.
 10. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
 11. Download corpnewt's SSDTTime, then launch it and select `FixHPET`. Next, select `'C'` for default, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. 
@@ -202,7 +202,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 12. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 13. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
 
-    > **Note**: You must do this or your USB ports won't work. USBToolBox users can skip this step.
+    > **Note**:  USBToolBox users can skip this step, otherwise you must do this or your USB ports won't work.
 
 14. Snapshot (cmd +r) or (ctrl + r) your `config.plist`. 
 
@@ -322,18 +322,17 @@ Unless a dedicated Intel SST driver is written, speakers, mic, and 3.5mm will **
 ### Misc. Information
 
 - When formatting the eMMC drive in Disk Utility, make sure to toggle "Show all Drives" and erase the entire drive.
-- Format the drive as `APFS`
+- Format the drive as `APFS` and `GUID Partition Table / GPT`
 - Map your USB ports prior to installing macOS³ for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. You *will* need a second kext that goes along with it for it to work. [Repo here.](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - `itlwm` is more stable & faster than `AirportItlwm` on macOS Ventura. 
 - AppleTV and other DRM protected services may not work.
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
-- To fix the battery life on Ventura, you can set Low Battery Mode to be always enabled on battery. You can also use CPUFriend to tweak power settings but it might break stability.
-- eMMC will come up as an external drive in the boot picker since eMMC is just an embedded SD card. 
-- To hide the drive picker, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
-- `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled, they make no difference.
-- It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your  own risk if you decide to skip USB mapping.
-- Make sure your `ScanPolicy` is set to `0`. eMMC will not be recognized if it's some other value.
+- To fix  battery life, use CPUFriend to tweak power settings. 
+- To hide the OpenCore boot menu, set `ShowPicker` to `False` in `Misc` ->` Boot` -> `ShowPicker`
+- `AppleXcpmCfgLock` and `DisableIOMapper` can be enabled or disabled. There is no difference.
+- It's worth noting that while it's recommended, coreboot already includes mapped USB ports, meaning that USB mapping is not required. Proceed at your own risk if you decide to skip USB mapping.
+- eMMC will not be recognized if `ScanPolicy` is set to `0`.
 - **USB ports will ONLY work with SSDT-USB-Reset / SSDT-RHUB.** 
 - macOS will not sleep if you have USB devices plugged in 
 >**Note**: SSDT-USB-Reset / SSDT-RHUB is not needed if using USBToolBox.
@@ -348,53 +347,43 @@ Unless a dedicated Intel SST driver is written, speakers, mic, and 3.5mm will **
 Before we get started, you should know the following:
 - Ventura will run a little hotter
 - `AirportItlwm` is very broken on Ventura.
+  - Takes 5 minutes to scan networks
+  - Takes another 5 to connect
+  - Connection is spotty 
+  - No AirDrop (duh) 
 
 Stay on macOS 12 (Monterey) to avoid these issues.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### For those updating:
+### Updating to Ventura:
 > **Note**: The steps mentioned can be completed after updating, but you won't have WiFi. Recommended to do before updating.
 
-1. Mount your EFI using corpnewt's MountEFI.
-2. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-3. Download and install Heliport if you haven't already. The most recent stable release will work fine.
-4. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
-5. Start the update. (If you haven't already)
-6. You are now ready for macOS Ventura! 
-7. [See below](#fixing-wifi-on-ventura) for fixing WiFi.
+1. Mount your EFI.
+2. Download and install Heliport if you haven't already. The most recent stable release will work fine.
+3. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
+4. Locate your new `itlwm.kext` under OC/Kexts. 
+5. Click it, and select `Show Package Contents`, and open the Contents folder. Once inside, find the `Info.plist`. Then using ProperTree, open the Info.plist.
+6. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI credentials. Save and close when done.
+7. Start the update. (If you haven't already)
+8. You are now ready for macOS Ventura! 
+
+>**Note**: HeliPort will report no Wi-Fi on startup but we will, thanks to the Info.plist patches.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Installing Ventura directly:
+### Installing Ventura Directly:
 
 > **Note**: Windows and Linux users only.
 
 1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-2. Open up your kext folder, and locate `itlwm.kext`. 
-3. Open it, and find `Info.plist`.
-4. Open ProperTree, navigate to where your `Info.plist` is, and open it.
-5. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI details. Save and close when done.
-7. Launch ProperTree and reload (`ctrl+r`) your `config.plist`. 
-8. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Fixing WiFi on Ventura 
-
-> **Note** **Only for those that have macOS installed but haven't edited their `Info.plist`.**
-
-1. Mount your EFI
-2. Open up your kext folder, and locate `itlwm.kext`. 
-3. Click it, and select `Show Package Contents` and open the Contents folder. Once inside, find the `Info.plist` and copy it via  `ctrl + c`.
-4. Exit `itlwm.kext` and go back to your Kext folder. Paste your `Info.plist`.
-5. Open ProperTree, select the `Info.plist` in your Kext folder and open it.
-6. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI details. Save and close when done.
-7. Replace the old `Info.plist` with the one you just edited. 
-
-
-Do note that Heliport will report no WiFi upon logging in but keep in mind you actually do thanks to the edits we just made. 
+2. In your kext folder, locate `itlwm.kext`. 
+3. Open the folder, and find `Info.plist`.
+4. Launch ProperTree, navigate to where your `Info.plist` is, and open it.
+5. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI credentials. Save and close when done.
+6. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi.
+7. Install Heliport once macOS is installed.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
