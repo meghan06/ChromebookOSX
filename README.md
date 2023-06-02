@@ -61,7 +61,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 
 | **Feature**        | **Status**           | **Notes**                                                                                     |
 |--------------------|----------------------|-----------------------------------------------------------------------------------------------|
-| WiFi               | Working              | With `itlwm`                                                                                  |
+| WiFi               | Working              | With `AirportItlwm`                                                                           |
 | Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.                                       |
 | Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.                                       |
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
@@ -72,8 +72,8 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 | eMMC Storage       | Working              | With `EmeraldSDHC.kext`and patched HPET                                                       |    
 | SD Card Reader     | Not working          | WIP with `EmeraldSDHC.kext`.                                                                  |
 | Headphone Jack     | Not working          | Unsupported codec                                                                             |
-| HDMI Audio         | Working              | Working with AppleALC, thx [bernsgtx](https://reddit.com/u/ogridberns)                       |
-| HDMI Video         | Working              | Working OOTB, thx [bernsgtx](https://reddit.com/u/ogridberns)                                |                                                                             
+| HDMI Audio         | Working              | Working with AppleALC, thx [bernsgtx](https://reddit.com/u/ogridberns)                        |
+| HDMI Video         | Working              | Working OOTB, thx [bernsgtx](https://reddit.com/u/ogridberns)                                 |                                                                             
 | USB Ports          | Working              | Working with USB mapping **and** `SSDT-USB-RESET.aml`                                         |
 | Webcam             | Working              | Working OOTB                                                                                  |
 | Internal Mic.      | Not working          | Same reason why internal speakers don't work; unsupported codec. (`max98927`)                 |
@@ -344,48 +344,18 @@ Unless a dedicated Intel SST driver is written, speakers, mic, and 3.5mm will **
 ## 3. macOS Ventura
 > **Note** Only for people installing macOS Ventura. 
 
+> **Note**: Make sure you have the latest version of AirportItlwm. To download the **latest release of AirportItlwm,** [see here](https://github.com/OpenIntelWireless/itlwm/releases).
+
 Before we get started, you should know the following:
 - Ventura will run a little hotter
-- `AirportItlwm` is very broken on Ventura.
-  - Takes 5 minutes to scan networks
-  - Takes another 5 to connect
-  - Connection is spotty 
-  - No AirDrop (duh) 
+- The AirportItlwm variant for macOS 13 is slightly less stable than the macOS 12 version.
+- No AirDrop (duh) 
 
 Stay on macOS 12 (Monterey) to avoid these issues.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Updating to Ventura:
-> **Note**: The steps mentioned can be completed after updating, but you won't have WiFi. Recommended to do before updating.
-
-1. Mount your EFI.
-2. Download and install Heliport if you haven't already. The most recent stable release will work fine.
-3. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-4. Locate your new `itlwm.kext` under OC/Kexts. 
-5. Click it, and select `Show Package Contents`, and open the Contents folder. Once inside, find the `Info.plist`. Then using ProperTree, open the Info.plist.
-6. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI credentials. Save and close when done.
-7. Start the update. (If you haven't already)
-8. You are now ready for macOS Ventura! 
-
->**Note**: HeliPort will report no Wi-Fi on startup but we will, thanks to the Info.plist patches.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
-
-### Installing Ventura Directly:
-
-> **Note**: Windows and Linux users only.
-
-1. Under OC/Kexts, delete your old itlwm/AirportItlwm kext and replace it with `itlwm v.2.2.0 alpha`
-2. In your kext folder, locate `itlwm.kext`. 
-3. Open the folder, and find `Info.plist`.
-4. Launch ProperTree, navigate to where your `Info.plist` is, and open it.
-5. Under `IOKitPersonalities -> itlwm -> WiFiConfig`, enter your WiFI credentials. Save and close when done.
-6. Boot recovery. There will be no WiFi logo/symbol, but you will have WiFi.
-7. Install Heliport once macOS is installed.
-
---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Other
 
