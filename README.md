@@ -40,8 +40,6 @@
    - [Security](SECURITY.md)
    - [Misc. Information](#misc-information)
 - [3. macOS Ventura](#3-macos-ventura)
-  - [Updating](#updating-to-ventura)
-  - [Installing Directly](#installing-ventura-directly)
 - [4. Misc](#other)
 
 
