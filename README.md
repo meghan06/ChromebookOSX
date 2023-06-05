@@ -360,6 +360,15 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Need help?
+You have several options if you still need help. 
+
+- Join the Chrultrabook Discord: https://discord.com/invite/tkPTk5w. Ask for help in #hackintosh.
+- Post in r/chrultrabook. https://www.reddit.com/r/chrultrabook/
+- Open a Issue in this repo (less effective)
+
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
