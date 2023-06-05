@@ -1,6 +1,6 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
-[![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) [![Status](https://user-images.githubusercontent.com/77316348/230705808-40c7ba6b-9b4f-41fb-8c40-8e7db3b97ad0.png)](https://github.com/meghan06/ChromebookOSX)
+[![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
 
 ### coreboot 4.20 (5/15/2023 release) is known to hang while booting. A fix has been published [below](#fixing-coreboot-420).
 
@@ -59,7 +59,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 
 | **Feature**        | **Status**           | **Notes**                                                                                     |
 |--------------------|----------------------|-----------------------------------------------------------------------------------------------|
-| WiFi               | Working              | With `AirportItlwm`                                                                           |
+| WiFi               | Working              | With `Airportitlwm`                                                                           |
 | Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.                                       |
 | Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.                                       |
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
@@ -236,7 +236,6 @@ UTBMap.kext
 USBToolBox.kext
 VoodooPS2Controller.kext
 WhateverGreen.kext
-
 ```
 
 >**Note**: If you plan to install macOS Big Sur or older (11≥), your Bluetooth kexts will be different. Read the Dortania guide to find out what you need.
@@ -348,12 +347,21 @@ Before we get started, you should know the following:
 - Ventura will run a little hotter
 - The AirportItlwm variant for macOS 13 is slightly less stable than the macOS 12 version.
 - No AirDrop (duh) 
+- HandOff has been disabled to increase stabillity and speed.
 
 Stay on macOS 12 (Monterey) to avoid these issues.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
+## 4. macOS 14 Support
+
+- no lol
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #### Other
 
