@@ -4,6 +4,8 @@
 
 ### coreboot 4.20 (5/15/2023 release) is known to hang while booting. A fix has been published [below](#fixing-coreboot-420).
 
+### Please see [macOS 14 - Sonoma](#4-macos-14---sonoma) if you plan to install the developer beta.
+
 ```
   ____ _                              _                 _     ___  ______  __
  / ___| |__  _ __ ___  _ __ ___   ___| |__   ___   ___ | | __/ _ \/ ___\ \/ /
@@ -40,7 +42,8 @@
    - [Security](SECURITY.md)
    - [Misc. Information](#misc-information)
 - [3. macOS Ventura](#3-macos-ventura)
-- [4. Misc](#other)
+- [4. macOS 14 - Sonoma](#4-macos-14---sonoma)
+- [5. Misc](#other)
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,7 +98,7 @@ Note: Image opens in new tab, either Reddit or Discord.
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
 - [macOS Monterey (12)](https://cdn.discordapp.com/attachments/1084252068711247965/1089784117572423690/Screen_Shot_2023-03-26_at_10.31.51_PM.png)
 - [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
-
+- [macOS Sonoma (14)] - WIP
 
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
@@ -354,11 +357,25 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
-## 4. macOS 14 Support
+## 4. macOS 14 - Sonoma
+#### 6/5/2023 note: macOS Sonoma does not have a internet recovery at the time of writing. 
 
-- no lol
+>**Warning** **DO NOT USE SONOMA FOR DAILY USE! YOU ARE ON YOUR OWN.**
 
+>**Note**: AirportItlwm does not work on Sonoma. Use Itlwm for now.
 
+>**Note**: Bugs are expected, please report them.
+
+#### How to install:
+In macOS, download the InstallAssistant.pkg from Apple: 
+
+https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg
+
+> Can I do this on Windows?
+
+No. You will need macOS to create this installer. 
+
+**Please be patient while the chrultrabook community, hackintosh community, and I iron out all issues.**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
