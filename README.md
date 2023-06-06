@@ -191,7 +191,6 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
 7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
 8. **Set your SMBIOS as `MacBookAir8,1`**. Ignore what Dortania tells you to use, `MacBookAir8,1` works better with our Chromebook.
-    > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode. Switch to this if you experience compatibility issues.
 9. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/meghan06/ChromebookPS2) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/meghan06/ChromebookPS2/blob/master/Docs/SSDT-KBBL.aml). Drag it to your ACPI folder.
      > **Note**: This SSDT only works with the custom VoodooPS2 linked above.
