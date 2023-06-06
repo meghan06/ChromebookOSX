@@ -98,7 +98,7 @@ Note: Image opens in new tab, either Reddit or Discord.
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
 - [macOS Monterey (12)](https://cdn.discordapp.com/attachments/1084252068711247965/1089784117572423690/Screen_Shot_2023-03-26_at_10.31.51_PM.png)
 - [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
-- [macOS Sonoma (14)] - WIP
+- [macOS Sonoma (14)] 
 
 macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
 
@@ -256,7 +256,7 @@ SSDT-PNLF.aml
 SSDT-SDXC.aml
 SSDT-USBX.aml
 SSDT-I2C.aml
-`SSDT-SBUS-MCHC.aml
+SSDT-SBUS-MCHC.aml
 ```
 >**Note**: These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime), with the exception of SSDT-HDAS-OFF and SSDT-SDXC.
 
@@ -371,7 +371,7 @@ In macOS, download the InstallAssistant.pkg from Apple:
 
 https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg
 
-- Add `lilubetaall` to your boot-args
+- Add `-lilubetaall` to your boot-args
 
 > Can I do this on Windows?
 
