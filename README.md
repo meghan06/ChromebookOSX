@@ -371,6 +371,8 @@ In macOS, download the InstallAssistant.pkg from Apple:
 
 https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg
 
+- Add `lilubetaall` to your boot-args
+
 > Can I do this on Windows?
 
 No. You will need macOS to create this installer. 
