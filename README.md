@@ -98,9 +98,10 @@ Note: Image opens in new tab, either Reddit or Discord.
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
 - [macOS Monterey (12)](https://cdn.discordapp.com/attachments/1084252068711247965/1089784117572423690/Screen_Shot_2023-03-26_at_10.31.51_PM.png)
 - [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
-- [macOS Sonoma (14)] 
+- [macOS Sonoma (14)](https://preview.redd.it/plpokliv6h4b1.png?width=1920&format=png&auto=webp&v=enabled&s=6d4cff00272fed54d56a1ec485e61d33da9356d4)
 
-macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
+
+>**Note**: EmeraldSDHC does not support macOS Mojave (10.14) and older.  
 
 #### OpenCore:
   - 0.8.6
@@ -191,7 +192,6 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
    > **Warning** **These should be the only two items `in PciRoot(0x0)/Pci(0x2,0x0)`.**
 7. If you haven't already, add `igfxrpsc=1` and `-igfxnotelemetryload` to your `boot-args`, under `NVRAM -> Add -> 7C436110-AB2A-4BBB-A880-FE41995C9F82,`. Both are for iGPU support, **you will regret it if you don't add these.**
 8. **Set your SMBIOS as `MacBookAir8,1`**. Ignore what Dortania tells you to use, `MacBookAir8,1` works better with our Chromebook.
-    > **Note** If you choose to use `MacBook10,1`, which also works, you will not have Low Battery Mode. Switch to this if you experience compatibility issues.
 9. Switch the VoodooPS2 from acidanthera with this [custom build that's designed for Chromebooks](https://github.com/meghan06/ChromebookPS2) for keyboard backlight control + custom remaps. 
    - Keyboard backlight SSDT (`SSDT-KBBL.aml`) can be found [here](https://github.com/meghan06/ChromebookPS2/blob/master/Docs/SSDT-KBBL.aml). Drag it to your ACPI folder.
      > **Note**: This SSDT only works with the custom VoodooPS2 linked above.
@@ -358,26 +358,40 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 4. macOS 14 - Sonoma
-#### 6/5/2023 note: macOS Sonoma does not have a internet recovery at the time of writing. 
 
 >**Warning** **DO NOT USE SONOMA FOR DAILY USE! YOU ARE ON YOUR OWN.**
 
->**Note**: AirportItlwm does not work on Sonoma. Use Itlwm for now.
+**Please be patient while the chrultrabook community, hackintosh community, and I iron out all issues.**
 
->**Note**: Bugs are expected, please report them.
+6/5/2023 note: macOS Sonoma does not have a internet recovery at the time of writing. 
 
-#### How to install:
-In macOS, download the InstallAssistant.pkg from Apple: 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg
+### Notes: 
+
+- AirportItlwm does not work on Sonoma. Use Itlwm + Heliport for now.
+- Bugs are expected, please report them.
+- It runs slower than Ventura and Monterey.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### How to install:
+- In macOS, download the [InstallAssistant.pkg](https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg) from Apple 
+- Add `-lilubetaall` to your boot-args. This is the most important step.
+- Update or install macOS 14.
+
+
+>**Note**: Only clean install has been verified working. OS upgrade is untested.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### FAQ
 
 - Add `-lilubetaall` to your boot-args
 
 > Can I do this on Windows?
 
 No. You will need macOS to create this installer. 
-
-**Please be patient while the chrultrabook community, hackintosh community, and I iron out all issues.**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
