@@ -387,8 +387,6 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 
 ### FAQ
 
-- Add `-lilubetaall` to your boot-args
-
 > Can I do this on Windows?
 
 No. You will need macOS to create this installer. 
