@@ -51,9 +51,9 @@
 Turns out, this laptop works really well with the latest version(s) of macOS. For more information about the Chromebook's hardware, see [here](https://github.com/meghan06/ChromebookOSX/blob/main/Resources/Hardware%20Info.txt).
 
 
-| macOS Ventura | eMMC Storage |
+| macOS Sonoma | eMMC Storage |
 |------------|-------------|
-|<img src="Resources/Screenshot.png" width="960">|<img src="Resources/Device Info.png" width="960">|
+|<img src="https://preview.redd.it/plpokliv6h4b1.png?width=1920&format=png&auto=webp&v=enabled&s=6d4cff00272fed54d56a1ec485e61d33da9356d4" width="960">|<img src="Resources/Device Info.png" width="960">|
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
