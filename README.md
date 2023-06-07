@@ -98,9 +98,9 @@ Note: Image opens in new tab, either Reddit or Discord.
 - [macOS Big Sur (11)](https://cdn.discordapp.com/attachments/1051619981642706947/1078427190129070183/image.png)
 - [macOS Monterey (12)](https://cdn.discordapp.com/attachments/1084252068711247965/1089784117572423690/Screen_Shot_2023-03-26_at_10.31.51_PM.png)
 - [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
-- [macOS Sonoma (14)] - WIP
+- [macOS Sonoma (14)](https://preview.redd.it/plpokliv6h4b1.png?width=1920&format=png&auto=webp&v=enabled&s=6d4cff00272fed54d56a1ec485e61d33da9356d4)
 
-macOS 10.1x were tested on external USB drives, so eMMC support may vary. For best experience, just install Big Sur (11) or newer.
+>**Note**: EmeraldSDHC does not support macOS Mojave (10.14) and older.  
 
 #### OpenCore:
   - 0.8.6
@@ -255,7 +255,7 @@ SSDT-PNLF.aml
 SSDT-SDXC.aml
 SSDT-USBX.aml
 SSDT-I2C.aml
-`SSDT-SBUS-MCHC.aml
+SSDT-SBUS-MCHC.aml
 ```
 >**Note**: These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime), with the exception of SSDT-HDAS-OFF and SSDT-SDXC.
 
@@ -357,24 +357,38 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 4. macOS 14 - Sonoma
-#### 6/5/2023 note: macOS Sonoma does not have a internet recovery at the time of writing. 
 
 >**Warning** **DO NOT USE SONOMA FOR DAILY USE! YOU ARE ON YOUR OWN.**
 
->**Note**: AirportItlwm does not work on Sonoma. Use Itlwm for now.
+**Please be patient while the chrultrabook community, hackintosh community, and I iron out all issues.**
 
->**Note**: Bugs are expected, please report them.
+6/5/2023 note: macOS Sonoma does not have a internet recovery at the time of writing. 
 
-#### How to install:
-In macOS, download the InstallAssistant.pkg from Apple: 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg
+### Notes: 
+
+- AirportItlwm does not work on Sonoma. Use Itlwm + Heliport for now.
+- Bugs are expected, please report them.
+- It runs slower than Ventura and Monterey.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### How to install:
+- In macOS, download the [InstallAssistant.pkg](https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg) from Apple 
+- Add `-lilubetaall` to your boot-args. This is the most important step.
+- Update or install macOS 14.
+
+
+>**Note**: Only clean install has been verified working. OS upgrade is untested.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### FAQ
 
 > Can I do this on Windows?
 
 No. You will need macOS to create this installer. 
-
-**Please be patient while the chrultrabook community, hackintosh community, and I iron out all issues.**
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
