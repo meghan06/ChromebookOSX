@@ -100,6 +100,7 @@ Note: Image opens in new tab, either Reddit or Discord.
 - [macOS Ventura (13)](https://preview.redd.it/sdlqqbufnbfa1.png?width=1920&format=png&auto=webp&v=enabled&s=e38a2085eaf2021061b2b0a23ab3214a044eb50e)
 - [macOS Sonoma (14)](https://preview.redd.it/plpokliv6h4b1.png?width=1920&format=png&auto=webp&v=enabled&s=6d4cff00272fed54d56a1ec485e61d33da9356d4)
 
+
 >**Note**: EmeraldSDHC does not support macOS Mojave (10.14) and older.  
 
 #### OpenCore:
@@ -385,6 +386,8 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### FAQ
+
+- Add `-lilubetaall` to your boot-args
 
 > Can I do this on Windows?
 
