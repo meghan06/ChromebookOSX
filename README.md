@@ -163,7 +163,7 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 
 > **Note**: C434 and C433 users (SHYVANA) will need [VoodooI2CHID](https://github.com/VoodooI2C/VoodooI2C/releases/).kext for touchscreen to function. It is bundled with the VoodooI2C package.
 
-> **Note**: Those who are installing to an external disk like a USB drive can skip steps 9 and 10.
+> **Note**: Those who are installing to an external disk like a USB drive can skip steps 10 and 11.
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -198,7 +198,8 @@ Here are the steps to go from chromeOS to macOS via OpenCore on your Chromebook.
 10. Download [EmeraldSDHC](https://github.com/acidanthera/EmeraldSDHC/releases) for eMMC storage support. Put it in your Kexts folder. 
 11. Download corpnewt's SSDTTime, then launch it and select `FixHPET`. Next, select `'C'` for default, and drag the SSDT it generated (`SSDT-HPET.aml`) into your `ACPI` folder. Finally, copy the patches from `oc_patches.plist` into your `config.plist` under `ACPI -> Patch`. 
 
-    > **Warning** Steps 9 and 10 are **required** for macOS to recognize the internal eMMC disk. 
+    > **Warning** Steps 10 and 11 are **required** for macOS to recognize the internal eMMC disk. 
+    > **Note** If eMMMC isn't recognized in Disk Utility, you probably made a mistake in steps 10 & 11.
 
 12. Map your USB ports³ before installing ~~to prevent dead hard drives, thermonuclear war, or you getting fired.~~ See [Misc. Information](#misc-information) for a note to USBToolBox users.    
 13. Using corpnewt's SSDTTime, dump your DSDT, generate `SSDT-USB-RESET.aml`, drag it to your ACPI folder, and reload your `config.plist`. **Required** for working USB ports.
@@ -258,7 +259,7 @@ SSDT-USBX.aml
 SSDT-I2C.aml
 SSDT-SBUS-MCHC.aml
 ```
->**Note**: These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime), with the exception of SSDT-HDAS-OFF and SSDT-SDXC.
+>**Note**: These SSDTs were generated with [SSDTTime](https://github.com/corpnewt/SSDTTime), with the exception of SSDT-HDAS-OFF, SSDT-SDXC, SSDT-I2C, and SSDT-SBUS-MCHC.aml.
 
 >**Note**: USBToolBox users don't need `SSDT-USB-RESET` or `SSDT-RHUB`
 
@@ -325,6 +326,7 @@ Unless a dedicated Intel SST driver is written, speakers, mic, and 3.5mm will **
 - Format the drive as `APFS` and `GUID Partition Table / GPT`
 - Map your USB ports prior to installing macOS³ for a painless install. You **will** reget it if you don't. You can use [USBToolBox](https://github.com/USBToolBox/tool) to do that. You *will* need a second kext that goes along with it for it to work. [Repo here.](https://github.com/USBToolBox/kext). USBToolBox will not work without this kext. 
 - `itlwm` is more stable & faster than `AirportItlwm` on macOS Ventura. 
+- `itlwm` is the only way to connect to Wi-Fi on Sonoma. 
 - AppleTV and other DRM protected services may not work.
 - Control keyboard backlight with left `ctrl` + left `alt` and `<` `>`. 
     - `<` to decrease, `>` to increase.
@@ -372,7 +374,7 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 - AirportItlwm does not work on Sonoma. Use Itlwm + Heliport for now.
 - Bugs are expected, please report them.
 - It runs slower than Ventura and Monterey.
-
+- Bluetooth requires a workaround to work.
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### How to install:
