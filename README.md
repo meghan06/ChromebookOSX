@@ -2,9 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
 
-### coreboot 4.20 (5/15/2023 release) is known to hang while booting. A fix has been published [below](#fixing-coreboot-420).
-
-### Please see [macOS 14 - Sonoma](#4-macos-14---sonoma) if you plan to install the developer beta.
+>**Note**: Please see [macOS 14 - Sonoma](#4-macos-14---sonoma) if you plan to install the developer beta.
 
 ```
   ____ _                              _                 _     ___  ______  __
@@ -372,13 +370,14 @@ Stay on macOS 12 (Monterey) to avoid these issues.
 ### Notes: 
 
 - AirportItlwm does not work on Sonoma. Use Itlwm + Heliport for now.
+  - Apple dropped `IO80211FamilyLegacy` in the DB of Sonoma, which Airportitlwm relies on. Itlwm works because it uses `IOEthernet` instead.
 - Bugs are expected, please report them.
-- It runs slower than Ventura and Monterey.
-- Bluetooth requires a workaround to work.
+- Bluetooth requires a workaround to work. Please see [here](https://github.com/OpenIntelWireless/IntelBluetoothFirmware/issues/437#issuecomment-1579931908)
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ### How to install:
 - In macOS, download the [InstallAssistant.pkg](https://swcdn.apple.com/content/downloads/23/44/032-94352-A_DB05J15QWT/4x91v0yzolyiat5cat76ieu0h78aeu3d03/InstallAssistant.pkg) from Apple 
+- Follow the [Dortania guide](https://dortania.github.io/OpenCore-Install-Guide/installer-guide/mac-install.html#setting-up-the-installer) for making a USB within macOS via `createinstallmedia`. You can skip this if you are peforming an OS upgrade (clean install people will need to do this step)
 - Add `-lilubetaall` to your boot-args. This is the most important step.
 - Update or install macOS 14.
 
@@ -399,7 +398,7 @@ No. You will need macOS to create this installer.
 You have several options if you still need help. 
 
 - Join the Chrultrabook Discord: https://discord.com/invite/tkPTk5w. Ask for help in #hackintosh.
-- Post in r/chrultrabook. https://www.reddit.com/r/chrultrabook/
+- ~~Post in r/chrultrabook. https://www.reddit.com/r/chrultrabook/~~ Unavaliable as of June 12 2023 due to the blackout.
 - Open a Issue in this repo (less effective)
 
 
@@ -412,3 +411,5 @@ You have several options if you still need help.
 ² All variants (C425, C433, C434) will work.
 
 ³ USBToolBox is the reccomended USB mapping tool.
+
+ill rewrite this guide when i have time the because it's starting to get messy and unorganizd.
