@@ -410,4 +410,3 @@ You have several options if you still need help.
 
 ³ USBToolBox is the reccomended USB mapping tool.
 
-ill rewrite this guide when i have time the because it's starting to get messy and unorganizd.
