@@ -99,8 +99,6 @@ Note: Image opens in new tab, either Reddit or Discord.
 - [macOS Sonoma (14)](https://preview.redd.it/plpokliv6h4b1.png?width=1920&format=png&auto=webp&v=enabled&s=6d4cff00272fed54d56a1ec485e61d33da9356d4)
 
 
->**Note**: EmeraldSDHC does not support macOS Mojave (10.14) and older.  
-
 #### OpenCore:
   - 0.8.6
   - 0.8.7
