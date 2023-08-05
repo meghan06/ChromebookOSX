@@ -1,8 +1,7 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
-[![License](https://img.shields.io/badge/license-GPL-blue)](https://www.gnu.org/licenses/gpl-3.0.en.html) 
-
->**Note**: Please see [macOS 14 - Sonoma](#4-macos-14---sonoma) if you plan to install the developer beta.
+# Read this!
+**I no longer have macOS on my C425, nor do I plan to run macOS on it anymore. All further research and/or development will be halted. If you need support, please join the [chrultrabook Discord](https://discord.com/invite/tkPTk5w). This repo is pretty much archived.**
 
 ```
   ____ _                              _                 _     ___  ______  __
