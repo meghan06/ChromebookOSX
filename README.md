@@ -1,7 +1,7 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
 # Read this!
-**I no longer have macOS on my C425, nor do I plan to run macOS on it anymore. All further research and/or development will be halted. If you need support, please join the [chrultrabook Discord](https://discord.com/invite/tkPTk5w). The contents of this repo should still be relatively up to date as of writing.**
+**I no longer have macOS on my C425, nor do I plan to run macOS on it anymore. Only bugfixes/crucial patches will be added/updated. If you need support, please join the [chrultrabook Discord](https://discord.com/invite/tkPTk5w). The contents of this repo should still be relatively up to date as of writing, 8/18/2023.**
 
 ```
   ____ _                              _                 _     ___  ______  __
