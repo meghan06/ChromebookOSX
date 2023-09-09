@@ -133,6 +133,7 @@ Before you start, you'll need to have the following items to complete the proces
 >**Note**: coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. A fix can be found [below](#fixing-coreboot-420).
 - https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help needed] 
   - A temp. workaround is to not let the device sleep, and if it does sleep, reboot the system.
+- Broken apps after waking from sleep (not to be confused with issue 1 below)
 
 #### Fixed Issues
 - Render issues / blank screen / green boxes as images / text not appearing on Electron and Chromium based apps. [help needed] 
