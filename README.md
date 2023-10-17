@@ -1,5 +1,6 @@
 ## Install the latest version(s) of macOS on an Asus C425/C433/C434¹ ²
 
+### Note: I have been quite busy lately, and I no longer have as much time as before. Some things in this repo are outdated because I lack the time to update them. Please visit the chrultrabook Discord for more information. :(
 
 ```
   ____ _                              _                 _     ___  ______  __
@@ -59,7 +60,7 @@ Turns out, this laptop works really well with the latest version(s) of macOS. Fo
 |--------------------|----------------------|-----------------------------------------------------------------------------------------------|
 | WiFi               | Working              | With `Airportitlwm`                                                                           |
 | Bluetooth          | Working              | With `IntelBluetoothFirmware` and `BlueToolFixup.kext`.                                       |
-| Suspend / Sleep    | Working partially    | Only on battery power, working with `EmeraldSDHC.kext`.                                       |
+| Suspend / Sleep    | Working w/ fix       | Only with custom coreboot ROM                                                                 |
 | Trackpad           | Working              | With `VoodooI2C.kext` and `VoodooI2CELAN.kext`.                                               | 
 | Graphics Accel.    | Working              | With `-igfxnotelemetryload` in the `boot-args`.                                               |
 | Internal Speakers  | Not working          | Unsupported codec. (`max98927`)                                                               |
@@ -102,6 +103,7 @@ Note: Image opens in new tab, either Reddit or Discord.
   - 0.8.8
   - 0.8.9
   - 0.9.0
+  - 0.9.4
   
 --------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -131,11 +133,11 @@ Before you start, you'll need to have the following items to complete the proces
 
 #### Current Issues
 >**Note**: coreboot 4.20 (5/15/2023 release) is known to cause issues with booting macOS. A fix can be found [below](#fixing-coreboot-420).
-- https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep. [help needed] 
-  - A temp. workaround is to not let the device sleep, and if it does sleep, reboot the system.
-- Broken apps after waking from sleep (not to be confused with issue 1 below)
+
 
 #### Fixed Issues
+- https://github.com/meghan06/ChromebookOSX/issues/10 Chromium based apps breaking after sleep.  
+- Broken apps after waking from sleep (not to be confused with issue 1 below)
 - Render issues / blank screen / green boxes as images / text not appearing on Electron and Chromium based apps. [help needed] 
   - Fixed by `SSDT-SBUS-MCHC.aml`, you can create the SSDT [here.](https://dortania.github.io/Getting-Started-With-ACPI/Universal/smbus.html)
 - Kernel panic when shutting down / restarting
@@ -217,6 +219,24 @@ coreboot 4.2.0 (5/15/2023 release) has a known issue where macOS will hang on bo
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------
+
+### Fixing Sleep / Wake Issues
+
+1. Clone the MrChromebox coreboot repo, see here for the repo: [https://github.com/mrchromebox/coreboot](https://github.com/mrchromebox/coreboot)
+2. Go to `/src/mainboard/google/poppy/Kconfig`
+3. Find `DISABLE_HECI1_AT_PRE_BOOT`
+4. Change the default value (`y`) to `n`
+
+            -    default y
+            +    default n
+5. Save and exit.
+6. Build and flash.
+
+Note: The first 2 builds will fail. Try to build the ROM 3 times, it should suceeed on the 3rd try.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 
 ### Kexts
 
