@@ -1,11 +1,8 @@
 ---
 weight: 10
-title: "Documentation"
-description: "Explore our guides to have a smooth experience installing an alternate OS on your Chromebook."
+title: "ChromebookOSX"
+description: "Installing macOS on ASUS C425/C434/C433 models"
 icon: menu_book
 lead: ""
-date: 2022-10-10T02:21:15+00:00
-lastmod: 2022-10-10T02:21:15+00:00
 draft: false
-images: []
 ---
