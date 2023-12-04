@@ -93,6 +93,6 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         intLinkTooltip  = true                                # Enable a tooltip for internal links that displays info about the destination? default false
         # extLinkNewTab   = false                               # Open external links in a new Tab? default true
 
-    url = "https://reddit.com/r/chrultrabook"
+    url = "https://forum.chrultrabook.com"
     identifier = "community"
     weight = 30
