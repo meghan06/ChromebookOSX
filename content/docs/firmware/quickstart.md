@@ -1,5 +1,5 @@
 ---
-weight: 300
+weight: 210
 draft: false
 title: "Flashing FW on CrOS"
 icon: "rocket_launch"
