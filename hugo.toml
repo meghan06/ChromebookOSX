@@ -1,6 +1,6 @@
 baseURL = "/" # (or set via env variable HUGO_BASEURL)
-languageCode = "en-GB"
-title = "Chrultrabook Project"
+languageCode = "en-US"
+title = "ChromebookOSX"
 # theme = "lotusdocs"
 contentDir = "content"
 enableEmoji = true
@@ -63,7 +63,7 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         # prismTheme      = "lotusdocs"                         # (optional) - Set theme for PrismJS. Options include: lotusdocs (default), solarized-light, twilight, lucario
 
         # gitinfo
-        repoURL         = "https://github.com/chrultrabook/docs"  
+        repoURL         = "https://github.com/meghan06/ChromebookOSX"  
         repoBranch      = "release"                           # Name of your Git repository branch
         editPage        = true                                # enable 'Edit this page' feature - default false
         lastMod         = true                                # enable 'Last modified' date on pages - default false
@@ -93,14 +93,6 @@ enableGitInfo = true # N.B. .GitInfo does not currently function with submodule 
         intLinkTooltip  = true                                # Enable a tooltip for internal links that displays info about the destination? default false
         # extLinkNewTab   = false                               # Open external links in a new Tab? default true
 
-[[menu.primary]]
-    name  = "Docs"
-    url = "/docs/"
-    identifier = "docs"
-    weight = 10
-
-[[menu.primary]]
-    name  = "Community"
     url = "https://reddit.com/r/chrultrabook"
     identifier = "community"
     weight = 30
