@@ -2,7 +2,7 @@
 
 # Hero
 hero:
-  enable: true
+  enable: false
   weight: 10
 
   backgroundImage:
@@ -33,7 +33,7 @@ hero:
 
 # Features Grid
 features:
-  enable: true
+  enable: false
   weight: 20
 
   title: Why us?
