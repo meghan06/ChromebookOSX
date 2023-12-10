@@ -1,6 +1,2 @@
-# ChromebookOSX
-## https://docs.meghan6.com/docs
+# https://docs.meghan6.com/docs
 
-Thanks LotusDocs for the fire theme
-
-https://docs.meghan6.com/docs
